@@ -1,0 +1,44 @@
+body {
+  background-color: rgb(39, 39, 39);  
+}
+h1 {
+    color: beige;
+    font-family: Verdana;
+    font-size: 300%;
+    text-align: center;
+}
+h2 {
+    color: wheat;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+p {
+    color: rgb(182, 165, 135);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 150%;
+    text-align: center;
+}
+img {
+    width: 100px;
+    margin: auto;
+    display: block;
+}
+table {
+    background-color: black;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+th, 
+td {
+    padding: 11px;
+    border: solid 1px #1d1d11;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+thead {
+    background-color: #444444;
+    color: white;
+    font-size: 15px;
+}
