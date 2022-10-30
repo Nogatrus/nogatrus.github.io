@@ -3,8 +3,8 @@ body {
 }
 .navbar {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     position: sticky;
     top: 0;
     cursor: pointer;
@@ -24,7 +24,6 @@ body {
     text-decoration: none;
     color: wheat;
     font-family: Tahoma;
-    text-align: left;
 }
  
 .nav-list li a:hover {
