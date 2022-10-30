@@ -1,7 +1,7 @@
 body {
   background-color: rgb(39, 39, 39);  
 }
-navbar {
+.navbar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,22 +10,22 @@ navbar {
     cursor: pointer;
 }
  
-nav-list {
+.nav-list {
     width: 70%;
     display: flex;
 }
  
-nav-list li {
+.nav-list li {
     list-style: none;
     padding: 2px 6px;
 }
  
-nav-list li a {
+.nav-list li a {
     text-decoration: none;
     color: wheat;
 }
  
-nav-list li a:hover {
+.nav-list li a:hover {
     color: beige;
 }
 h1 {
