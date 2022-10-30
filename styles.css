@@ -23,12 +23,12 @@ body {
 .nav-list li a {
     text-decoration: none;
     color: wheat;
+    font-family: Tahoma;
+    text-align: left;
 }
  
 .nav-list li a:hover {
     color: beige;
-    font-family: Tahoma;
-    text-align: left;
 }
 h1 {
     color: beige;
