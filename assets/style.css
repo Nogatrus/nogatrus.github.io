@@ -519,6 +519,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-vt);
   font-size: 1.1rem;
   color: var(--text-dim);
+  margin-bottom: 10px;
 }
 
 /* ── Mechanic Section ──────────────────────── */
