@@ -49,63 +49,66 @@
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">TODAS</button>
       <button class="filter-btn" data-filter="principiante">PRINCIPIANTE</button>
+      <button class="filter-btn" data-filter="intermedio">INTERMEDIO</button>
       <button class="filter-btn" data-filter="avanzado">AVANZADO</button>
-      <button class="filter-btn" data-filter="dwarf-fortress">DWARF FORTRESS</button>
-      <button class="filter-btn" data-filter="factorio">FACTORIO</button>
+      <button class="filter-btn" data-filter="granja">GRANJA</button>
+      <button class="filter-btn" data-filter="pesca">PESCA</button>
+      <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
     </div>
 
-    <!-- ── Dwarf Fortress ── -->
-    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> DWARF FORTRESS</h2>
+    <!-- ── Granja ── -->
+    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> GRANJA</h2>
 
-    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="principiante">
-      <p class="guide-meta">DWARF FORTRESS · PRINCIPIANTE · ~30 min</p>
-      <h3 class="guide-title">GUÍA DE INICIO: TU PRIMERA FORTALEZA</h3>
-      <p class="guide-desc">Aprende a elegir ubicación, embarcar con los suministros correctos, cavar tu primera sala y sobrevivir al primer invierno.</p>
+    <a href="#" class="guide-card" data-game="granja" data-level="principiante">
+      <p class="guide-meta">GRANJA · PRINCIPIANTE · ~10 min</p>
+      <h3 class="guide-title">GUÍA DE INICIO: TU PRIMER CULTIVO</h3>
+      <p class="guide-desc">Empieza a conseguir tus semillas escribiendo "?inicio" en el chat. Luego de conseguirlas, para ir a plantar tienes que escribir "?plant [cultivo] [cantidad]" (o para plantar todo de una vez, "?plant all"), y te saldrá que has plantado un árbol y unas cuantas lechugas. Espera unos 5 minutos hasta que estén listas las lechugas, para comprobar cuánto tiempo lleva escribe "?harvest" sin más; y si ya están listos para cosechar, escribe "?harvest all" para recoger todo de una vez. Para comprobar que has cosechado, usa "?inventory" o también "?inv" para acortar.</p>
     </a>
 
-    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="avanzado">
-      <p class="guide-meta">DWARF FORTRESS · AVANZADO · ~60 min</p>
-      <h3 class="guide-title">DEFENSA MILITAR: TRAMPAS Y SQUADS</h3>
-      <p class="guide-desc">Diseño de corredores de trampas, entrenamiento de squads militares, gestión de equipo y estrategias contra sieges de goblin.</p>
+    <a href="#" class="guide-card" data-game="granja" data-level="principiante">
+      <p class="guide-meta">GRANJA · PRINCIPIANTE · ~10 min</p>
+      <h3 class="guide-title">GUÍA DE INICIO 2: EMPEZANDO A ACUMULAR</h3>
+      <p class="guide-desc">Notarás que no tienes semillas para volver a plantar y que solo tienes el árbol para darte fruto y que ni siquiera te da para semillas. Entonces aquí tienes dos opciones: convertir los puntos a truces aka la moneda global (10 pts = 1 tz) escribiendo "?tz convert 500" para conseguir dinero y comprar más semillas buscando con "?buy list 1" (lo que vendría siendo una lista de cultivos de tier 1, siempre te saldrán 5 de forma aleatoria con preferencia a la temporada actual del juego) y comprando con "?buy [cultivo] [cantidad]" o bien reconvertir lo que has cosechado en semillas escribiendo "?convert [cultivo] [cantidad/all]" para luego hacer "?plant all" y de vuelta a esperar hasta que puedas cosecharlos con "?harvest all". En el segundo caso, te recomiendo acumular hasta 30-50 semillas al menos para tener seguridad y vender todo lo que tienes cultivado con "?sell [all]", y con esto ya tendrás dinero para comprar más semillas empezando con "?buy list 1".</p>
     </a>
 
-    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="avanzado">
-      <p class="guide-meta">DWARF FORTRESS · AVANZADO · ~45 min</p>
-      <h3 class="guide-title">INGENIERÍA DE FLUIDOS: AGUA Y MAGMA</h3>
-      <p class="guide-desc">Sistemas de riego, drenaje de inundaciones, canales de magma para forjas, y la creación de trampas de obsidiana.</p>
+    <a href="#" class="guide-card" data-game="granja" data-level="intermedio">
+      <p class="guide-meta">GRANJA · INTERMEDIO · ~5 min</p>
+      <h3 class="guide-title">VENTA EN EL MERCADO</h3>
+      <p class="guide-desc">Habrás notado que al vender algunos cultivos a veces salen de diferentes calidades (normal, copper, silver, gold y platinum) y que los de mejor calidad valen mucho más dinero. Eso no es lo único que se tiene en cuenta a la hora de vender, pues el valor de un cultivo puede venir influido por varias razones diferentes (que se venda fuera de su temporada, el tiempo, las pérdidas en relación a los catástrofes, etc.). Para eso mismo, tienes tres comandos para verlo: para ver cómo están los precios en general con respecto a las cosechas que tienes en tu inventario escribe "?market", para ver cuáles están en el top 10 mejor valorados en ese momento escribe "?market top" y para ver cuál(es) de tus cosechas vale(n) más la pena vender escribe "?market best". Una vez te hayas decidido, puedes venderlos con "?sell [cultivo] [cantidad]".</p>
     </a>
 
-    <!-- ── Factorio ── -->
-    <h2 class="section-title" style="margin-top:40px;"><span class="title-arrow">►</span> FACTORIO</h2>
+    
+    <!-- ── Pesca ── -->
+    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> PESCA</h2>
 
-    <a href="#" class="guide-card" data-game="factorio" data-level="principiante">
-      <p class="guide-meta">FACTORIO · PRINCIPIANTE · ~20 min</p>
-      <h3 class="guide-title">PROGRESIÓN BÁSICA: DE LA MANO A LOS COHETES</h3>
-      <p class="guide-desc">Ruta de investigación recomendada, ratios de producción para cada fase y cómo escalar tu base paso a paso.</p>
+    <a href="#" class="guide-card" data-game="pesca" data-level="principiante">
+      <p class="guide-meta">WIP</p>
+      <h3 class="guide-title">WIP</h3>
+      <p class="guide-desc">WIP</p>
     </a>
 
-    <a href="#" class="guide-card" data-game="factorio" data-level="avanzado">
-      <p class="guide-meta">FACTORIO · AVANZADO · ~90 min</p>
-      <h3 class="guide-title">MEGABASE: DISEÑO CON TRENES Y BUS PRINCIPAL</h3>
-      <p class="guide-desc">Arquitectura de bus principal de 4 carriles, red de trenes para recursos, balanceo de producción y defensa perimetral.</p>
+    
+    <!-- ── Ganadería ── -->
+    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> GANADERÍA</h2>
+
+    <a href="#" class="guide-card" data-game="ganadería" data-level="principiante">
+      <p class="guide-meta">WIP</p>
+      <h3 class="guide-title">WIP</h3>
+      <p class="guide-desc">WIP</p>
     </a>
 
-    <a href="#" class="guide-card" data-game="factorio" data-level="avanzado">
-      <p class="guide-meta">FACTORIO · AVANZADO · ~45 min</p>
-      <h3 class="guide-title">CIRCUITOS: AUTOMATIZACIÓN INTELIGENTE</h3>
-      <p class="guide-desc">Sistemas de control de flujo con circuitos lógicos: control de almacén, despacho de trenes por condición y alarmas automáticas.</p>
-    </a>
+    
 
     <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
-      PARA AÑADIR UNA GUÍA: DUPLICA UN &lt;A CLASS="GUIDE-CARD"&gt; Y ACTUALIZA SUS DATA-ATTRIBUTES Y CONTENIDO.
+      Puto el que lo lea.
     </p>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>© GAMEWIKI — HOSTEADO EN GITHUB PAGES</span>
+      <span>© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
       <span class="footer-sep">|</span>
-      <span>HECHO CON ♥ Y MUCHAS HORAS DE JUEGO</span>
+      <span>NOGATRUS</span>
     </div>
   </footer>
 
