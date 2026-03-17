@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameWiki — Juegos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="crt-vignette"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="games.html" class="nav-link active">JUEGOS</a>
+        <a href="commands.html" class="nav-link">COMANDOS</a>
+        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
+        <a href="guides.html" class="nav-link">GUÍAS</a>
+        <a href="glossary.html" class="nav-link">GLOSARIO</a>
+      </nav>
+      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="index.html">HOME</a><span>»</span>JUEGOS
+    </div>
+
+    <div class="page-header">
+      <h1>▶ CATÁLOGO DE JUEGOS</h1>
+      <p>Todos los juegos documentados en esta wiki. Haz clic para ver sus secciones.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" class="search-input" placeholder="Buscar juego..." id="gameSearch" />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">TODOS</button>
+      <button class="filter-btn" data-filter="roguelike">ROGUELIKE</button>
+      <button class="filter-btn" data-filter="rpg">RPG</button>
+      <button class="filter-btn" data-filter="estrategia">ESTRATEGIA</button>
+      <button class="filter-btn" data-filter="simulacion">SIMULACIÓN</button>
+      <button class="filter-btn" data-filter="mmo">MMO</button>
+    </div>
+
+    <div class="games-list" id="gamesList">
+      <div class="game-entry" data-tags="roguelike simulacion">
+        <span class="game-id">#001</span>
+        <span class="game-name">Dwarf Fortress</span>
+        <span class="game-tags">
+          <span class="tag">ROGUELIKE</span>
+          <span class="tag">SIMULACIÓN</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry" data-tags="roguelike rpg">
+        <span class="game-id">#002</span>
+        <span class="game-name">Caves of Qud</span>
+        <span class="game-tags">
+          <span class="tag">RPG</span>
+          <span class="tag">ROGUELIKE</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry" data-tags="mmo estrategia">
+        <span class="game-id">#003</span>
+        <span class="game-name">EVE Online</span>
+        <span class="game-tags">
+          <span class="tag">MMO</span>
+          <span class="tag">ESTRATEGIA</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry" data-tags="estrategia simulacion">
+        <span class="game-id">#004</span>
+        <span class="game-name">Factorio</span>
+        <span class="game-tags">
+          <span class="tag">ESTRATEGIA</span>
+          <span class="tag">SIMULACIÓN</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry" data-tags="rpg roguelike">
+        <span class="game-id">#005</span>
+        <span class="game-name">NetHack</span>
+        <span class="game-tags">
+          <span class="tag">RPG</span>
+          <span class="tag">ROGUELIKE</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry" data-tags="estrategia simulacion">
+        <span class="game-id">#006</span>
+        <span class="game-name">Crusader Kings III</span>
+        <span class="game-tags">
+          <span class="tag">ESTRATEGIA</span>
+          <span class="tag">SIMULACIÓN</span>
+        </span>
+        <span class="game-arrow">→</span>
+      </div>
+      <div class="game-entry add-game">
+        <span class="game-id">+</span>
+        <span class="game-name">Añadir nuevo juego...</span>
+        <span class="game-tags"></span>
+        <span class="game-arrow">→</span>
+      </div>
+    </div>
+
+    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 24px; letter-spacing: 1px;">
+      PARA AÑADIR UN JUEGO: CREA UNA NUEVA PÁGINA .HTML Y AÑADE LA ENTRADA AQUÍ.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© GAMEWIKI — HOSTEADO EN GITHUB PAGES</span>
+      <span class="footer-sep">|</span>
+      <span>HECHO CON ♥ Y MUCHAS HORAS DE JUEGO</span>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

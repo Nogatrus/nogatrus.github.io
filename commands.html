@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameWiki — Comandos & Atajos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="crt-vignette"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="games.html" class="nav-link">JUEGOS</a>
+        <a href="commands.html" class="nav-link active">COMANDOS</a>
+        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
+        <a href="guides.html" class="nav-link">GUÍAS</a>
+        <a href="glossary.html" class="nav-link">GLOSARIO</a>
+      </nav>
+      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="index.html">HOME</a><span>»</span>COMANDOS &amp; ATAJOS
+    </div>
+
+    <div class="page-header">
+      <h1>⌨ COMANDOS &amp; ATAJOS</h1>
+      <p>Listados de keybinds, atajos de teclado y comandos de consola organizados por juego.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" class="search-input" placeholder="Buscar comando, tecla o función..." id="cmdSearch" />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">TODOS</button>
+      <button class="filter-btn" data-filter="dwarf-fortress">DWARF FORTRESS</button>
+      <button class="filter-btn" data-filter="factorio">FACTORIO</button>
+      <button class="filter-btn" data-filter="nethack">NETHACK</button>
+    </div>
+
+    <!-- ── Dwarf Fortress ── -->
+    <section class="cmd-section" data-game="dwarf-fortress">
+      <h2 class="section-title"><span class="title-arrow">►</span> DWARF FORTRESS</h2>
+      <div style="overflow-x:auto;">
+        <table class="cmd-table" id="cmdTable-df">
+          <thead>
+            <tr>
+              <th>TECLA / COMBO</th>
+              <th>ACCIÓN</th>
+              <th>CONTEXTO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key">K</td>
+              <td class="desc">Examinar tile / objeto</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">D</td>
+              <td class="desc">Menú de designaciones (cavar, talar...)</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">B</td>
+              <td class="desc">Menú de construcciones</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">Q</td>
+              <td class="desc">Ver zona / tarea de un tile</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">Z</td>
+              <td class="desc">Pantalla de estado de la fortaleza</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">U</td>
+              <td class="desc">Lista de unidades</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">ESPACIO</td>
+              <td class="desc">Pausar / reanudar juego</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">+  /  -</td>
+              <td class="desc">Cambiar capa de profundidad (Z-level)</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">ESC</td>
+              <td class="desc">Cerrar menú / volver</td>
+              <td>Global</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Factorio ── -->
+    <section class="cmd-section" data-game="factorio" style="margin-top: 40px;">
+      <h2 class="section-title"><span class="title-arrow">►</span> FACTORIO</h2>
+      <div style="overflow-x:auto;">
+        <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>TECLA / COMBO</th>
+              <th>ACCIÓN</th>
+              <th>CONTEXTO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key">Q</td>
+              <td class="desc">Seleccionar herramienta / vaciar mano</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">E</td>
+              <td class="desc">Abrir inventario</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">R</td>
+              <td class="desc">Rotar edificio seleccionado</td>
+              <td>Construcción</td>
+            </tr>
+            <tr>
+              <td class="key">SHIFT + clic</td>
+              <td class="desc">Insertar / extraer ítems de máquina</td>
+              <td>Construcción</td>
+            </tr>
+            <tr>
+              <td class="key">ALT</td>
+              <td class="desc">Mostrar contenido de edificios en mapa</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">CTRL + Z</td>
+              <td class="desc">Deshacer construcción</td>
+              <td>Construcción</td>
+            </tr>
+            <tr>
+              <td class="key">M</td>
+              <td class="desc">Mapa del mundo</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">F5</td>
+              <td class="desc">Mostrar info de debug</td>
+              <td>Global</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── NetHack ── -->
+    <section class="cmd-section" data-game="nethack" style="margin-top: 40px;">
+      <h2 class="section-title"><span class="title-arrow">►</span> NETHACK</h2>
+      <div style="overflow-x:auto;">
+        <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>TECLA / COMBO</th>
+              <th>ACCIÓN</th>
+              <th>CONTEXTO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key">hjklyubn</td>
+              <td class="desc">Movimiento (8 direcciones)</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">,</td>
+              <td class="desc">Recoger objeto</td>
+              <td>Mapa</td>
+            </tr>
+            <tr>
+              <td class="key">i</td>
+              <td class="desc">Ver inventario</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">e</td>
+              <td class="desc">Comer</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">w</td>
+              <td class="desc">Equipar arma</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">W</td>
+              <td class="desc">Equipar armadura</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">?</td>
+              <td class="desc">Ayuda / lista de comandos</td>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <td class="key">CTRL + X</td>
+              <td class="desc">Ver atributos del personaje</td>
+              <td>Global</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
+      PARA AÑADIR COMANDOS: DUPLICA UNA &lt;SECTION CLASS="CMD-SECTION"&gt; Y RELLENA LA TABLA.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© GAMEWIKI — HOSTEADO EN GITHUB PAGES</span>
+      <span class="footer-sep">|</span>
+      <span>HECHO CON ♥ Y MUCHAS HORAS DE JUEGO</span>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

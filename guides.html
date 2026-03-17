@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameWiki — Guías & Tutoriales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="crt-vignette"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="games.html" class="nav-link">JUEGOS</a>
+        <a href="commands.html" class="nav-link">COMANDOS</a>
+        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
+        <a href="guides.html" class="nav-link active">GUÍAS</a>
+        <a href="glossary.html" class="nav-link">GLOSARIO</a>
+      </nav>
+      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="index.html">HOME</a><span>»</span>GUÍAS &amp; TUTORIALES
+    </div>
+
+    <div class="page-header">
+      <h1>📜 GUÍAS &amp; TUTORIALES</h1>
+      <p>Walkthroughs, builds recomendados, estrategias avanzadas y rutas de progresión.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" class="search-input" placeholder="Buscar guía..." id="guideSearch" />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">TODAS</button>
+      <button class="filter-btn" data-filter="principiante">PRINCIPIANTE</button>
+      <button class="filter-btn" data-filter="avanzado">AVANZADO</button>
+      <button class="filter-btn" data-filter="dwarf-fortress">DWARF FORTRESS</button>
+      <button class="filter-btn" data-filter="factorio">FACTORIO</button>
+    </div>
+
+    <!-- ── Dwarf Fortress ── -->
+    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> DWARF FORTRESS</h2>
+
+    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="principiante">
+      <p class="guide-meta">DWARF FORTRESS · PRINCIPIANTE · ~30 min</p>
+      <h3 class="guide-title">GUÍA DE INICIO: TU PRIMERA FORTALEZA</h3>
+      <p class="guide-desc">Aprende a elegir ubicación, embarcar con los suministros correctos, cavar tu primera sala y sobrevivir al primer invierno.</p>
+    </a>
+
+    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="avanzado">
+      <p class="guide-meta">DWARF FORTRESS · AVANZADO · ~60 min</p>
+      <h3 class="guide-title">DEFENSA MILITAR: TRAMPAS Y SQUADS</h3>
+      <p class="guide-desc">Diseño de corredores de trampas, entrenamiento de squads militares, gestión de equipo y estrategias contra sieges de goblin.</p>
+    </a>
+
+    <a href="#" class="guide-card" data-game="dwarf-fortress" data-level="avanzado">
+      <p class="guide-meta">DWARF FORTRESS · AVANZADO · ~45 min</p>
+      <h3 class="guide-title">INGENIERÍA DE FLUIDOS: AGUA Y MAGMA</h3>
+      <p class="guide-desc">Sistemas de riego, drenaje de inundaciones, canales de magma para forjas, y la creación de trampas de obsidiana.</p>
+    </a>
+
+    <!-- ── Factorio ── -->
+    <h2 class="section-title" style="margin-top:40px;"><span class="title-arrow">►</span> FACTORIO</h2>
+
+    <a href="#" class="guide-card" data-game="factorio" data-level="principiante">
+      <p class="guide-meta">FACTORIO · PRINCIPIANTE · ~20 min</p>
+      <h3 class="guide-title">PROGRESIÓN BÁSICA: DE LA MANO A LOS COHETES</h3>
+      <p class="guide-desc">Ruta de investigación recomendada, ratios de producción para cada fase y cómo escalar tu base paso a paso.</p>
+    </a>
+
+    <a href="#" class="guide-card" data-game="factorio" data-level="avanzado">
+      <p class="guide-meta">FACTORIO · AVANZADO · ~90 min</p>
+      <h3 class="guide-title">MEGABASE: DISEÑO CON TRENES Y BUS PRINCIPAL</h3>
+      <p class="guide-desc">Arquitectura de bus principal de 4 carriles, red de trenes para recursos, balanceo de producción y defensa perimetral.</p>
+    </a>
+
+    <a href="#" class="guide-card" data-game="factorio" data-level="avanzado">
+      <p class="guide-meta">FACTORIO · AVANZADO · ~45 min</p>
+      <h3 class="guide-title">CIRCUITOS: AUTOMATIZACIÓN INTELIGENTE</h3>
+      <p class="guide-desc">Sistemas de control de flujo con circuitos lógicos: control de almacén, despacho de trenes por condición y alarmas automáticas.</p>
+    </a>
+
+    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
+      PARA AÑADIR UNA GUÍA: DUPLICA UN &lt;A CLASS="GUIDE-CARD"&gt; Y ACTUALIZA SUS DATA-ATTRIBUTES Y CONTENIDO.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© GAMEWIKI — HOSTEADO EN GITHUB PAGES</span>
+      <span class="footer-sep">|</span>
+      <span>HECHO CON ♥ Y MUCHAS HORAS DE JUEGO</span>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
