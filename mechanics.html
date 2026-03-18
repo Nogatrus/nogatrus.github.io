@@ -43,89 +43,47 @@
 
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">TODOS</button>
-      <button class="filter-btn" data-filter="dwarf-fortress">DWARF FORTRESS</button>
-      <button class="filter-btn" data-filter="factorio">FACTORIO</button>
-      <button class="filter-btn" data-filter="nethack">NETHACK</button>
+      <button class="filter-btn" data-filter="granja">GRANJA</button>
+      <button class="filter-btn" data-filter="pesca">PESCA</button>
+      <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
     </div>
 
-    <!-- ── Dwarf Fortress ── -->
-    <section data-game="dwarf-fortress">
-      <h2 class="section-title"><span class="title-arrow">►</span> DWARF FORTRESS</h2>
+    <!-- ── Granja ── -->
+    <section data-game="granja">
+      <h2 class="section-title"><span class="title-arrow">►</span> GRANJA</h2>
 
       <div class="mechanic-block">
-        <h3>SISTEMA DE NECESIDADES DE LOS ENANOS</h3>
+        <h3>SISTEMA DE MERCADO</h3>
         <p>
-          Cada enano tiene un conjunto de necesidades (Needs) que deben satisfacerse periódicamente para mantener su estado mental estable.
-          Estas incluyen: socializar, contemplar arte, practicar habilidades, orar a su deidad, y consumir bebida alcohólica.
-          Si una necesidad queda insatisfecha demasiado tiempo, el enano acumula estrés (stress), lo que puede derivar en estados alterados:
-          <strong style="color:var(--yellow)">Melancólico → Perturbado → En crisis</strong>. Un enano en crisis puede volverse violento o suicida.
+          <strong style="color:var(--yellow)">wip</strong>
         </p>
       </div>
 
       <div class="mechanic-block">
-        <h3>SISTEMA DE HUMOR (MOOD)</h3>
+        <h3>SISTEMA DE PARCELAS Y HUERTOS</h3>
         <p>
-          Aleatoriamente, un enano puede entrar en un estado de <em style="color:var(--accent)">Fey Mood</em> (u otras variantes: Possessed, Macabre, etc.)
-          durante el cual exige materiales específicos para crear un artefacto legendario. Si no consigue los materiales a tiempo,
-          el enano se vuelve cavernícola (Berserk) y ataca a todos. Los artefactos creados tienen valor altísimo y son únicos.
+           <em style="color:var(--accent)">wip</em> 
         </p>
       </div>
 
       <div class="mechanic-block">
-        <h3>FÍSICA DE FLUIDOS</h3>
+        <h3>SISTEMA DE INVERNADERO</h3>
         <p>
-          El agua y el magma siguen un sistema de presión por niveles (Z-levels). El fluido se propaga a tiles adyacentes si hay espacio disponible.
-          Los niveles de profundidad van de 1/7 a 7/7. El magma destruye materiales orgánicos al contacto.
-          Mezclar agua y magma en proporciones correctas crea <strong style="color:var(--accent2)">obsidiana</strong>, técnica usada en trampas avanzadas.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── Factorio ── -->
-    <section data-game="factorio" style="margin-top:40px;">
-      <h2 class="section-title"><span class="title-arrow">►</span> FACTORIO</h2>
-
-      <div class="mechanic-block">
-        <h3>SISTEMA DE CONTAMINACIÓN Y BITERS</h3>
-        <p>
-          Las máquinas a vapor y hornos generan nube de contaminación que se propaga por el mapa.
-          Cuando la contaminación alcanza los nidos de biters (aliens), estos envían oleadas de ataque.
-          La cantidad de biters en cada oleada escala con la evolución: un factor global que aumenta con el tiempo de juego,
-          la contaminación total generada y los nidos destruidos. La fórmula de evolución es:
-          <strong style="color:var(--yellow)">evolution = time_factor + pollution_factor + nest_factor</strong>.
-        </p>
-      </div>
-
-      <div class="mechanic-block">
-        <h3>THROUGHPUT DE CINTAS TRANSPORTADORAS</h3>
-        <p>
-          Las cintas tienen una capacidad de ítems por segundo según su tipo: Cinta normal = 15/s por carril (30/s total),
-          Cinta rápida = 30/s por carril (60/s total), Cinta express = 45/s por carril (90/s total).
-          Las inserciones solo trabajan sobre un carril a la vez por defecto. Para balancear ambos carriles
-          se usan <em style="color:var(--accent)">splitters</em> con filtros de prioridad.
-        </p>
-      </div>
-
-      <div class="mechanic-block">
-        <h3>CIRCUITOS LÓGICOS</h3>
-        <p>
-          La red de circuitos permite leer señales de máquinas, inventarios y el mapa, combinarlas con operadores aritméticos y de comparación,
-          y enviar señales de control a puertas, bombas, cintas y más. Las redes roja y verde son independientes.
-          El sistema es Turing-completo: es posible construir computadoras dentro del juego.
+          <strong style="color:var(--accent2)">wip</strong>
         </p>
       </div>
     </section>
 
     <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
-      PARA AÑADIR UNA MECÁNICA: AÑADE UN &lt;DIV CLASS="MECHANIC-BLOCK"&gt; DENTRO DE LA SECCIÓN DEL JUEGO.
+      Y era un domingo por la tarde, fui a los coches de choque.
     </p>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>© GAMEWIKI — HOSTEADO EN GITHUB PAGES</span>
+      <span>© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
       <span class="footer-sep">|</span>
-      <span>HECHO CON ♥ Y MUCHAS HORAS DE JUEGO</span>
+      <span>NOGATRUS</span>
     </div>
   </footer>
 
