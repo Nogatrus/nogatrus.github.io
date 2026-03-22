@@ -77,13 +77,6 @@ a { color: inherit; text-decoration: none; }
 }
 .blink { animation: blink 1s step-end infinite; color: var(--accent3); }
 
-@keyframes flicker {
-  0%,100% { opacity: 1; }
-  92% { opacity: 1; }
-  93% { opacity: 0.8; }
-  94% { opacity: 1; }
-}
-
 @keyframes glitch {
   0%   { clip-path: inset(0 0 95% 0); transform: translateX(-3px); }
   20%  { clip-path: inset(30% 0 50% 0); transform: translateX(3px); }
