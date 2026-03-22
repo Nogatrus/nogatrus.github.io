@@ -15,15 +15,15 @@
   --border-hi:   #8a2a2a;
   --text:        #e8d0a0;
   --text-dim:    #7a5a30;
-  --accent:      #ff8c00;
-  --accent2:     #ff2233;
+  --accent:      #ff2233;
+  --accent2:     #ff8c00;
   --accent3:     #39ff14;
   --yellow:      #ffe800;
   --font-px:     'Press Start 2P', monospace;
   --font-vt:     'VT323', monospace;
   --pixel-sz:    2px;
-  --glow:        0 0 8px var(--accent), 0 0 20px rgba(255,140,0,0.3);
-  --glow2:       0 0 8px var(--accent2), 0 0 20px rgba(204,34,68,0.3);
+  --glow:        0 0 8px var(--accent), 0 0 20px rgba(255,34,51,0.3);
+  --glow2:       0 0 8px var(--accent2), 0 0 20px rgba(255,140,0,0.3);
   --glow3:       0 0 8px var(--accent3), 0 0 20px rgba(57,255,20,0.3);
 }
 
