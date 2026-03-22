@@ -146,7 +146,7 @@ a { color: inherit; text-decoration: none; }
 .header-status {
   font-family: var(--font-px);
   font-size: 0.45rem;
-  color: var(--accent3);
+  color: #39ff14;
   text-shadow: var(--glow3);
   white-space: nowrap;
   margin-left: auto;
