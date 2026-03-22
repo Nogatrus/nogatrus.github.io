@@ -279,18 +279,33 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
 }
+.card {
+  border-top-color: transparent;
+  transition: all 0.15s, border-top-color 0.2s;
+}
+.card:hover {
+  border-top-color: var(--accent);
+}
+
+/* Esquinas pixel */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 10px; height: 10px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  pointer-events: none;
+}
 .card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: var(--pixel-sz);
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s;
+  bottom: -2px; right: -2px;
+  width: 10px; height: 10px;
+  border-bottom: 2px solid var(--accent2);
+  border-right: 2px solid var(--accent2);
+  pointer-events: none;
 }
-.card:hover { border-color: var(--border-hi); background: var(--bg3); }
-.card:hover::after { transform: scaleX(1); }
 
 .card-icon {
   font-size: 2rem;
@@ -487,20 +502,21 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 8px;
   transition: all 0.1s;
   position: relative;
+  box-shadow: inset 2px 2px 0 var(--accent);
 }
-.guide-card:hover { border-color: var(--accent3); }
-.guide-card::before {
-  content: '►';
+.guide-card:hover { 
+  border-color: var(--accent3);
+  box-shadow: inset 2px 2px 0 var(--accent3);  
+}
+.guide-card::after {
+  content: '';
   position: absolute;
-  left: 10px; top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent3);
-  font-size: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.1s;
+  bottom: -2px; right: -2px;
+  width: 10px; height: 10px;
+  border-bottom: 2px solid var(--accent2);
+  border-right: 2px solid var(--accent2);
+  pointer-events: none;
 }
-.guide-card:hover::before { opacity: 1; }
-.guide-card:hover { padding-left: 32px; }
 
 .guide-title {
   font-family: var(--font-px);
@@ -646,6 +662,52 @@ a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--border-hi); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+
+/* ── Separations ───────────────────────── */
+.cmd-table td hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 6px 0;
+  opacity: 0.5;
+}
+
+/* ── Pixel corners ─────────────────────────── */
+.mechanic-block::before, .page-header::before,
+.glossary-entry::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 10px; height: 10px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  pointer-events: none;
+}
+.mechanic-block::after, .page-header::after,
+.glossary-entry::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; right: -2px;
+  width: 10px; height: 10px;
+  border-bottom: 2px solid var(--accent2);
+  border-right: 2px solid var(--accent2);
+  pointer-events: none;
+}
+
+/* ── Glitch en section-title ───────────────── */
+.section-title:hover {
+  animation: glitch 0.4s steps(1) 1;
+}
+
+.guide-card::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; right: -2px;
+  width: 10px; height: 10px;
+  border-bottom: 2px solid var(--accent2);
+  border-right: 2px solid var(--accent2);
+  pointer-events: none;
+}
 
 /* ── Responsive ────────────────────────────── */
 @media (max-width: 700px) {
