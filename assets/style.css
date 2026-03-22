@@ -137,10 +137,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-link:hover {
-  color: #ffaa00;
-  border-color: #ffaa00;
+  color: #ffd000;
+  border-color: #ffd000;
   background: rgba(255,170,0,0.07);
-  text-shadow: 0 0 8px #ffaa00;
+  text-shadow: 0 0 8px #ffd000;
 }
 
 .header-status {
@@ -243,12 +243,12 @@ a { color: inherit; text-decoration: none; }
 .section-title {
   font-family: var(--font-px);
   font-size: 0.7rem;
-  color: #ffaa00;
+  color: #ffd000;
   letter-spacing: 3px;
   margin-bottom: 24px;
   padding-bottom: 12px;
   border-bottom: var(--pixel-sz) solid var(--border);
-  text-shadow: 0 0 8px #ffaa00;
+  text-shadow: 0 0 8px #ffd000;
 }
 .title-arrow { color: var(--accent2); text-shadow: var(--glow2); margin-right: 8px; }
 
