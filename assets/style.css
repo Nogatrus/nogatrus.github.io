@@ -181,15 +181,6 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  left: 0; right: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.4;
-}
 
 .ascii-art {
   font-family: var(--font-vt);
