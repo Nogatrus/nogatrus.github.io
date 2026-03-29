@@ -1,3 +1,7 @@
+/* =============================================
+   GAMEWIKI — STYLESHEET
+   ============================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 :root {
@@ -107,167 +111,300 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ══════════════════════════════════════════════
-   TV HOME — Estética de televisor CRT
+   TV HOME — Televisor CRT de pantalla completa
    ══════════════════════════════════════════════ */
+
+@keyframes static-flicker {
+  0%,100% { opacity: 1; }
+  92%      { opacity: 1; }
+  93%      { opacity: 0.85; }
+  94%      { opacity: 1; }
+  97%      { opacity: 1; }
+  98%      { opacity: 0.9; }
+  99%      { opacity: 1; }
+}
+
+@keyframes tv-on {
+  0%   { transform: scaleY(0.004) scaleX(1); opacity: 1; filter: brightness(8); }
+  8%   { transform: scaleY(0.02) scaleX(0.9); }
+  20%  { transform: scaleY(1) scaleX(1); filter: brightness(1.5); }
+  100% { transform: scaleY(1) scaleX(1); filter: brightness(1); opacity: 1; }
+}
+
+@keyframes signal-bar {
+  0%   { left: -100%; }
+  100% { left: 110%; }
+}
+
+/* Cuerpo del televisor */
 .tv-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
-}
-
-.tv {
-  position: relative;
   width: 100%;
-  max-width: 700px;
-  background: linear-gradient(160deg, #1c0d0d 0%, #110707 60%, #0e0505 100%);
-  border-radius: 18px 18px 4px 4px;
-  padding: 20px 20px 0;
-  box-shadow:
-    0 0 0 3px #2e1010,
-    0 0 0 5px #0d0404,
-    inset 0 2px 0 rgba(255,255,255,0.04),
-    inset 0 -2px 8px rgba(0,0,0,0.6),
-    0 24px 80px rgba(0,0,0,0.9);
 }
 
-/* Tornillos en las esquinas */
+.tv-body {
+  width: 100%;
+  background: linear-gradient(175deg, #1e0c0c 0%, #140808 40%, #100606 100%);
+  border-radius: 24px;
+  padding: 22px 22px 0;
+  position: relative;
+  box-shadow:
+    0 0 0 1px #3a1a1a,
+    0 0 0 4px #0e0606,
+    0 0 0 5px #2a1010,
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 40px 100px rgba(0,0,0,0.95),
+    0 0 60px rgba(255,20,20,0.04);
+}
+
+/* Tornillos */
 .tv-screw {
   position: absolute;
-  width: 10px; height: 10px;
+  width: 12px; height: 12px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #3a1818, #0d0404);
-  border: 1px solid #4a2020;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+  background: radial-gradient(circle at 35% 30%, #2e1212, #080202);
+  border: 1px solid #3a1616;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.9), 0 0 0 1px #0a0303;
+  z-index: 10;
 }
-.tv-screw.tl { top: 10px; left: 10px; }
-.tv-screw.tr { top: 10px; right: 10px; }
+/* Línea de "cruz" del tornillo */
+.tv-screw::before, .tv-screw::after {
+  content: '';
+  position: absolute;
+  background: #1a0a0a;
+}
+.tv-screw::before { width: 1px; height: 6px; top: 3px; left: 5.5px; }
+.tv-screw::after  { width: 6px; height: 1px; top: 5.5px; left: 3px; }
+.tv-screw.tl { top: 14px; left: 14px; }
+.tv-screw.tr { top: 14px; right: 14px; }
+.tv-screw.bl { bottom: 56px; left: 14px; }
+.tv-screw.br { bottom: 56px; right: 14px; }
 
-/* Pantalla */
+/* Marco interior de la pantalla (bisel interno) */
+.tv-bezel {
+  background: #080303;
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,1), 0 0 0 1px #1a0808;
+}
+
+/* Pantalla propiamente dicha */
 .tv-screen {
-  background: #060302;
+  background: #030101;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 40px 40px;
+  animation: tv-on 0.6s ease-out forwards, static-flicker 8s infinite 1s;
+
+  /* Curvatura CRT sutil con box-shadow interior */
   box-shadow:
-    inset 0 0 40px rgba(0,0,0,0.9),
-    inset 0 0 4px rgba(255,40,20,0.08),
-    0 0 0 2px #0a0404;
-  padding: 44px 36px 36px;
+    inset 0 0 0 1px rgba(255,40,20,0.06),
+    inset 60px 0 80px rgba(0,0,0,0.5),
+    inset -60px 0 80px rgba(0,0,0,0.5),
+    inset 0 40px 60px rgba(0,0,0,0.4),
+    inset 0 -40px 60px rgba(0,0,0,0.4),
+    0 0 40px rgba(255,20,10,0.08);
 }
 
-/* Scan line sweep dentro de pantalla */
+/* Scanline sweep */
 .tv-screen::before {
   content: '';
   position: absolute;
-  left: 0; right: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  animation: scandown 5s linear infinite;
-  opacity: 0.25;
+  left: -20%; right: -20%;
+  width: 140%;
+  height: 5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,80,40,0.12) 30%,
+    rgba(255,140,60,0.18) 50%,
+    rgba(255,80,40,0.12) 70%,
+    transparent 100%
+  );
+  animation: scandown 6s linear infinite;
   pointer-events: none;
-  z-index: 2;
+  z-index: 5;
 }
 
-/* Brillo esquina pantalla */
+/* Glare / reflejo en esquina superior */
 .tv-screen::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 15% 12%, rgba(255,80,40,0.04) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(255,100,50,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.3) 0%, transparent 50%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 4;
+  border-radius: 8px;
+}
+
+/* Overlay de señal que cruza ocasionalmente */
+.tv-signal-bar {
+  position: absolute;
+  top: 30%;
+  left: -100%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,200,100,0.15), transparent);
+  animation: signal-bar 12s linear infinite 3s;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* HUD - esquina superior izquierda (canal) */
+.tv-channel {
+  position: absolute;
+  top: 14px; left: 18px;
+  font-family: var(--font-px);
+  font-size: 0.38rem;
+  color: rgba(255,140,0,0.6);
+  letter-spacing: 2px;
+  z-index: 7;
+}
+
+/* HUD - esquina superior derecha (señal) */
+.tv-signal {
+  position: absolute;
+  top: 14px; right: 18px;
+  font-family: var(--font-px);
+  font-size: 0.35rem;
+  color: rgba(57,255,20,0.5);
+  letter-spacing: 1px;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.tv-signal-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #39ff14;
+  box-shadow: 0 0 5px #39ff14;
+  animation: blink 1.8s step-end infinite;
 }
 
 /* Panel inferior del televisor */
 .tv-panel {
-  background: linear-gradient(to bottom, #130808, #0e0505);
-  border-top: 1px solid #2a1010;
-  padding: 10px 20px 14px;
+  background: linear-gradient(to bottom, #150909, #0e0505);
+  border-top: 1px solid #1e0c0c;
+  padding: 12px 24px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 20px 20px;
 }
 
 .tv-brand {
   font-family: var(--font-px);
-  font-size: 0.3rem;
-  color: #3a1818;
-  letter-spacing: 5px;
+  font-size: 0.28rem;
+  color: #2a1010;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+/* Grupo de controles derecha */
+.tv-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .tv-knobs {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 .tv-knob {
-  width: 14px; height: 14px;
   border-radius: 50%;
-  background: radial-gradient(circle at 38% 32%, #2e1414, #0c0404);
-  border: 1px solid #3a1818;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.03);
+  background: radial-gradient(circle at 38% 32%, #251010, #0a0303);
+  border: 1px solid #301212;
+  box-shadow:
+    0 2px 5px rgba(0,0,0,0.95),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+  cursor: default;
 }
-.tv-knob.lg { width: 18px; height: 18px; }
+.tv-knob.sm { width: 14px; height: 14px; }
+.tv-knob.md { width: 18px; height: 18px; }
+.tv-knob.lg { width: 22px; height: 22px; }
 
-.tv-led-wrap { display: flex; align-items: center; gap: 6px; }
+.tv-led-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #1e0c0c;
+  border-radius: 2px;
+  padding: 4px 8px;
+  background: #060202;
+}
 .tv-led {
-  width: 6px; height: 6px;
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: #39ff14;
-  box-shadow: 0 0 6px #39ff14, 0 0 12px rgba(57,255,20,0.4);
+  box-shadow: 0 0 5px #39ff14, 0 0 10px rgba(57,255,20,0.5);
   animation: blink 2s step-end infinite;
 }
-.tv-led-label { font-family: var(--font-px); font-size: 0.28rem; color: #39ff14; text-shadow: var(--glow3); letter-spacing: 1px; }
+.tv-led-label {
+  font-family: var(--font-px);
+  font-size: 0.28rem;
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff14;
+  letter-spacing: 2px;
+}
 
-/* Base/soporte del TV */
+/* Soporte */
 .tv-neck {
-  width: 120px;
-  height: 14px;
-  background: linear-gradient(to bottom, #0e0505, #0a0303);
+  width: 100px; height: 16px;
+  background: linear-gradient(to bottom, #100505, #0a0303);
   margin: 0 auto;
-  box-shadow: 0 2px 0 #080202;
+  border-left: 1px solid #1e0c0c;
+  border-right: 1px solid #1e0c0c;
 }
 .tv-foot {
-  width: 200px;
-  height: 10px;
-  background: #0a0303;
+  width: 220px; height: 12px;
+  background: linear-gradient(to bottom, #100505, #080202);
   margin: 0 auto;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.9);
 }
 
-/* Contenido dentro de la pantalla */
+/* Contenido de la pantalla */
 .ascii-art {
   font-family: var(--font-vt);
-  font-size: clamp(0.42rem, 1.1vw, 0.75rem);
+  font-size: clamp(0.5rem, 1.3vw, 0.85rem);
   color: var(--accent);
-  text-shadow: var(--glow);
+  text-shadow: var(--glow), 0 0 40px rgba(255,34,51,0.2);
   line-height: 1.2;
   white-space: pre;
   overflow-x: auto;
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 22px;
   position: relative;
   z-index: 3;
 }
 .hero-subtitle {
   font-family: var(--font-px);
-  font-size: clamp(0.38rem, 1.2vw, 0.55rem);
+  font-size: clamp(0.35rem, 1vw, 0.52rem);
   color: #ffd000;
   letter-spacing: 2px;
-  margin-bottom: 8px;
-  text-shadow: 0 0 8px #ffd000;
+  margin-bottom: 6px;
+  text-shadow: 0 0 8px #ffd000, 0 0 30px rgba(255,208,0,0.2);
   position: relative;
   z-index: 3;
 }
 .hero-desc {
   font-family: var(--font-vt);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--text-dim);
-  margin-bottom: 28px;
+  margin-bottom: 30px;
   letter-spacing: 3px;
   position: relative;
   z-index: 3;
@@ -282,18 +419,19 @@ a { color: inherit; text-decoration: none; }
 }
 .tv-shortcut {
   font-family: var(--font-px);
-  font-size: 0.4rem;
+  font-size: 0.38rem;
   padding: 8px 14px;
-  border: 1px solid var(--border-hi);
-  color: var(--text-dim);
+  border: 1px solid rgba(138,42,42,0.5);
+  color: rgba(142,81,43,0.8);
   letter-spacing: 1px;
-  transition: all 0.1s;
+  transition: all 0.12s;
+  background: rgba(0,0,0,0.3);
 }
 .tv-shortcut:hover {
   border-color: var(--accent2);
   color: var(--accent2);
   text-shadow: var(--glow2);
-  background: rgba(255,140,0,0.06);
+  background: rgba(255,140,0,0.07);
 }
 
 /* ── Global Search Bar ─────────────────────── */
