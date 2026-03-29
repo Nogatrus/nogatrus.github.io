@@ -35,53 +35,72 @@
 
     <!-- ── TV Section ── -->
     <section class="tv-wrap">
-      <!-- Televisor -->
-      <div class="tv">
+
+      <!-- Cuerpo del televisor -->
+      <div class="tv-body">
+        <!-- Tornillos -->
         <div class="tv-screw tl"></div>
         <div class="tv-screw tr"></div>
+        <div class="tv-screw bl"></div>
+        <div class="tv-screw br"></div>
 
-        <div class="tv-screen">
-          <pre class="ascii-art">
+        <!-- Bisel interno -->
+        <div class="tv-bezel">
+          <div class="tv-screen">
+            <!-- Barra de señal que pasa -->
+            <div class="tv-signal-bar"></div>
+
+            <!-- HUD overlays -->
+            <div class="tv-channel">CH · 01 · GAMEWIKI</div>
+            <div class="tv-signal"><div class="tv-signal-dot"></div>LIVE</div>
+
+            <!-- Contenido -->
+            <pre class="ascii-art">
  ██████╗  █████╗ ███╗   ███╗███████╗
 ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
 ██║  ███╗███████║██╔████╔██║█████╗  
 ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  
 ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
-          </pre>
-          <p class="hero-subtitle">▶ LA ENCICLOPEDIA DE JUEGOS DE NOGATRUS ◀</p>
-          <p class="hero-desc">Comandos · Mecánicas · Guías · Glosario</p>
+            </pre>
+            <p class="hero-subtitle">▶ LA ENCICLOPEDIA DE JUEGOS DE NOGATRUS ◀</p>
+            <p class="hero-desc">Comandos · Mecánicas · Guías · Glosario</p>
 
-          <nav class="tv-nav-shortcuts">
-            <a href="commands.html" class="tv-shortcut">⌨ COMANDOS</a>
-            <a href="mechanics.html" class="tv-shortcut">⚙ MECÁNICAS</a>
-            <a href="guides.html" class="tv-shortcut">📜 GUÍAS</a>
-            <a href="glossary.html" class="tv-shortcut">📖 GLOSARIO</a>
-            <a href="games.html" class="tv-shortcut">▶ JUEGOS</a>
-          </nav>
+            <nav class="tv-nav-shortcuts">
+              <a href="commands.html" class="tv-shortcut">⌨ COMANDOS</a>
+              <a href="mechanics.html" class="tv-shortcut">⚙ MECÁNICAS</a>
+              <a href="guides.html" class="tv-shortcut">📜 GUÍAS</a>
+              <a href="glossary.html" class="tv-shortcut">📖 GLOSARIO</a>
+              <a href="games.html" class="tv-shortcut">▶ JUEGOS</a>
+            </nav>
+          </div>
         </div>
 
-        <!-- Panel con controles del televisor -->
+        <!-- Panel de controles inferior -->
         <div class="tv-panel">
-          <span class="tv-brand">GAMEWIKI</span>
-          <div class="tv-knobs">
-            <div class="tv-knob"></div>
-            <div class="tv-knob lg"></div>
-            <div class="tv-knob"></div>
-          </div>
-          <div class="tv-led-wrap">
-            <div class="tv-led"></div>
-            <span class="tv-led-label">ONLINE</span>
+          <span class="tv-brand">GAMEWIKI · MODEL GW-01</span>
+          <div class="tv-controls">
+            <div class="tv-knobs">
+              <div class="tv-knob sm"></div>
+              <div class="tv-knob md"></div>
+              <div class="tv-knob lg"></div>
+              <div class="tv-knob md"></div>
+              <div class="tv-knob sm"></div>
+            </div>
+            <div class="tv-led-wrap">
+              <div class="tv-led"></div>
+              <span class="tv-led-label">ONLINE</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Soporte del televisor -->
+      <!-- Soporte -->
       <div class="tv-neck"></div>
       <div class="tv-foot"></div>
 
       <!-- Buscador debajo del TV -->
-      <div class="global-search-wrap" style="margin-top: 32px;">
+      <div class="global-search-wrap" style="margin-top: 36px;">
         <input
           type="text"
           class="global-search-input"
