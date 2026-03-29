@@ -60,7 +60,7 @@
     <section class="cmd-section" data-game="economía">
       <h2 class="section-title"><span class="title-arrow">►</span> ECONOMÍA</h2>
       <div style="overflow-x:auto;">
-        <table class="cmd-table" id="cmdTable-df">
+        <table class="cmd-table">
           <thead>
             <tr>
               <th>COMANDO</th>
@@ -90,9 +90,9 @@
               <td>?market best</td>
             </tr>
             <tr>
-              <td class="key">?sell  [cultivo] [cantidad/all] [calidad] / ?sell all</td>
+              <td class="key">?sell [cultivo] [cantidad/all] [calidad] / ?sell all</td>
               <td class="desc">Vende productos al precio mercado.</td>
-              <td>?sell mandarina 50 normal <hr> ?sell zanahoria all normal </td>
+              <td>?sell mandarina 50 normal <hr> ?sell zanahoria all normal</td>
             </tr>
             <tr>
               <td class="key">?buy [item] [cantidad]</td>
@@ -100,26 +100,25 @@
               <td>?buy banana 4</td>
             </tr>
             <tr>
-              <td class="key">?buy list [número de tier] [estación] [crop/árbol] [normal/perenne]</td>
+              <td class="key">?buy list [tier] [estación] [crop/árbol] [normal/perenne]</td>
               <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.</td>
-              <td>?buy list verano árbol <hr> ?buy list 6 otoño <hr> ?buy list 3 otoño crop perenne </td>
+              <td>?buy list verano árbol <hr> ?buy list 6 otoño <hr> ?buy list 3 otoño crop perenne</td>
             </tr>
             <tr>
               <td class="key">?info [crop/árbol/fert]</td>
               <td class="desc">Comprueba la información de un item, como un cultivo o un fertilizante.</td>
-              <td>?info fast <hr> ?info mandarina_valenciana </td>
+              <td>?info fast <hr> ?info mandarina_valenciana</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    
     <!-- ── Granja ── -->
     <section class="cmd-section" data-game="granja">
       <h2 class="section-title"><span class="title-arrow">►</span> GRANJA</h2>
       <div style="overflow-x:auto;">
-        <table class="cmd-table" id="cmdTable-df">
+        <table class="cmd-table">
           <thead>
             <tr>
               <th>COMANDO</th>
@@ -131,21 +130,21 @@
             <tr>
               <td class="key">?plant [crop/árbol] [cantidad] [fertilizante] [parcela/huerto/invernadero]</td>
               <td class="desc">Planta tus semillas.</td>
-              <td>?pl all <hr> ?plant cebolla 7 premium <hr> ?pl all invernadero </td>
+              <td>?pl all <hr> ?plant cebolla 7 premium <hr> ?pl all invernadero</td>
             </tr>
             <tr>
               <td class="key">?harvest [árbol/crop] [normal/perenne]</td>
-              <td class="desc">Comprueba tus cultivos, cuánto tiempo les queda y, en el caso de los perennes, cuántas cosechas les queda. Las variables son opcionales.</td>
-              <td>?hv <hr> ?hv árbol <hr> ?hv crop normal <hr> ?hv crop perenne </td>
+              <td class="desc">Comprueba tus cultivos, cuánto tiempo les queda y, en el caso de los perennes, cuántas cosechas les quedan. Las variables son opcionales.</td>
+              <td>?hv <hr> ?hv árbol <hr> ?hv crop normal <hr> ?hv crop perenne</td>
             </tr>
             <tr>
               <td class="key">?harvest [cultivo/all]</td>
               <td class="desc">Cosecha tus cultivos.</td>
-              <td>?hv all <hr> ?hr mandarina_dorada all </td>
+              <td>?hv all <hr> ?hr mandarina_dorada all</td>
             </tr>
             <tr>
               <td class="key">?convert [cultivo/all] [cantidad]</td>
-              <td class="desc">Convierte crops cosechados en semillas. (Recomendado para convertir cultivos de T1 para iniciar, y a mejor calidad más semillas)</td>
+              <td class="desc">Convierte crops cosechados en semillas. Recomendado para cultivos de T1 para iniciar; a mejor calidad, más semillas.</td>
               <td>?conv lechuga all</td>
             </tr>
             <tr>
@@ -153,12 +152,11 @@
               <td class="desc">wip</td>
               <td>wip</td>
             </tr>
-         
           </tbody>
         </table>
       </div>
     </section>
-    
+
     <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
       ¿Eres tonto o peinas plantas?
     </p>
