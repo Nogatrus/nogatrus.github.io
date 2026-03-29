@@ -27,17 +27,20 @@
         <a href="guides.html" class="nav-link">GUÍAS</a>
         <a href="glossary.html" class="nav-link">GLOSARIO</a>
       </nav>
-      <div class="header-status">
-        <span class="blink">■</span> ONLINE
-      </div>
+      <div class="header-status"><span class="blink">■</span> ONLINE</div>
     </div>
   </header>
 
   <main class="main-content">
 
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-pixel-art">
+    <!-- ── TV Section ── -->
+    <section class="tv-wrap">
+      <!-- Televisor -->
+      <div class="tv">
+        <div class="tv-screw tl"></div>
+        <div class="tv-screw tr"></div>
+
+        <div class="tv-screen">
           <pre class="ascii-art">
  ██████╗  █████╗ ███╗   ███╗███████╗
 ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
@@ -48,55 +51,82 @@
           </pre>
           <p class="hero-subtitle">▶ LA ENCICLOPEDIA DE JUEGOS DE NOGATRUS ◀</p>
           <p class="hero-desc">Comandos · Mecánicas · Guías · Glosario</p>
-          <a href="games.html" class="btn-pixel">EXPLORAR JUEGOS →</a>
+
+          <nav class="tv-nav-shortcuts">
+            <a href="commands.html" class="tv-shortcut">⌨ COMANDOS</a>
+            <a href="mechanics.html" class="tv-shortcut">⚙ MECÁNICAS</a>
+            <a href="guides.html" class="tv-shortcut">📜 GUÍAS</a>
+            <a href="glossary.html" class="tv-shortcut">📖 GLOSARIO</a>
+            <a href="games.html" class="tv-shortcut">▶ JUEGOS</a>
+          </nav>
+        </div>
+
+        <!-- Panel con controles del televisor -->
+        <div class="tv-panel">
+          <span class="tv-brand">GAMEWIKI</span>
+          <div class="tv-knobs">
+            <div class="tv-knob"></div>
+            <div class="tv-knob lg"></div>
+            <div class="tv-knob"></div>
+          </div>
+          <div class="tv-led-wrap">
+            <div class="tv-led"></div>
+            <span class="tv-led-label">ONLINE</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section-cards">
-      <h2 class="section-title"><span class="title-arrow">►</span> SECCIONES</h2>
-      <div class="cards-grid">
+      <!-- Soporte del televisor -->
+      <div class="tv-neck"></div>
+      <div class="tv-foot"></div>
 
-        <a href="commands.html" class="card">
-          <div class="card-icon">⌨</div>
-          <div class="card-body">
-            <h3 class="card-title">COMANDOS<br>&amp; ATAJOS</h3>
-            <p class="card-desc">Listados completos de comandos por sección.</p>
-          </div>
-          <div class="card-footer">VER TODO »</div>
-        </a>
-
-        <a href="mechanics.html" class="card">
-          <div class="card-icon">⚙</div>
-          <div class="card-body">
-            <h3 class="card-title">MECÁNICAS<br>&amp; SISTEMAS</h3>
-            <p class="card-desc">Explicaciones profundas de sistemas de juego, estadísticas, fórmulas y lógica interna.</p>
-          </div>
-          <div class="card-footer">VER TODO »</div>
-        </a>
-
-        <a href="guides.html" class="card">
-          <div class="card-icon">📜</div>
-          <div class="card-body">
-            <h3 class="card-title">GUÍAS &amp;<br>TUTORIALES</h3>
-            <p class="card-desc">Walkthroughs, builds optimizados, estrategias avanzadas y rutas para completar el juego.</p>
-          </div>
-          <div class="card-footer">VER TODO »</div>
-        </a>
-
-        <a href="glossary.html" class="card">
-          <div class="card-icon">📖</div>
-          <div class="card-body">
-            <h3 class="card-title">GLOSARIO</h3>
-            <p class="card-desc">Definiciones de términos, jerga de la comunidad y abreviaturas usadas en los juegos.</p>
-          </div>
-          <div class="card-footer">VER TODO »</div>
-        </a>
-
+      <!-- Buscador debajo del TV -->
+      <div class="global-search-wrap" style="margin-top: 32px;">
+        <input
+          type="text"
+          class="global-search-input"
+          id="globalSearch"
+          placeholder="BUSCAR EN LA WIKI..."
+          autocomplete="off"
+        />
+        <span class="global-search-icon">🔍</span>
+        <div class="search-results-dropdown" id="searchDropdown"></div>
       </div>
     </section>
 
-    <section class="section-games">
+    <!-- ── Secciones ── -->
+    <section>
+      <h2 class="section-title"><span class="title-arrow">►</span> SECCIONES</h2>
+      <div class="cards-grid">
+        <a href="commands.html" class="card">
+          <div class="card-icon">⌨</div>
+          <h3 class="card-title">COMANDOS<br>&amp; ATAJOS</h3>
+          <p class="card-desc">Listados completos de comandos por sección.</p>
+          <div class="card-footer">VER TODO »</div>
+        </a>
+        <a href="mechanics.html" class="card">
+          <div class="card-icon">⚙</div>
+          <h3 class="card-title">MECÁNICAS<br>&amp; SISTEMAS</h3>
+          <p class="card-desc">Explicaciones de sistemas de juego, estadísticas, fórmulas y lógica interna.</p>
+          <div class="card-footer">VER TODO »</div>
+        </a>
+        <a href="guides.html" class="card">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">GUÍAS &amp;<br>TUTORIALES</h3>
+          <p class="card-desc">Walkthroughs, builds optimizados, estrategias avanzadas y rutas de progresión.</p>
+          <div class="card-footer">VER TODO »</div>
+        </a>
+        <a href="glossary.html" class="card">
+          <div class="card-icon">📖</div>
+          <h3 class="card-title">GLOSARIO</h3>
+          <p class="card-desc">Definiciones de términos, jerga de la comunidad y abreviaturas usadas en los juegos.</p>
+          <div class="card-footer">VER TODO »</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── Juegos ── -->
+    <section>
       <h2 class="section-title"><span class="title-arrow">►</span> JUEGOS DESTACADOS</h2>
       <div class="games-list">
         <a href="games.html" class="game-entry">
