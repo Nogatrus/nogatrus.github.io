@@ -53,9 +53,35 @@
       <button class="filter-btn" data-filter="inventario">INVENTARIO</button>
       <button class="filter-btn" data-filter="granja">GRANJA</button>
       <button class="filter-btn" data-filter="pesca">PESCA</button>
+      <button class="filter-btn" data-filter="minijuegos">MINIJUEGOS</button>
       <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
     </div>
 
+    
+
+    <!-- ── Economía ── -->
+    <section class="cmd-section" data-game="economía">
+      <h2 class="section-title"><span class="title-arrow">►</span> ECONOMÍA</h2>
+      <div style="overflow-x:auto;">
+        <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>COMANDO</th>
+              <th>ACCIÓN</th>
+              <th>EJEMPLOS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key">?cookie / ?cookie gift [user] / ?cookie stats [user] </td>
+              <td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes. Puedes regalar una galleta al otro usuario y acumular hasta 3 galletas regaladas, y además ver tus estadísticas. </td>
+              <td>?cookie <hr> ?cookie gift Nogatrus <hr> ?cookie stats </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
     <!-- ── Economía ── -->
     <section class="cmd-section" data-game="economía">
       <h2 class="section-title"><span class="title-arrow">►</span> ECONOMÍA</h2>
@@ -90,9 +116,9 @@
               <td>?market best</td>
             </tr>
             <tr>
-              <td class="key">?sell [cultivo] [cantidad/all] [calidad] / ?sell all</td>
+              <td class="key">?sell [categoría] [cultivo/pez] [cantidad/all] [calidad] / ?sell all</td>
               <td class="desc">Vende productos al precio mercado.</td>
-              <td>?sell mandarina 50 normal <hr> ?sell zanahoria all normal</td>
+              <td>?sell mandarina 50 normal <hr> ?sell zanahoria all normal <hr> ?sell salmon all </td>
             </tr>
             <tr>
               <td class="key">?buy [item] [cantidad]</td>
@@ -100,12 +126,7 @@
               <td>?buy banana 4</td>
             </tr>
             <tr>
-              <td class="key">?buy list [tier] [estación] [crop/árbol] [normal/perenne]</td>
-              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.</td>
-              <td>?buy list verano árbol <hr> ?buy list 6 otoño <hr> ?buy list 3 otoño crop perenne</td>
-            </tr>
-            <tr>
-              <td class="key">?info [crop/árbol/fert]</td>
+              <td class="key">?info [crop/árbol/fert/item]</td>
               <td class="desc">Comprueba la información de un item, como un cultivo o un fertilizante.</td>
               <td>?info fast <hr> ?info mandarina_valenciana</td>
             </tr>
@@ -127,6 +148,11 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td class="key">?buy list [categoría] [tier] [estación] [crop/árbol] [normal/perenne]</td>
+              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.</td>
+              <td>?buy list fa verano árbol <hr> ?buy list fa 6 otoño <hr> ?buy list fa 3 otoño crop perenne</td>
+            </tr>
             <tr>
               <td class="key">?plant [crop/árbol] [cantidad] [fertilizante] [parcela/huerto/invernadero]</td>
               <td class="desc">Planta tus semillas.</td>
