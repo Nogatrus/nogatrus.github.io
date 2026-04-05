@@ -49,19 +49,20 @@
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">TODOS</button>
       <button class="filter-btn" data-filter="social">SOCIAL</button>
-      <button class="filter-btn" data-filter="economía">ECONOMÍA</button>
-      <button class="filter-btn" data-filter="inventario">INVENTARIO</button>
-      <button class="filter-btn" data-filter="granja">GRANJA</button>
-      <button class="filter-btn" data-filter="pesca">PESCA</button>
       <button class="filter-btn" data-filter="minijuegos">MINIJUEGOS</button>
+      <button class="filter-btn" data-filter="economía">ECONOMÍA</button>
+      <button class="filter-btn" data-filter="granja">GRANJA</button>
+      <button class="filter-btn" data-filter="inventario">INVENTARIO</button>
+      <button class="filter-btn" data-filter="pesca">PESCA</button>
       <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
     </div>
 
     
 
-    <!-- ── Economía ── -->
-    <section class="cmd-section" data-game="economía">
-      <h2 class="section-title"><span class="title-arrow">►</span> ECONOMÍA</h2>
+    
+    <!-- ── Social ── -->
+    <section class="cmd-section" data-game="socials">
+      <h2 class="section-title"><span class="title-arrow">►</span> SOCIAL</h2>
       <div style="overflow-x:auto;">
         <table class="cmd-table">
           <thead>
@@ -73,9 +74,32 @@
           </thead>
           <tbody>
             <tr>
-              <td class="key">?cookie / ?cookie gift [user] / ?cookie stats [user] </td>
+              <td class="key">?cookie / ?cookie stats [user] / ?cookie gift [user] </td>
               <td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes. Puedes regalar una galleta al otro usuario y acumular hasta 3 galletas regaladas, y además ver tus estadísticas. </td>
               <td>?cookie <hr> ?cookie gift Nogatrus <hr> ?cookie stats </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- ── Minijuegos ── -->
+    <section class="cmd-section" data-game="minijuegos">
+      <h2 class="section-title"><span class="title-arrow">►</span> MINIJUEGOS</h2>
+      <div style="overflow-x:auto;">
+        <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>COMANDO</th>
+              <th>ACCIÓN</th>
+              <th>EJEMPLOS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key">?trivia / ?trivia stats [user] / ?trivia dif [normal/ambos/dificil] [categorías disponibles] </td>
+              <td class="desc">Responde preguntas de trivia. El primero en acertar gana 15 puntos y 500 XP. Hay 100 preguntas por cada categoría, y además puedes ver tus estadísticas. El dif se refiere a la dificultad del juego, la dificultad ambos agrupa tanto normal como difícil, funciona solo por user. </td>
+              <td>?triv <hr> ?triv stats <hr> ?triv dif ambos pokemon </td>
             </tr>
           </tbody>
         </table>
