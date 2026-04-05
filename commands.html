@@ -76,7 +76,7 @@
             <tr>
               <td class="key">?cookie <hr> ?cookie stats [user] <hr> ?cookie gift [user] </td>
               <td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes. Puedes regalar una galleta al otro usuario y acumular hasta 3 galletas regaladas, y además ver tus estadísticas. </td>
-              <td>?cookie <hr> ?cookie gift Nogatrus <hr> ?cookie stats </td>
+              <td>?cookie<hr> ?cookie stats <hr> ?cookie gift Nogatrus </td>
             </tr>
           </tbody>
         </table>
@@ -102,12 +102,12 @@
               <td>?triv </td>
             </tr>
             <tr>
-              <td class="key">?trivia stats [user] <hr> ?trivia dif [normal/ambos/dificil] [categorías disponibles] </td>
+              <td class="key">?trivia stats [user] <hr> ?trivia dif [normal/ambos/dificil] [categorías] </td>
               <td class="desc">Puedes ver tus estadísticas del juego trivia. El dif se refiere a la dificultad del juego, la dificultad ambos agrupa tanto normal como difícil, funciona solo por user. </td>
               <td> ?triv stats <hr> ?triv dif ambos pokemon </td>
             </tr>
             <tr>
-              <td class="key">?trivia dif [normal/ambos/dificil] [categorías disponibles] </td>
+              <td class="key">?trivia dif [normal/ambos/dificil] [categorías] </td>
               <td class="desc"> Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes. "Ambos" incluye tanto normal como difícil. Funciona solo por user. </td>
               <td>?triv dif ambos pokemon <hr> ?triv dif dificil matematicas</td>
             </tr>
@@ -140,9 +140,9 @@
               <td>?market</td>
             </tr>
             <tr>
-              <td class="key">?market top</td>
-              <td class="desc">Muestra los 10 productos más valorados del mercado en este momento.</td>
-              <td>?market top</td>
+              <td class="key">?market top  </td>
+              <td class="desc">Muestra los 10 productos más valorados del mercado en este momento. [El comando funciona en este orden después de "top": [nº tier] [estación] [crop/árbol] [normal/perenne] </td>
+              <td>?market top 10 <hr> ?market top verano  <hr> ?market top 10 primavera arbol  <hr> ?market top crop perenne </td>
             </tr>
             <tr>
               <td class="key">?market best</td>
@@ -150,7 +150,7 @@
               <td>?market best</td>
             </tr>
             <tr>
-              <td class="key">?sell [categoría] [cultivo/pez] [cantidad/all] [calidad] <hr> ?sell all</td>
+              <td class="key">?sell [categoría] [cultivo/pez] [cantidad/all] [calidad] <hr> ?sell [categoría] all</td>
               <td class="desc">Vende productos al precio mercado.</td>
               <td>?sell mandarina 50 normal <hr> ?sell zanahoria all normal <hr> ?sell salmon all </td>
             </tr>
@@ -183,8 +183,8 @@
           </thead>
           <tbody>
             <tr>
-              <td class="key">?buy list [categoría] [tier] [estación] [crop/árbol] [normal/perenne]</td>
-              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.</td>
+              <td class="key">?buy list [categoría] [nº tier]</td>
+              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.  <hr> El comando funciona en este orden después del tier: [estación] [crop/árbol] [normal/perenne] </td>
               <td>?buy list fa verano árbol <hr> ?buy list fa 6 otoño <hr> ?buy list fa 3 otoño crop perenne</td>
             </tr>
             <tr>
@@ -198,8 +198,8 @@
               <td>?hv <hr> ?hv árbol <hr> ?hv crop normal <hr> ?hv crop perenne</td>
             </tr>
             <tr>
-              <td class="key">?harvest [cultivo/all]</td>
-              <td class="desc">Cosecha tus cultivos.</td>
+              <td class="key">?harvest all</td>
+              <td class="desc">Cosecha todos tus cultivos.</td>
               <td>?hv all <hr> ?hr mandarina_dorada all</td>
             </tr>
             <tr>
