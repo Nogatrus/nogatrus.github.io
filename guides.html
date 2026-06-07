@@ -40,9 +40,7 @@
     }
 
     .desktop-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+      position: fixed; inset: 0; z-index: 0;
       background:
         radial-gradient(ellipse 80% 60% at 20% 80%, rgba(10,60,120,0.45) 0%, transparent 70%),
         radial-gradient(ellipse 60% 50% at 80% 20%, rgba(30,80,150,0.3) 0%, transparent 60%),
@@ -50,364 +48,183 @@
         linear-gradient(175deg, #0d1620 0%, #080d18 50%, #050910 100%);
     }
     .desktop-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background-image:
         linear-gradient(rgba(79,163,232,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(79,163,232,0.03) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
-    /* ── HEADER ── */
     .site-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 36px;
-      z-index: 200;
-      background: rgba(8,14,26,0.75);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      backdrop-filter: blur(20px);
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
+      position: fixed; top: 0; left: 0; right: 0; height: 36px; z-index: 200;
+      background: rgba(8,14,26,0.75); border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px); display: flex; align-items: center; padding: 0 18px;
     }
     .logo {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--text-primary);
-      margin-right: 28px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
+      font-family: var(--font-ui); font-size: 15px; font-weight: 700;
+      letter-spacing: 2px; color: var(--text-primary); margin-right: 28px;
+      display: flex; align-items: center; gap: 4px; text-decoration: none;
     }
     .logo-accent { color: var(--accent); }
     .header-nav { display: flex; gap: 0; }
     .header-nav a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 400;
-      padding: 0 12px;
-      height: 36px;
-      display: flex;
-      align-items: center;
+      color: var(--text-secondary); text-decoration: none; font-size: 12px;
+      padding: 0 12px; height: 36px; display: flex; align-items: center;
       transition: color 0.15s, background 0.15s;
-      border-right: 1px solid transparent;
-      border-left: 1px solid transparent;
+      border-right: 1px solid transparent; border-left: 1px solid transparent;
       letter-spacing: 0.3px;
     }
-    .header-nav a:hover {
-      color: var(--text-primary);
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.06);
-    }
-    .header-nav a.active {
-      color: var(--accent);
-      background: rgba(79,163,232,0.08);
-      border-color: rgba(79,163,232,0.12);
-    }
+    .header-nav a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.06); }
+    .header-nav a.active { color: var(--accent); background: rgba(79,163,232,0.08); border-color: rgba(79,163,232,0.12); }
     .header-clock {
-      margin-left: auto;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-dim);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      line-height: 1.2;
+      margin-left: auto; font-family: var(--font-mono); font-size: 12px;
+      color: var(--text-dim); display: flex; flex-direction: column;
+      align-items: flex-end; line-height: 1.2;
     }
 
-    /* ── MAIN ── */
     main {
-      position: relative;
-      z-index: 1;
-      padding-top: 52px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding-left: 24px;
-      padding-right: 24px;
-      padding-bottom: 64px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+      position: relative; z-index: 1; padding-top: 52px;
+      max-width: 900px; margin: 0 auto;
+      padding-left: 24px; padding-right: 24px; padding-bottom: 64px;
+      display: flex; flex-direction: column; gap: 24px;
     }
 
-    /* ── BREADCRUMB ── */
     .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 1px;
-      padding-top: 8px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-dim); letter-spacing: 1px; padding-top: 8px;
     }
     .breadcrumb a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
     .breadcrumb a:hover { opacity: 0.7; }
 
-    /* ── PAGE HEADER ── */
     .page-header {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      padding: 24px 28px;
-      backdrop-filter: blur(16px);
-      position: relative;
-      overflow: hidden;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 8px; padding: 24px 28px; backdrop-filter: blur(16px);
+      position: relative; overflow: hidden;
     }
     .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(to right, transparent, rgba(79,163,232,0.4), transparent);
     }
-    .page-header h1 {
-      font-family: var(--font-ui);
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-    .page-header p {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-secondary);
-      letter-spacing: 0.5px;
-    }
+    .page-header h1 { font-family: var(--font-ui); font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--text-primary); margin-bottom: 6px; }
+    .page-header p { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; }
 
-    /* ── SEARCH ── */
     .search-wrap { position: relative; }
     .search-input {
-      width: 100%;
-      height: 38px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 4px;
-      color: var(--text-primary);
-      font-family: var(--font-mono);
-      font-size: 13px;
-      padding: 0 44px 0 14px;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      letter-spacing: 0.5px;
+      width: 100%; height: 38px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px; color: var(--text-primary);
+      font-family: var(--font-mono); font-size: 13px;
+      padding: 0 44px 0 14px; outline: none;
+      transition: border-color 0.2s, background 0.2s; letter-spacing: 0.5px;
     }
     .search-input::placeholder { color: var(--text-dim); }
-    .search-input:focus {
-      border-color: var(--accent);
-      background: rgba(79,163,232,0.05);
-      box-shadow: 0 0 0 3px rgba(79,163,232,0.08);
-    }
-    .search-icon {
-      position: absolute;
-      right: 12px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-dim);
-      font-size: 15px;
-      pointer-events: none;
-    }
+    .search-input:focus { border-color: var(--accent); background: rgba(79,163,232,0.05); box-shadow: 0 0 0 3px rgba(79,163,232,0.08); }
+    .search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 15px; pointer-events: none; }
 
-    /* ── FILTER BAR ── */
     .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-btn {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 1px;
-      padding: 5px 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 3px;
-      color: var(--text-dim);
-      cursor: pointer;
-      transition: all 0.15s;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+      padding: 5px 14px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10); border-radius: 3px;
+      color: var(--text-dim); cursor: pointer; transition: all 0.15s;
     }
     .filter-btn:hover { color: var(--text-secondary); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
     .filter-btn.active { color: var(--accent); border-color: rgba(79,163,232,0.4); background: rgba(79,163,232,0.08); }
 
-    /* ── SECTION TITLE ── */
     .section-title {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 12px;
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim);
+      margin-bottom: 12px; margin-top: 8px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
-    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(255,255,255,0.08), transparent); }
     .title-arrow { color: var(--accent); }
 
-    /* ── GUIDE CARD ── */
     .guide-card {
-      display: block;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 6px;
-      padding: 20px 22px;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 8px;
+      display: block; background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 6px; padding: 20px 22px; text-decoration: none; color: inherit;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden; margin-bottom: 8px;
     }
     .guide-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
     }
-    .guide-card:hover {
-      background: var(--glass-bg-hover);
-      border-color: rgba(79,163,232,0.25);
-      transform: translateY(-2px);
-    }
+    .guide-card:hover { background: var(--glass-bg-hover); border-color: rgba(79,163,232,0.25); transform: translateY(-2px); }
     .guide-card.hidden { display: none; }
 
-    .guide-meta {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-dim);
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
-    }
+    .guide-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; margin-bottom: 8px; }
 
     .level-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 1px;
-      padding: 2px 7px;
-      border-radius: 2px;
-      margin-left: 6px;
+      display: inline-block; font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 1px; padding: 2px 7px; border-radius: 2px; margin-left: 6px;
     }
     .level-badge.principiante { background: rgba(79,163,232,0.12); color: rgba(79,163,232,0.8); border: 1px solid rgba(79,163,232,0.25); }
     .level-badge.intermedio   { background: rgba(232,196,79,0.12);  color: rgba(232,196,79,0.8);  border: 1px solid rgba(232,196,79,0.25); }
     .level-badge.avanzado     { background: rgba(220,80,80,0.12);   color: rgba(220,80,80,0.8);   border: 1px solid rgba(220,80,80,0.25); }
 
-    .guide-title {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
+    .guide-title { font-family: var(--font-ui); font-size: 15px; font-weight: 700; letter-spacing: 1px; color: var(--text-primary); margin-bottom: 12px; }
 
-    .guide-desc {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .guide-desc { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); line-height: 1.75; display: flex; flex-direction: column; gap: 10px; }
     .guide-desc em   { color: #cc8844; font-style: normal; }
     .guide-desc strong { color: var(--accent2); font-style: normal; }
 
-    /* collapsible */
     .guide-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
-    .guide-card.open .guide-body { max-height: 2000px; }
-    .guide-toggle {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 1px;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .guide-card.open .guide-body { max-height: 9999px; }
+    .guide-toggle { font-family: var(--font-mono); font-size: 10px; color: var(--accent); letter-spacing: 1px; margin-top: 10px; display: flex; align-items: center; gap: 6px; }
     .guide-toggle::after { content: '▼'; transition: transform 0.25s; }
     .guide-card.open .guide-toggle::after { transform: rotate(180deg); }
 
-    /* ── FOOTER ── */
+    /* ── TIER TABLE ── */
+    .tier-table-wrap {
+      display: inline-block;
+      border-radius: 4px; overflow: hidden;
+      border: 1px solid rgba(79,163,232,0.18);
+      background: rgba(0,0,0,0.2);
+      margin: 4px 0;
+    }
+    .tier-table { width: auto; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+    .tier-table thead tr { background: rgba(79,163,232,0.08); border-bottom: 1px solid rgba(79,163,232,0.2); }
+    .tier-table thead th { padding: 8px 14px; text-align: left; font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 600; }
+    .tier-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.12s; }
+    .tier-table tbody tr:last-child { border-bottom: none; }
+    .tier-table tbody tr:hover { background: rgba(79,163,232,0.05); }
+    .tier-table td { padding: 7px 14px; color: var(--text-secondary); vertical-align: middle; }
+    .tier-table td.t-num { color: var(--accent); letter-spacing: 1px; white-space: nowrap; width: 54px; }
+    .tier-table td.t-items { color: var(--text-primary); width: 110px; }
+    .tier-table td.t-xp { color: var(--yellow); white-space: nowrap; }
+
     .site-footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 16px 24px;
-      max-width: 900px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 24px; max-width: 900px; margin: 0 auto; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
     }
     .footer-text { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
     .footer-egg { font-family: var(--font-mono); font-size: 9px; color: var(--text-dim); opacity: 0.4; letter-spacing: 1px; margin-top: 8px; text-align: center; }
 
-    /* ── TASKBAR ── */
     .taskbar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: var(--taskbar-h);
-      z-index: 300;
-      background: rgba(8,12,22,0.82);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(24px) saturate(1.3);
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      gap: 6px;
+      position: fixed; bottom: 0; left: 0; right: 0; height: var(--taskbar-h); z-index: 300;
+      background: rgba(8,12,22,0.82); border-top: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px) saturate(1.3); display: flex; align-items: center; padding: 0 10px; gap: 6px;
     }
     .start-orb {
-      width: 32px; height: 32px;
-      border-radius: 50%;
+      width: 32px; height: 32px; border-radius: 50%;
       background: radial-gradient(circle at 38% 35%, #6fc8ff 0%, #2277cc 45%, #0a4498 100%);
       border: 1px solid rgba(100,180,255,0.4);
       box-shadow: 0 0 10px rgba(79,163,232,0.4), 0 0 20px rgba(79,163,232,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex-shrink: 0; transition: box-shadow 0.2s;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: box-shadow 0.2s;
     }
     .start-orb:hover { box-shadow: 0 0 16px rgba(79,163,232,0.6), 0 0 32px rgba(79,163,232,0.25), inset 0 1px 0 rgba(255,255,255,0.3); }
     .start-orb svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.9); }
     .taskbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 4px; }
     .quicklaunch { display: flex; gap: 2px; }
-    .ql-btn {
-      width: 30px; height: 30px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; border-radius: 4px; cursor: pointer;
-      transition: background 0.15s; color: var(--text-secondary);
-      border: none; background: none; text-decoration: none;
-    }
+    .ql-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 15px; border-radius: 4px; cursor: pointer; transition: background 0.15s; color: var(--text-secondary); border: none; background: none; text-decoration: none; }
     .ql-btn:hover { background: rgba(255,255,255,0.07); }
     .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
-    .tw-item {
-      height: 30px; padding: 0 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 4px;
-      display: flex; align-items: center; gap: 6px;
-      font-size: 11px; color: var(--text-secondary);
-      cursor: pointer; transition: background 0.15s;
-      white-space: nowrap; max-width: 180px;
-      font-family: var(--font-mono);
-    }
+    .tw-item { height: 30px; padding: 0 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 4px; display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-secondary); cursor: pointer; white-space: nowrap; max-width: 180px; font-family: var(--font-mono); }
     .tw-item.active { background: rgba(79,163,232,0.12); border-color: rgba(79,163,232,0.25); color: var(--text-primary); }
-    .tray {
-      display: flex; align-items: center; gap: 8px;
-      padding: 0 10px 0 8px; height: 30px;
-      border-left: 1px solid rgba(255,255,255,0.07);
-    }
+    .tray { display: flex; align-items: center; gap: 8px; padding: 0 10px 0 8px; height: 30px; border-left: 1px solid rgba(255,255,255,0.07); }
     .tray-icon { font-size: 13px; color: var(--text-dim); cursor: default; }
     .tray-clock { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; font-family: var(--font-mono); }
     .tray-time { font-size: 12px; color: var(--text-primary); }
@@ -420,9 +237,7 @@
 
   <header class="site-header">
     <a href="index.html" class="logo">
-      <span style="color:var(--text-dim);">[</span>
-      GAME<span class="logo-accent">WIKI</span>
-      <span style="color:var(--text-dim);">]</span>
+      <span style="color:var(--text-dim);">[</span>GAME<span class="logo-accent">WIKI</span><span style="color:var(--text-dim);">]</span>
     </a>
     <nav class="header-nav">
       <a href="index.html">Home</a>
@@ -441,9 +256,7 @@
   <main>
 
     <div class="breadcrumb">
-      <a href="index.html">HOME</a>
-      <span>»</span>
-      GUÍAS &amp; TUTORIALES
+      <a href="index.html">HOME</a><span>»</span>GUÍAS &amp; TUTORIALES
     </div>
 
     <div class="page-header">
@@ -461,6 +274,7 @@
       <button class="filter-btn" data-filter="principiante">PRINCIPIANTE</button>
       <button class="filter-btn" data-filter="intermedio">INTERMEDIO</button>
       <button class="filter-btn" data-filter="avanzado">AVANZADO</button>
+      <button class="filter-btn" data-filter="mercado">MERCADO</button>
       <button class="filter-btn" data-filter="granja">GRANJA</button>
       <button class="filter-btn" data-filter="pesca">PESCA</button>
       <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
@@ -524,12 +338,51 @@
       </div>
     </div>
 
-    <div class="guide-card" data-game="granja" data-level="intermedio">
-      <p class="guide-meta">GRANJA · <span class="level-badge intermedio">INTERMEDIO</span> · ~5 min</p>
-      <h3 class="guide-title">WIP</h3>
+    <!-- ── Mercado ── -->
+    <div class="section-title"><span class="title-arrow">►</span> MERCADO</div>
+
+    <div class="guide-card" data-game="mercado" data-level="intermedio">
+      <p class="guide-meta">MERCADO · <span class="level-badge intermedio">INTERMEDIO</span> · ~12 min</p>
+      <h3 class="guide-title">LOS PEDIDOS</h3>
       <div class="guide-toggle">VER GUÍA</div>
       <div class="guide-body">
-        <div class="guide-desc"><p>WIP</p></div>
+        <div class="guide-desc">
+          <p>En un punto dado, te darás cuenta de que te cuesta mucho subir de nivel de granja, así que tienes aquí los pedidos que te ayudarán a subir más fácilmente además de vender. Así que si quieres subir de nivel, presta atención que esto te interesa.</p>
+          <p>Los pedidos funcionan por temporadas y se expiran al acabar la temporada correspondiente dejando lugar a nuevos pedidos de la siguiente. Los pedidos que se reclamen se irán a los usuarios que lo hayan reclamado, y se regenerarán nuevos en su lugar. Tienes 3 pedidos diferentes por cada tier, pudiendo reclamar 2 por cada día real, y cada cliente puede pagar más o menos según precio del mercado y la urgencia (Si es ~1 día real te paga +7–10% sumado al precio mercado, si son ~3 días reales entonces +4–6%, y si son ~7 días reales pues +1–3%) y solo podrás elegir hasta tu nivel de tier como máximo.</p>
+          <p>Eso sí, solo puedes tener hasta máximo 3 pedidos reclamados y activos, y puedes perder 10% del precio total como penalización si no lo entregas a tiempo a no ser que se hayan expirado por cambio de temporada. Entonces ahí no tienes que pagar la penalización.</p>
+          <p>En cuanto a los tiers, la cantidad de items que pueden pedirte y la XP que recibes al entregar son fijas:</p>
+
+          <div class="tier-table-wrap">
+            <table class="tier-table">
+              <thead>
+                <tr><th>TIER</th><th>ITEMS</th><th>XP</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="t-num">T01</td><td class="t-items">1 – 2 items</td><td class="t-xp">100 xp</td></tr>
+                <tr><td class="t-num">T02</td><td class="t-items">1 – 2 items</td><td class="t-xp">250 xp</td></tr>
+                <tr><td class="t-num">T03</td><td class="t-items">1 – 2 items</td><td class="t-xp">500 xp</td></tr>
+                <tr><td class="t-num">T04</td><td class="t-items">1 – 3 items</td><td class="t-xp">1,000 xp</td></tr>
+                <tr><td class="t-num">T05</td><td class="t-items">1 – 3 items</td><td class="t-xp">2,500 xp</td></tr>
+                <tr><td class="t-num">T06</td><td class="t-items">1 – 3 items</td><td class="t-xp">5,000 xp</td></tr>
+                <tr><td class="t-num">T07</td><td class="t-items">2 – 4 items</td><td class="t-xp">7,500 xp</td></tr>
+                <tr><td class="t-num">T08</td><td class="t-items">2 – 4 items</td><td class="t-xp">10,000 xp</td></tr>
+                <tr><td class="t-num">T09</td><td class="t-items">2 – 4 items</td><td class="t-xp">25,000 xp</td></tr>
+                <tr><td class="t-num">T10</td><td class="t-items">3 – 4 items</td><td class="t-xp">50,000 xp</td></tr>
+                <tr><td class="t-num">T11</td><td class="t-items">3 – 4 items</td><td class="t-xp">75,000 xp</td></tr>
+                <tr><td class="t-num">T12</td><td class="t-items">3 – 4 items</td><td class="t-xp">145,000 xp</td></tr>
+                <tr><td class="t-num">T13</td><td class="t-items">3 – 5 items</td><td class="t-xp">280,000 xp</td></tr>
+                <tr><td class="t-num">T14</td><td class="t-items">3 – 5 items</td><td class="t-xp">550,000 xp</td></tr>
+                <tr><td class="t-num">T15</td><td class="t-items">3 – 5 items</td><td class="t-xp">1,000,000 xp</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Ahora bien, sabiendo todo esto, pasemos a la parte práctica. Para que no te estreses, ya te dice qué comandos puedes usar al empezar con <em>?pedido list fa [nº tier]</em> y de ahí ir mirando sin necesidad de recordar todos los comandos. Más que nada, esta parte es para explicarte qué hace cada comando y cómo es cada cosa para que te ubiques mejor.</p>
+          <p>Para empezar a mirar qué pedidos puedes reclamar, por ejemplo en la categoría de granja, utiliza <em>?pedido list fa</em> o también <em>?pedido list fa [nº tier]</em>. Ahí te saldrán tres pedidos, con su precio y urgencia correspondiente, y para saber qué pide cada uno de esos pedidos, por ejemplo queremos saber qué pide el número 2 del tier 7, escribimos <em>?pedido fa info 7 2</em> (el número de tier siempre va antes del número de pedido) y si queremos reclamar ese mismo entonces escribimos <em>?pedido fa get 7 2</em>.</p>
+          <p>¡Has conseguido reclamarlo! Ten en cuenta que solo podrás reclamar 2 pedidos máximo al día real. Ahora, para consultar los pedidos reclamados, como es tu primer pedido solo tendrás que escribir <em>?pedido fa mis 1</em>, o si reclamaste más de uno y quieres verlos entonces <em>?pedido fa mis</em>, y si reclamas un segundo pedido más entonces ese segundo será el 2. Si entregas o se te acaba el primer pedido, se te eliminará automáticamente y el segundo pedido que reclamaste pasará a ser el 1, los pedidos funcionan en orden en el que los hayas reclamado.</p>
+          <p>Ahora que ya lo tienes todo, por ejemplo, quieres entregar ya el pedido 2 ahí escribimos <em>?pedido fa sell 2</em>, o si queremos entregar el 1 entonces <em>?pedido fa sell 1</em> y el pedido 2 que hayamos reclamado entonces pasará a ser la 1. Ante la duda, comprueba con <em>?pedido fa mis</em>, no te cortes que yo también me he quemado la cabeza simplificando esta explicación.</p>
+          <p>Si por alguna razón te has equivocado o ya no quieres entregar el pedido 1, o 2 o 3 pero dile 1 para el ejemplo, escribe <em>?pedido fa drop 1</em> y así no se nos penaliza. Y pues eso ya sería todo, ¡a trastear! </p>
+        </div>
       </div>
     </div>
 
@@ -566,11 +419,8 @@
     <span class="footer-text">NOGATRUS</span>
   </footer>
 
-  <!-- ── TASKBAR ── -->
   <div class="taskbar">
-    <div class="start-orb" title="Inicio">
-      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg>
-    </div>
+    <div class="start-orb" title="Inicio"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg></div>
     <div class="taskbar-sep"></div>
     <div class="quicklaunch">
       <a class="ql-btn" href="index.html" title="Inicio">🏠</a>
@@ -603,12 +453,10 @@
     updateClock();
     setInterval(updateClock, 10000);
 
-    // Collapsible guide cards
     document.querySelectorAll('.guide-card').forEach(card => {
       card.addEventListener('click', () => card.classList.toggle('open'));
     });
 
-    // Filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -616,15 +464,12 @@
         btn.classList.add('active');
         const f = btn.dataset.filter;
         document.querySelectorAll('.guide-card').forEach(card => {
-          const game  = card.dataset.game;
-          const level = card.dataset.level;
-          const show  = f === 'all' || game === f || level === f;
+          const show = f === 'all' || card.dataset.game === f || card.dataset.level === f;
           card.classList.toggle('hidden', !show);
         });
       });
     });
 
-    // Search
     document.getElementById('guideSearch').addEventListener('input', function() {
       const q = this.value.toLowerCase();
       document.querySelectorAll('.guide-card').forEach(card => {
