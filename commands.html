@@ -5,35 +5,483 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GameWiki — Comandos & Atajos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg:        rgba(255,255,255,0.05);
+      --glass-bg-hover:  rgba(255,255,255,0.09);
+      --glass-border:    rgba(255,255,255,0.12);
+      --glass-border-hi: rgba(255,255,255,0.22);
+      --accent:          #4fa3e8;
+      --accent-dim:      rgba(79,163,232,0.18);
+      --accent-glow:     rgba(79,163,232,0.35);
+      --text-primary:    #e8edf2;
+      --text-secondary:  #8fa5bc;
+      --text-dim:        #556070;
+      --bg-deep:         #0a0e14;
+      --bg-mid:          #0f1520;
+      --taskbar-h:       40px;
+      --font-ui:         'Rajdhani', sans-serif;
+      --font-mono:       'Share Tech Mono', monospace;
+      --yellow:          #e8c44f;
+      --accent2:         #a0d4a0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: var(--taskbar-h);
+    }
+
+    .desktop-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(10,60,120,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(30,80,150,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(0,30,70,0.6) 0%, transparent 70%),
+        linear-gradient(175deg, #0d1620 0%, #080d18 50%, #050910 100%);
+    }
+    .desktop-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,163,232,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,163,232,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 36px;
+      z-index: 200;
+      background: rgba(8,14,26,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+    }
+
+    .logo {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-right: 28px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+    }
+    .logo-accent { color: var(--accent); }
+
+    .header-nav { display: flex; gap: 0; }
+    .header-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 0 12px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s, background 0.15s;
+      border-right: 1px solid transparent;
+      border-left: 1px solid transparent;
+      letter-spacing: 0.3px;
+    }
+    .header-nav a:hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.06);
+    }
+    .header-nav a.active {
+      color: var(--accent);
+      background: rgba(79,163,232,0.08);
+      border-color: rgba(79,163,232,0.12);
+    }
+
+    .header-clock {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.2;
+    }
+
+    /* ── MAIN ── */
+    main {
+      position: relative;
+      z-index: 1;
+      padding-top: 52px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      padding-top: 8px;
+    }
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .breadcrumb a:hover { opacity: 0.7; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(79,163,232,0.4), transparent);
+    }
+    .page-header h1 {
+      font-family: var(--font-ui);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .page-header p {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      height: 38px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 0 44px 0 14px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus {
+      border-color: var(--accent);
+      background: rgba(79,163,232,0.05);
+      box-shadow: 0 0 0 3px rgba(79,163,232,0.08);
+    }
+    .search-icon {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover {
+      color: var(--text-secondary);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.07);
+    }
+    .filter-btn.active {
+      color: var(--accent);
+      border-color: rgba(79,163,232,0.4);
+      background: rgba(79,163,232,0.08);
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
+    }
+    .title-arrow { color: var(--accent); }
+
+    /* ── CMD SECTION ── */
+    .cmd-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cmd-section.hidden { display: none; }
+
+    /* ── TABLE ── */
+    .cmd-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .cmd-table thead tr {
+      background: rgba(79,163,232,0.06);
+      border-bottom: 1px solid rgba(79,163,232,0.2);
+    }
+    .cmd-table thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .cmd-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    .cmd-table tbody tr:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .cmd-table tbody td {
+      padding: 12px 14px;
+      vertical-align: top;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .cmd-table tbody td.key {
+      color: var(--accent);
+      white-space: nowrap;
+      font-size: 12px;
+      min-width: 200px;
+    }
+    .cmd-table tbody td.desc {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .cmd-table em { color: #cc8844; font-style: normal; }
+    .cmd-table strong { color: var(--accent2); font-weight: 600; }
+    .cmd-table hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 6px 0;
+    }
+
+    .table-wrap {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 6px;
+      overflow: hidden;
+      overflow-x: auto;
+      backdrop-filter: blur(16px);
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+    .footer-egg {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-dim);
+      opacity: 0.4;
+      letter-spacing: 1px;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── TASKBAR ── */
+    .taskbar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--taskbar-h);
+      z-index: 300;
+      background: rgba(8,12,22,0.82);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px) saturate(1.3);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 6px;
+    }
+    .start-orb {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #6fc8ff 0%, #2277cc 45%, #0a4498 100%);
+      border: 1px solid rgba(100,180,255,0.4);
+      box-shadow: 0 0 10px rgba(79,163,232,0.4), 0 0 20px rgba(79,163,232,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: box-shadow 0.2s;
+    }
+    .start-orb:hover {
+      box-shadow: 0 0 16px rgba(79,163,232,0.6), 0 0 32px rgba(79,163,232,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .start-orb svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.9); }
+    .taskbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 4px; }
+    .quicklaunch { display: flex; gap: 2px; }
+    .ql-btn {
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+      color: var(--text-secondary);
+      border: none;
+      background: none;
+      text-decoration: none;
+    }
+    .ql-btn:hover { background: rgba(255,255,255,0.07); }
+    .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
+    .tw-item {
+      height: 30px;
+      padding: 0 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+      max-width: 180px;
+      font-family: var(--font-mono);
+    }
+    .tw-item.active {
+      background: rgba(79,163,232,0.12);
+      border-color: rgba(79,163,232,0.25);
+      color: var(--text-primary);
+    }
+    .tray {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 10px 0 8px;
+      height: 30px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .tray-icon { font-size: 13px; color: var(--text-dim); cursor: default; }
+    .tray-clock { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; font-family: var(--font-mono); }
+    .tray-time { font-size: 12px; color: var(--text-primary); }
+    .tray-date { font-size: 9px; color: var(--text-dim); }
+
+    @media (max-width: 600px) {
+      .cmd-table tbody td.key { min-width: 140px; font-size: 11px; }
+      .header-nav a { padding: 0 8px; font-size: 11px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="crt-vignette"></div>
+
+  <div class="desktop-bg"></div>
 
   <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <span class="logo-bracket">[</span>
-        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
-        <span class="logo-bracket">]</span>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="games.html" class="nav-link">JUEGOS</a>
-        <a href="commands.html" class="nav-link active">COMANDOS</a>
-        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
-        <a href="guides.html" class="nav-link">GUÍAS</a>
-        <a href="glossary.html" class="nav-link">GLOSARIO</a>
-      </nav>
-      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    <a href="index.html" class="logo">
+      <span style="color:var(--text-dim);">[</span>
+      GAME<span class="logo-accent">WIKI</span>
+      <span style="color:var(--text-dim);">]</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="games.html">Juegos</a>
+      <a href="commands.html" class="active">Comandos</a>
+      <a href="mechanics.html">Mecánicas</a>
+      <a href="guides.html">Guías</a>
+      <a href="glossary.html">Glosario</a>
+    </nav>
+    <div class="header-clock">
+      <span class="tray-time" id="headerTime">00:00</span>
+      <span class="tray-date" id="headerDate">--/--/----</span>
     </div>
   </header>
 
-  <main class="main-content">
+  <main>
+
     <div class="breadcrumb">
-      <a href="index.html">HOME</a><span>»</span>COMANDOS &amp; ATAJOS
+      <a href="index.html">HOME</a>
+      <span>»</span>
+      COMANDOS &amp; ATAJOS
     </div>
 
     <div class="page-header">
@@ -42,7 +490,7 @@
     </div>
 
     <div class="search-wrap">
-      <input type="text" class="search-input" placeholder="Buscar comando, tecla o función..." id="cmdSearch" />
+      <input type="text" class="search-input" placeholder="BUSCAR COMANDO, TECLA O FUNCIÓN..." id="cmdSearch" autocomplete="off" />
       <span class="search-icon">🔍</span>
     </div>
 
@@ -57,117 +505,102 @@
       <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
     </div>
 
-    
-
-    
     <!-- ── Social ── -->
-    <section class="cmd-section" data-game="socials">
-      <h2 class="section-title"><span class="title-arrow">►</span> SOCIAL</h2>
-      <div style="overflow-x:auto;">
+    <section class="cmd-section" data-game="social">
+      <div class="section-title"><span class="title-arrow">►</span> SOCIAL</div>
+      <div class="table-wrap">
         <table class="cmd-table">
           <thead>
-            <tr>
-              <th>COMANDO</th>
-              <th>ACCIÓN</th>
-              <th>EJEMPLOS</th>
-            </tr>
+            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="key">?cookie </td>
+              <td class="key">?cookie</td>
               <td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes.</td>
               <td>?cookie</td>
             </tr>
             <tr>
               <td class="key">?cookie stats [user]</td>
-              <td class="desc">Puedes ver tus estadísticas de galletas de fortuna. </td>
-              <td>?cookie stats <hr> ?cookie stats Nogatrus </td>
+              <td class="desc">Puedes ver tus estadísticas de galletas de fortuna.</td>
+              <td>?cookie stats<hr>?cookie stats Nogatrus</td>
             </tr>
             <tr>
-              <td class="key">?cookie gift [user] </td>
-              <td class="desc">Puedes regalar una galleta al otro usuario, y puedes acumular hasta 3 galletas regaladas sin contar la que tienes a diario. </td>
+              <td class="key">?cookie gift [user]</td>
+              <td class="desc">Puedes regalar una galleta al otro usuario, y puedes acumular hasta 3 galletas regaladas sin contar la que tienes a diario.</td>
               <td>?cookie gift Nogatrus</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-    
+
     <!-- ── Minijuegos ── -->
     <section class="cmd-section" data-game="minijuegos">
-      <h2 class="section-title"><span class="title-arrow">►</span> MINIJUEGOS</h2>
-      <div style="overflow-x:auto;">
+      <div class="section-title"><span class="title-arrow">►</span> MINIJUEGOS</div>
+      <div class="table-wrap">
         <table class="cmd-table">
           <thead>
-            <tr>
-              <th>COMANDO</th>
-              <th>ACCIÓN</th>
-              <th>EJEMPLOS</th>
-            </tr>
+            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="key">?hangman [categoría] </td>
-              <td class="desc"> Usa el comando para empezar, luego solo teclea una letra sin comandos. Tienes que adivinar una letra antes de poder adivinar la palabra. <hr> Si quieres saber las categorías disponibles, escribe "?hm asd". </td>
-              <td> ?hangman rios <hr> ?hm </td>
+              <td class="key">?hangman [categoría]</td>
+              <td class="desc">Usa el comando para empezar, luego solo teclea una letra sin comandos. Tienes que adivinar una letra antes de poder adivinar la palabra.<hr>Si quieres saber las categorías disponibles, escribe "?hm asd".</td>
+              <td>?hangman rios<hr>?hm</td>
             </tr>
             <tr>
-              <td class="key">?hangman stats [user] </td>
-              <td class="desc">Puedes ver tus estadísticas del juego hangman. </td>
-              <td> ?hm stats <hr> ?hm stats Nogatrus </td>
+              <td class="key">?hangman stats [user]</td>
+              <td class="desc">Puedes ver tus estadísticas del juego hangman.</td>
+              <td>?hm stats<hr>?hm stats Nogatrus</td>
             </tr>
             <tr>
-              <td class="key">?trivia </td>
-              <td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay ~100 preguntas por cada categoría y modo (normal/difícil). </td>
-              <td>?triv </td>
+              <td class="key">?trivia</td>
+              <td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay ~100 preguntas por cada categoría y modo (normal/difícil).</td>
+              <td>?triv</td>
             </tr>
             <tr>
-              <td class="key">?trivia stats [user] </td>
-              <td class="desc">Puedes ver tus estadísticas del juego trivia. </td>
-              <td> ?triv stats <hr> ?triv stats Nogatrus </td>
+              <td class="key">?trivia stats [user]</td>
+              <td class="desc">Puedes ver tus estadísticas del juego trivia.</td>
+              <td>?triv stats<hr>?triv stats Nogatrus</td>
             </tr>
             <tr>
-              <td class="key">?trivia dif [normal/ambos/dificil] [categorías] </td>
-              <td class="desc"> Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes. <hr> "Ambos" incluye tanto normal como difícil. Funciona solo por user. </td>
-              <td>?triv dif dificil <hr> ?triv dif ambos pokemon <hr> ?triv dif dificil matematicas</td>
+              <td class="key">?trivia dif [normal/ambos/dificil] [categorías]</td>
+              <td class="desc">Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes.<hr>"Ambos" incluye tanto normal como difícil. Funciona solo por user.</td>
+              <td>?triv dif dificil<hr>?triv dif ambos pokemon<hr>?triv dif dificil matematicas</td>
             </tr>
             <tr>
               <td class="key">?trivia dif [dificil]</td>
-              <td class="desc"> Puedes consultar qué categorías tienes en modo Ambos o Difícil y ver qué categorías están disponibles en modo difícil. </td>
-              <td> ?triv dif <hr> ?triv dif dificil</td>
+              <td class="desc">Puedes consultar qué categorías tienes en modo Ambos o Difícil y ver qué categorías están disponibles en modo difícil.</td>
+              <td>?triv dif<hr>?triv dif dificil</td>
             </tr>
             <tr>
               <td class="key">?hint</td>
-              <td class="desc"> Durante una partida de trivia, puedes pedir una pista pasados los 30s desde la pregunta. Puedes pedir otra pista adicional cuando faltan 15 segundos. </td>
-              <td> ?hint </td>
+              <td class="desc">Durante una partida de trivia, puedes pedir una pista pasados los 30s desde la pregunta. Puedes pedir otra pista adicional cuando faltan 15 segundos.</td>
+              <td>?hint</td>
             </tr>
             <tr>
               <td class="key">?skip</td>
-              <td class="desc"> Durante una partida de trivia, puedes skipear pasados los 30s desde la pregunta. </td>
-              <td> ?skip </td>
+              <td class="desc">Durante una partida de trivia, puedes skipear pasados los 30s desde la pregunta.</td>
+              <td>?skip</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-    
+
     <!-- ── Economía ── -->
     <section class="cmd-section" data-game="economía">
-      <h2 class="section-title"><span class="title-arrow">►</span> ECONOMÍA</h2>
-      <div style="overflow-x:auto;">
+      <div class="section-title"><span class="title-arrow">►</span> ECONOMÍA</div>
+      <div class="table-wrap">
         <table class="cmd-table">
           <thead>
-            <tr>
-              <th>COMANDO</th>
-              <th>ACCIÓN</th>
-              <th>EJEMPLOS</th>
-            </tr>
+            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="key">?tz <hr> ?tz convert [cantidad]</td>
+              <td class="key">?tz<hr>?tz convert [cantidad]</td>
               <td class="desc">Ver tus truces o convertir puntos.</td>
-              <td>?tz <hr> ?tz convert 500</td>
+              <td>?tz<hr>?tz convert 500</td>
             </tr>
             <tr>
               <td class="key">?market</td>
@@ -175,9 +608,9 @@
               <td>?market</td>
             </tr>
             <tr>
-              <td class="key">?market top </td>
-              <td class="desc">Muestra los 10 productos más valorados del mercado en este momento.  <hr> El comando funciona en este orden después de "top": <em style="color:#cc6600">[nº tier] [estación] [crop/árbol] [normal/perenne] </em> </td>
-              <td>?market top 10 <hr> ?market top verano  <hr> ?market top 10 primavera arbol  <hr> ?market top crop perenne </td>
+              <td class="key">?market top</td>
+              <td class="desc">Muestra los 10 productos más valorados del mercado en este momento.<hr>El comando funciona en este orden después de "top": <em>[nº tier] [estación] [crop/árbol] [normal/perenne]</em></td>
+              <td>?market top 10<hr>?market top verano<hr>?market top 10 primavera arbol<hr>?market top crop perenne</td>
             </tr>
             <tr>
               <td class="key">?market best</td>
@@ -185,9 +618,9 @@
               <td>?market best</td>
             </tr>
             <tr>
-              <td class="key">?sell <hr> ?sell [categoría] all</td>
-              <td class="desc">Vende productos al precio mercado. Para vender todos los cultivos de una vez se elige la categoría fa (granja). <hr> El comando funciona en este orden después de "?sell": <em style="color:#cc6600">[categoría] [cultivo/pez] [cantidad/all] [calidad]</em></td>
-              <td>?sell mandarina all normal <hr> ?sell fa all <hr> ?sell salmon all </td>
+              <td class="key">?sell<hr>?sell [categoría] all</td>
+              <td class="desc">Vende productos al precio mercado. Para vender todos los cultivos de una vez se elige la categoría fa (granja).<hr>El comando funciona en este orden después de "?sell": <em>[categoría] [cultivo/pez] [cantidad/all] [calidad]</em></td>
+              <td>?sell mandarina all normal<hr>?sell fa all<hr>?sell salmon all</td>
             </tr>
             <tr>
               <td class="key">?buy [item] [cantidad]</td>
@@ -197,7 +630,7 @@
             <tr>
               <td class="key">?info [crop/árbol/fert/item]</td>
               <td class="desc">Comprueba la información de un item, como un cultivo o un fertilizante.</td>
-              <td>?info fast <hr> ?info mandarina_valenciana</td>
+              <td>?info fast<hr>?info mandarina_valenciana</td>
             </tr>
           </tbody>
         </table>
@@ -206,36 +639,32 @@
 
     <!-- ── Granja ── -->
     <section class="cmd-section" data-game="granja">
-      <h2 class="section-title"><span class="title-arrow">►</span> GRANJA</h2>
-      <div style="overflow-x:auto;">
+      <div class="section-title"><span class="title-arrow">►</span> GRANJA</div>
+      <div class="table-wrap">
         <table class="cmd-table">
           <thead>
-            <tr>
-              <th>COMANDO</th>
-              <th>ACCIÓN</th>
-              <th>EJEMPLOS</th>
-            </tr>
+            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
           </thead>
           <tbody>
             <tr>
               <td class="key">?buy list [categoría] [nº tier]</td>
-              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado. <hr> El comando funciona en este orden después de "tier": <em style="color:#cc6600">[estación] [crop/árbol] [normal/perenne]</em> </td>
-              <td>?buy list fa verano árbol <hr> ?buy list fa 6 <hr> ?buy list fa 3 otoño crop perenne</td>
+              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.<hr>El comando funciona en este orden después de "tier": <em>[estación] [crop/árbol] [normal/perenne]</em></td>
+              <td>?buy list fa verano árbol<hr>?buy list fa 6<hr>?buy list fa 3 otoño crop perenne</td>
             </tr>
             <tr>
               <td class="key">?plant [crop/árbol] [cantidad]</td>
-              <td class="desc">Planta tus semillas, si no eliges ningún lugar en particular se relocalizará por sí solo. <hr> El comando funciona en este orden después de "cantidad":  <em style="color:#cc6600">[fertilizante] [parcela/huerto/invernadero]</em> </td>
-              <td>?pl all <hr> ?plant cebolla 7 premium <hr> ?pl all invernadero</td>
+              <td class="desc">Planta tus semillas, si no eliges ningún lugar en particular se relocalizará por sí solo.<hr>El comando funciona en este orden después de "cantidad": <em>[fertilizante] [parcela/huerto/invernadero]</em></td>
+              <td>?pl all<hr>?plant cebolla 7 premium<hr>?pl all invernadero</td>
             </tr>
             <tr>
               <td class="key">?harvest [árbol/crop] [normal/perenne]</td>
               <td class="desc">Comprueba tus cultivos, cuánto tiempo les queda y, en el caso de los perennes, cuántas cosechas les quedan. Las variables son opcionales, pero sirven de ayuda cuando tienes muchos cosechando.</td>
-              <td>?hv <hr> ?hv árbol <hr> ?hv crop normal <hr> ?hv crop perenne</td>
+              <td>?hv<hr>?hv árbol<hr>?hv crop normal<hr>?hv crop perenne</td>
             </tr>
             <tr>
               <td class="key">?harvest all</td>
               <td class="desc">Cosecha todos tus cultivos.</td>
-              <td>?hv all <hr> ?hr mandarina_dorada all</td>
+              <td>?hv all<hr>?hr mandarina_dorada all</td>
             </tr>
             <tr>
               <td class="key">?convert [cultivo/all] [cantidad]</td>
@@ -252,19 +681,77 @@
       </div>
     </section>
 
-    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
-      ¿Eres tonto o peinas plantas?
-    </p>
+    <p class="footer-egg">¿Eres tonto o peinas plantas?</p>
+
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
-      <span class="footer-sep">|</span>
-      <span>NOGATRUS</span>
-    </div>
+    <span class="footer-text">© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
+    <span class="footer-text">NOGATRUS</span>
   </footer>
 
-  <script src="assets/main.js"></script>
+  <!-- ── TASKBAR ── -->
+  <div class="taskbar">
+    <div class="start-orb" title="Inicio">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg>
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="quicklaunch">
+      <a class="ql-btn" href="index.html" title="Inicio">🏠</a>
+      <a class="ql-btn" href="games.html" title="Juegos">🎮</a>
+      <a class="ql-btn" href="guides.html" title="Guías">📜</a>
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="taskbar-windows">
+      <div class="tw-item active">⌨ GameWiki — Comandos</div>
+    </div>
+    <div class="tray">
+      <span class="tray-icon">🔊</span>
+      <span class="tray-icon">📶</span>
+      <div class="tray-clock">
+        <span class="tray-time" id="trayTime">00:00</span>
+        <span class="tray-date" id="trayDate">--/--/----</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const date = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
+      ['trayTime','headerTime'].forEach(id => document.getElementById(id).textContent = time);
+      ['trayDate','headerDate'].forEach(id => document.getElementById(id).textContent = date);
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.cmd-section');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        sections.forEach(s => {
+          if (f === 'all' || s.dataset.game === f) {
+            s.classList.remove('hidden');
+          } else {
+            s.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Search
+    document.getElementById('cmdSearch').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
