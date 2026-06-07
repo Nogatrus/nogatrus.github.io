@@ -5,35 +5,445 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GameWiki — Guías & Tutoriales</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg:        rgba(255,255,255,0.05);
+      --glass-bg-hover:  rgba(255,255,255,0.09);
+      --glass-border:    rgba(255,255,255,0.12);
+      --glass-border-hi: rgba(255,255,255,0.22);
+      --accent:          #4fa3e8;
+      --accent-dim:      rgba(79,163,232,0.18);
+      --accent-glow:     rgba(79,163,232,0.35);
+      --text-primary:    #e8edf2;
+      --text-secondary:  #8fa5bc;
+      --text-dim:        #556070;
+      --bg-deep:         #0a0e14;
+      --bg-mid:          #0f1520;
+      --taskbar-h:       40px;
+      --font-ui:         'Rajdhani', sans-serif;
+      --font-mono:       'Share Tech Mono', monospace;
+      --yellow:          #e8c44f;
+      --accent2:         #a0d4a0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: var(--taskbar-h);
+    }
+
+    .desktop-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(10,60,120,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(30,80,150,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(0,30,70,0.6) 0%, transparent 70%),
+        linear-gradient(175deg, #0d1620 0%, #080d18 50%, #050910 100%);
+    }
+    .desktop-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,163,232,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,163,232,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 36px;
+      z-index: 200;
+      background: rgba(8,14,26,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+    }
+    .logo {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-right: 28px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+    }
+    .logo-accent { color: var(--accent); }
+    .header-nav { display: flex; gap: 0; }
+    .header-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 0 12px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      transition: color 0.15s, background 0.15s;
+      border-right: 1px solid transparent;
+      border-left: 1px solid transparent;
+      letter-spacing: 0.3px;
+    }
+    .header-nav a:hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.06);
+    }
+    .header-nav a.active {
+      color: var(--accent);
+      background: rgba(79,163,232,0.08);
+      border-color: rgba(79,163,232,0.12);
+    }
+    .header-clock {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.2;
+    }
+
+    /* ── MAIN ── */
+    main {
+      position: relative;
+      z-index: 1;
+      padding-top: 52px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      padding-top: 8px;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
+    .breadcrumb a:hover { opacity: 0.7; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(79,163,232,0.4), transparent);
+    }
+    .page-header h1 {
+      font-family: var(--font-ui);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .page-header p {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SEARCH ── */
+    .search-wrap { position: relative; }
+    .search-input {
+      width: 100%;
+      height: 38px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 0 44px 0 14px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus {
+      border-color: var(--accent);
+      background: rgba(79,163,232,0.05);
+      box-shadow: 0 0 0 3px rgba(79,163,232,0.08);
+    }
+    .search-icon {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { color: var(--text-secondary); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
+    .filter-btn.active { color: var(--accent); border-color: rgba(79,163,232,0.4); background: rgba(79,163,232,0.08); }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
+    }
+    .title-arrow { color: var(--accent); }
+
+    /* ── GUIDE CARD ── */
+    .guide-card {
+      display: block;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 6px;
+      padding: 20px 22px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .guide-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+    }
+    .guide-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(79,163,232,0.25);
+      transform: translateY(-2px);
+    }
+    .guide-card.hidden { display: none; }
+
+    .guide-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .level-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
+    .level-badge.principiante { background: rgba(79,163,232,0.12); color: rgba(79,163,232,0.8); border: 1px solid rgba(79,163,232,0.25); }
+    .level-badge.intermedio   { background: rgba(232,196,79,0.12);  color: rgba(232,196,79,0.8);  border: 1px solid rgba(232,196,79,0.25); }
+    .level-badge.avanzado     { background: rgba(220,80,80,0.12);   color: rgba(220,80,80,0.8);   border: 1px solid rgba(220,80,80,0.25); }
+
+    .guide-title {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .guide-desc {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guide-desc em   { color: #cc8844; font-style: normal; }
+    .guide-desc strong { color: var(--accent2); font-style: normal; }
+
+    /* collapsible */
+    .guide-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+    .guide-card.open .guide-body { max-height: 2000px; }
+    .guide-toggle {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .guide-toggle::after { content: '▼'; transition: transform 0.25s; }
+    .guide-card.open .guide-toggle::after { transform: rotate(180deg); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+    .footer-egg { font-family: var(--font-mono); font-size: 9px; color: var(--text-dim); opacity: 0.4; letter-spacing: 1px; margin-top: 8px; text-align: center; }
+
+    /* ── TASKBAR ── */
+    .taskbar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--taskbar-h);
+      z-index: 300;
+      background: rgba(8,12,22,0.82);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px) saturate(1.3);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 6px;
+    }
+    .start-orb {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #6fc8ff 0%, #2277cc 45%, #0a4498 100%);
+      border: 1px solid rgba(100,180,255,0.4);
+      box-shadow: 0 0 10px rgba(79,163,232,0.4), 0 0 20px rgba(79,163,232,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; transition: box-shadow 0.2s;
+    }
+    .start-orb:hover { box-shadow: 0 0 16px rgba(79,163,232,0.6), 0 0 32px rgba(79,163,232,0.25), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .start-orb svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.9); }
+    .taskbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 4px; }
+    .quicklaunch { display: flex; gap: 2px; }
+    .ql-btn {
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; border-radius: 4px; cursor: pointer;
+      transition: background 0.15s; color: var(--text-secondary);
+      border: none; background: none; text-decoration: none;
+    }
+    .ql-btn:hover { background: rgba(255,255,255,0.07); }
+    .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
+    .tw-item {
+      height: 30px; padding: 0 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; color: var(--text-secondary);
+      cursor: pointer; transition: background 0.15s;
+      white-space: nowrap; max-width: 180px;
+      font-family: var(--font-mono);
+    }
+    .tw-item.active { background: rgba(79,163,232,0.12); border-color: rgba(79,163,232,0.25); color: var(--text-primary); }
+    .tray {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 10px 0 8px; height: 30px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .tray-icon { font-size: 13px; color: var(--text-dim); cursor: default; }
+    .tray-clock { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; font-family: var(--font-mono); }
+    .tray-time { font-size: 12px; color: var(--text-primary); }
+    .tray-date { font-size: 9px; color: var(--text-dim); }
+  </style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="crt-vignette"></div>
+
+  <div class="desktop-bg"></div>
 
   <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <span class="logo-bracket">[</span>
-        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
-        <span class="logo-bracket">]</span>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="games.html" class="nav-link">JUEGOS</a>
-        <a href="commands.html" class="nav-link">COMANDOS</a>
-        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
-        <a href="guides.html" class="nav-link active">GUÍAS</a>
-        <a href="glossary.html" class="nav-link">GLOSARIO</a>
-      </nav>
-      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    <a href="index.html" class="logo">
+      <span style="color:var(--text-dim);">[</span>
+      GAME<span class="logo-accent">WIKI</span>
+      <span style="color:var(--text-dim);">]</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="games.html">Juegos</a>
+      <a href="commands.html">Comandos</a>
+      <a href="mechanics.html">Mecánicas</a>
+      <a href="guides.html" class="active">Guías</a>
+      <a href="glossary.html">Glosario</a>
+    </nav>
+    <div class="header-clock">
+      <span class="tray-time" id="headerTime">00:00</span>
+      <span class="tray-date" id="headerDate">--/--/----</span>
     </div>
   </header>
 
-  <main class="main-content">
+  <main>
+
     <div class="breadcrumb">
-      <a href="index.html">HOME</a><span>»</span>GUÍAS &amp; TUTORIALES
+      <a href="index.html">HOME</a>
+      <span>»</span>
+      GUÍAS &amp; TUTORIALES
     </div>
 
     <div class="page-header">
@@ -42,7 +452,7 @@
     </div>
 
     <div class="search-wrap">
-      <input type="text" class="search-input" placeholder="Buscar guía..." id="guideSearch" />
+      <input type="text" class="search-input" placeholder="BUSCAR GUÍA..." id="guideSearch" autocomplete="off" />
       <span class="search-icon">🔍</span>
     </div>
 
@@ -57,90 +467,170 @@
     </div>
 
     <!-- ── Granja ── -->
-    <h2 class="section-title"><span class="title-arrow">►</span> GRANJA</h2>
+    <div class="section-title"><span class="title-arrow">►</span> GRANJA</div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="granja" data-level="principiante">
-      <p class="guide-meta">GRANJA · PRINCIPIANTE · ~10 min</p>
+    <div class="guide-card" data-game="granja" data-level="principiante">
+      <p class="guide-meta">GRANJA · <span class="level-badge principiante">PRINCIPIANTE</span> · ~10 min</p>
       <h3 class="guide-title">GUÍA DE INICIO: TU PRIMER CULTIVO</h3>
-      <div class="guide-desc">
-        <p>Empieza a conseguir tus semillas escribiendo <em style="color:#cc6600">"?inicio"</em> en el chat. Luego de conseguirlas, para ir a plantar tienes que escribir <em style="color:#cc6600">"?plant [cultivo] [cantidad]"</em> (o para plantar todo de una vez, <em style="color:#cc6600">"?plant all"</em>), y te saldrá que has plantado un árbol y unas cuantas lechugas.</p>
-        <p>Espera unos 5 minutos hasta que estén listas las lechugas, para comprobar cuánto tiempo lleva escribe <em style="color:#cc6600">"?harvest"</em> sin más; y si ya están listos para cosechar, escribe <em style="color:#cc6600">"?harvest all"</em> para recoger todo de una vez.</p>
-        <p>Para comprobar que has cosechado, usa <em style="color:#cc6600">"?inventory"</em> o también <em style="color:#cc6600">"?inv"</em> para acortar.</p>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc">
+          <p>Empieza a conseguir tus semillas escribiendo <em>"?inicio"</em> en el chat. Luego de conseguirlas, para ir a plantar tienes que escribir <em>"?plant [cultivo] [cantidad]"</em> (o para plantar todo de una vez, <em>"?plant all"</em>), y te saldrá que has plantado un árbol y unas cuantas lechugas.</p>
+          <p>Espera unos 5 minutos hasta que estén listas las lechugas, para comprobar cuánto tiempo lleva escribe <em>"?harvest"</em> sin más; y si ya están listos para cosechar, escribe <em>"?harvest all"</em> para recoger todo de una vez.</p>
+          <p>Para comprobar que has cosechado, usa <em>"?inventory"</em> o también <em>"?inv"</em> para acortar.</p>
+        </div>
       </div>
-    </a>
+    </div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="granja" data-level="principiante">
-      <p class="guide-meta">GRANJA · PRINCIPIANTE · ~10 min</p>
+    <div class="guide-card" data-game="granja" data-level="principiante">
+      <p class="guide-meta">GRANJA · <span class="level-badge principiante">PRINCIPIANTE</span> · ~10 min</p>
       <h3 class="guide-title">GUÍA DE INICIO 2: EMPEZANDO A ACUMULAR</h3>
-      <div class="guide-desc">
-        <p>Notarás que no tienes semillas para volver a plantar y que solo tienes el árbol para darte fruto y que ni siquiera te da para semillas. Entonces aquí tienes dos opciones:</p>
-        <p>Convertir los puntos a truces aka la moneda global escribiendo <em style="color:#cc6600">"?tz convert [cantidad]"</em> para conseguir dinero y comprar más semillas buscando con <em style="color:#cc6600">"?buy list 1"</em> (lo que vendría siendo una lista de cultivos de tier 1, siempre te saldrán 5 de forma aleatoria con preferencia a la temporada actual del juego) y comprando con <em style="color:#cc6600">"?buy [cultivo] [cantidad]"</em>.</p>
-        <p>O bien reconvertir lo que has cosechado en semillas escribiendo <em style="color:#cc6600">"?convert [cultivo] [cantidad/all]"</em> para luego hacer <em style="color:#cc6600">"?plant all"</em> y de vuelta a esperar hasta que puedas cosecharlos con <em style="color:#cc6600">"?harvest all"</em>. En el segundo caso, te recomiendo acumular hasta 30-50 semillas al menos para tener seguridad y vender todo lo que tienes cultivado con <em style="color:#cc6600">"?sell [all]"</em>, y con esto ya tendrás dinero para comprar más semillas empezando con <em style="color:#cc6600">"?buy list 1"</em>.</p>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc">
+          <p>Notarás que no tienes semillas para volver a plantar y que solo tienes el árbol para darte fruto y que ni siquiera te da para semillas. Entonces aquí tienes dos opciones:</p>
+          <p>Convertir los puntos a truces aka la moneda global escribiendo <em>"?tz convert [cantidad]"</em> para conseguir dinero y comprar más semillas buscando con <em>"?buy list 1"</em> (lo que vendría siendo una lista de cultivos de tier 1, siempre te saldrán 5 de forma aleatoria con preferencia a la temporada actual del juego) y comprando con <em>"?buy [cultivo] [cantidad]"</em>.</p>
+          <p>O bien reconvertir lo que has cosechado en semillas escribiendo <em>"?convert [cultivo] [cantidad/all]"</em> para luego hacer <em>"?plant all"</em> y de vuelta a esperar hasta que puedas cosecharlos con <em>"?harvest all"</em>. En el segundo caso, te recomiendo acumular hasta 30-50 semillas al menos para tener seguridad y vender todo lo que tienes cultivado con <em>"?sell [all]"</em>, y con esto ya tendrás dinero para comprar más semillas empezando con <em>"?buy list 1"</em>.</p>
+        </div>
       </div>
-    </a>
+    </div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="granja" data-level="intermedio">
-      <p class="guide-meta">GRANJA · INTERMEDIO · ~5 min</p>
+    <div class="guide-card" data-game="granja" data-level="intermedio">
+      <p class="guide-meta">GRANJA · <span class="level-badge intermedio">INTERMEDIO</span> · ~5 min</p>
       <h3 class="guide-title">EL MERCADO</h3>
-      <div class="guide-desc">
-        <p>Habrás observado que al vender algunos cultivos a veces alguno cobras más que por el precio normal, eso es porque son de mejor calidad. Dentro del tema de las calidades, tenemos estos: <strong style="color:var(--accent2)">Nr</strong> (normal), <strong style="color:var(--accent2)">Co</strong> (copper, cobre), <strong style="color:var(--accent2)">Ag</strong> (silver, plata), <strong style="color:var(--accent2)">Au</strong> (gold, oro) y <strong style="color:var(--accent2)">Pl</strong> (platinum, platino). Además de las calidades, el valor de un cultivo puede venir influido por varias razones diferentes (que se venda fuera de su temporada, el tiempo, las pérdidas en relación a los catástrofes, etc.).</p>
-        <p>Para eso mismo, tienes tres comandos para verlo: para ver cómo están los precios en general con respecto a las cosechas que tienes en tu inventario escribe <em style="color:#cc6600">"?market"</em>, para ver cuáles están en el top 10 mejor valorados en ese momento escribe <em style="color:#cc6600">"?market top"</em> y para ver cuál(es) de tus cosechas vale(n) más la pena vender escribe <em style="color:#cc6600">"?market best"</em>. Una vez te hayas decidido, puedes venderlos con <em style="color:#cc6600">"?sell [cultivo] [cantidad]"</em>.</p>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc">
+          <p>Habrás observado que al vender algunos cultivos a veces alguno cobras más que por el precio normal, eso es porque son de mejor calidad. Dentro del tema de las calidades, tenemos estos: <strong>Nr</strong> (normal), <strong>Co</strong> (copper, cobre), <strong>Ag</strong> (silver, plata), <strong>Au</strong> (gold, oro) y <strong>Pl</strong> (platinum, platino). Además de las calidades, el valor de un cultivo puede venir influido por varias razones diferentes (que se venda fuera de su temporada, el tiempo, las pérdidas en relación a los catástrofes, etc.).</p>
+          <p>Para eso mismo, tienes tres comandos para verlo: para ver cómo están los precios en general con respecto a las cosechas que tienes en tu inventario escribe <em>"?market"</em>, para ver cuáles están en el top 10 mejor valorados en ese momento escribe <em>"?market top"</em> y para ver cuál(es) de tus cosechas vale(n) más la pena vender escribe <em>"?market best"</em>. Una vez te hayas decidido, puedes venderlos con <em>"?sell [cultivo] [cantidad]"</em>.</p>
+        </div>
       </div>
-    </a>
+    </div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="granja" data-level="intermedio">
-      <p class="guide-meta">GRANJA · INTERMEDIO · ~8 min</p>
+    <div class="guide-card" data-game="granja" data-level="intermedio">
+      <p class="guide-meta">GRANJA · <span class="level-badge intermedio">INTERMEDIO</span> · ~8 min</p>
       <h3 class="guide-title">EL INVERNADERO</h3>
-      <div class="guide-desc">
-        <p>Antes de empezar, como ya sabrás, el invernadero te sirve para cultivar cualquier cosa de cualquier temporada, si bien puedes plantar los que no son de temporada te darán menos cantidad en menos calidad. Para eso el invernadero funcionará como si estuviera en su propia temporada, por lo que eso te puede resultar muy conveniente si buscas vender cultivos de fuera de temporada al por mayor por mercado que es cuando cobra más valor.</p>
-        <p>En principio, seguramente comprarás el invernadero a 5k truces porque te falta espacio, pero te darás cuenta de que te viene con un círculo verde junto al 100/100. Eso es lo normal, eso es lo que se llama la salud del invernadero, pierde salud por desgaste y eso mismo puede hacer que el espacio quede inutilizado echando a perder lo cosechado si no se tiene cuidado.</p>
-        <p>Para ponerte al tanto sobre el invernadero, necesitarás <strong style="color:var(--yellow)">invertir dinero</strong> para que no se te desgaste tan rápido a largo plazo, porque incluso la antigüedad puede hacerlo pasar factura aunque se rompa antes por culpa de un huracán o por sobreexplotación a través de cultivos. Hay tres cosas que te pueden servir como referencia:</p>
-        <p><em style="color:var(--accent)">▢</em> Para arreglar los desperfectos y "curar" la salud del invernadero, escribe <em style="color:#cc6600">"?granja reparar"</em> a lo cual te puede salir hasta 5-6k truces repararlo totalmente cuando tu invernadero es nivel 1.</p>
-        <p><em style="color:var(--accent)">▢</em> Para realizar mantenimientos antes de proceder a renovar para reducir el desgaste, escribe <em style="color:#cc6600">"?granja mantenimiento"</em> en la cual tendrás que invertir hasta alcanzar nivel 5. La última es un -40% de desgaste.</p>
-        <p><em style="color:var(--accent)">▢</em> Para rehacer el invernadero de cero, escribe <em style="color:#cc6600">"?granja renovar [nº]"</em>; tienes tres niveles de mejora (5 mil, 500 mil y 5 millones de truces) que reducen el nivel de desgaste considerablemente.</p>
-        <p>Lo mejor que puedes hacer como alguien que está recién empezando es que inviertas en unas semillas de árbol desde tier 2 y centrarte en comprar cultivos normales de temporada para plantarlos, reconvertirlos en semillas y replantarlos para así asegurarte de mantener dinero para invertirlo en mejorar el invernadero y seguir escalando los tiers.</p>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc">
+          <p>Antes de empezar, como ya sabrás, el invernadero te sirve para cultivar cualquier cosa de cualquier temporada, si bien puedes plantar los que no son de temporada te darán menos cantidad en menos calidad. Para eso el invernadero funcionará como si estuviera en su propia temporada, por lo que eso te puede resultar muy conveniente si buscas vender cultivos de fuera de temporada al por mayor por mercado que es cuando cobra más valor.</p>
+          <p>En principio, seguramente comprarás el invernadero a 5k truces porque te falta espacio, pero te darás cuenta de que te viene con un círculo verde junto al 100/100. Eso es lo normal, eso es lo que se llama la salud del invernadero, pierde salud por desgaste y eso mismo puede hacer que el espacio quede inutilizado echando a perder lo cosechado si no se tiene cuidado.</p>
+          <p>Para ponerte al tanto sobre el invernadero, necesitarás <strong>invertir dinero</strong> para que no se te desgaste tan rápido a largo plazo, porque incluso la antigüedad puede hacerlo pasar factura aunque se rompa antes por culpa de un huracán o por sobreexplotación a través de cultivos. Hay tres cosas que te pueden servir como referencia:</p>
+          <p>▢ Para arreglar los desperfectos y "curar" la salud del invernadero, escribe <em>"?granja reparar"</em> a lo cual te puede salir hasta 5-6k truces repararlo totalmente cuando tu invernadero es nivel 1.</p>
+          <p>▢ Para realizar mantenimientos antes de proceder a renovar para reducir el desgaste, escribe <em>"?granja mantenimiento"</em> en la cual tendrás que invertir hasta alcanzar nivel 5. La última es un -40% de desgaste.</p>
+          <p>▢ Para rehacer el invernadero de cero, escribe <em>"?granja renovar [nº]"</em>; tienes tres niveles de mejora (5 mil, 500 mil y 5 millones de truces) que reducen el nivel de desgaste considerablemente.</p>
+          <p>Lo mejor que puedes hacer como alguien que está recién empezando es que inviertas en unas semillas de árbol desde tier 2 y centrarte en comprar cultivos normales de temporada para plantarlos, reconvertirlos en semillas y replantarlos para así asegurarte de mantener dinero para invertirlo en mejorar el invernadero y seguir escalando los tiers.</p>
+        </div>
       </div>
-    </a>
+    </div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="granja" data-level="intermedio">
-      <p class="guide-meta">GRANJA · INTERMEDIO · ~5 min</p>
+    <div class="guide-card" data-game="granja" data-level="intermedio">
+      <p class="guide-meta">GRANJA · <span class="level-badge intermedio">INTERMEDIO</span> · ~5 min</p>
       <h3 class="guide-title">WIP</h3>
-      <div class="guide-desc">
-        <p>WIP</p>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc"><p>WIP</p></div>
       </div>
-    </a>
+    </div>
 
     <!-- ── Pesca ── -->
-    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> PESCA</h2>
+    <div class="section-title"><span class="title-arrow">►</span> PESCA</div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="pesca" data-level="principiante">
-      <p class="guide-meta">PESCA · PRINCIPIANTE · ~5 min</p>
+    <div class="guide-card" data-game="pesca" data-level="principiante">
+      <p class="guide-meta">PESCA · <span class="level-badge principiante">PRINCIPIANTE</span> · ~5 min</p>
       <h3 class="guide-title">WIP</h3>
-      <div class="guide-desc"><p>WIP</p></div>
-    </a>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc"><p>WIP</p></div>
+      </div>
+    </div>
 
     <!-- ── Ganadería ── -->
-    <h2 class="section-title" style="margin-top:8px;"><span class="title-arrow">►</span> GANADERÍA</h2>
+    <div class="section-title"><span class="title-arrow">►</span> GANADERÍA</div>
 
-    <a href="javascript:void(0)" class="guide-card" data-game="ganadería" data-level="principiante">
-      <p class="guide-meta">GANADERÍA · PRINCIPIANTE · ~5 min</p>
+    <div class="guide-card" data-game="ganadería" data-level="principiante">
+      <p class="guide-meta">GANADERÍA · <span class="level-badge principiante">PRINCIPIANTE</span> · ~5 min</p>
       <h3 class="guide-title">WIP</h3>
-      <div class="guide-desc"><p>WIP</p></div>
-    </a>
+      <div class="guide-toggle">VER GUÍA</div>
+      <div class="guide-body">
+        <div class="guide-desc"><p>WIP</p></div>
+      </div>
+    </div>
 
-    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
-      Puto el que lo lea.
-    </p>
+    <p class="footer-egg">Puto el que lo lea.</p>
+
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
-      <span class="footer-sep">|</span>
-      <span>NOGATRUS</span>
-    </div>
+    <span class="footer-text">© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
+    <span class="footer-text">NOGATRUS</span>
   </footer>
 
-  <script src="assets/main.js"></script>
+  <!-- ── TASKBAR ── -->
+  <div class="taskbar">
+    <div class="start-orb" title="Inicio">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg>
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="quicklaunch">
+      <a class="ql-btn" href="index.html" title="Inicio">🏠</a>
+      <a class="ql-btn" href="games.html" title="Juegos">🎮</a>
+      <a class="ql-btn" href="commands.html" title="Comandos">⌨</a>
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="taskbar-windows">
+      <div class="tw-item active">📜 GameWiki — Guías</div>
+    </div>
+    <div class="tray">
+      <span class="tray-icon">🔊</span>
+      <span class="tray-icon">📶</span>
+      <div class="tray-clock">
+        <span class="tray-time" id="trayTime">00:00</span>
+        <span class="tray-date" id="trayDate">--/--/----</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const date = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
+      ['trayTime','headerTime'].forEach(id => document.getElementById(id).textContent = time);
+      ['trayDate','headerDate'].forEach(id => document.getElementById(id).textContent = date);
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+
+    // Collapsible guide cards
+    document.querySelectorAll('.guide-card').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('open'));
+    });
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.guide-card').forEach(card => {
+          const game  = card.dataset.game;
+          const level = card.dataset.level;
+          const show  = f === 'all' || game === f || level === f;
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    // Search
+    document.getElementById('guideSearch').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.guide-card').forEach(card => {
+        card.classList.toggle('hidden', !card.textContent.toLowerCase().includes(q));
+      });
+    });
+  </script>
 </body>
 </html>
