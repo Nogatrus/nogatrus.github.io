@@ -5,33 +5,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GameWiki — Glosario</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg:        rgba(255,255,255,0.05);
+      --glass-bg-hover:  rgba(255,255,255,0.09);
+      --glass-border:    rgba(255,255,255,0.12);
+      --glass-border-hi: rgba(255,255,255,0.22);
+      --accent:          #4fa3e8;
+      --text-primary:    #e8edf2;
+      --text-secondary:  #8fa5bc;
+      --text-dim:        #556070;
+      --bg-deep:         #0a0e14;
+      --taskbar-h:       40px;
+      --font-ui:         'Rajdhani', sans-serif;
+      --font-mono:       'Share Tech Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: var(--taskbar-h);
+    }
+    .desktop-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(10,60,120,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(30,80,150,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(0,30,70,0.6) 0%, transparent 70%),
+        linear-gradient(175deg, #0d1620 0%, #080d18 50%, #050910 100%);
+    }
+    .desktop-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(79,163,232,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,163,232,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; height: 36px; z-index: 200;
+      background: rgba(8,14,26,0.75); border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px); display: flex; align-items: center; padding: 0 18px;
+    }
+    .logo {
+      font-family: var(--font-ui); font-size: 15px; font-weight: 700;
+      letter-spacing: 2px; color: var(--text-primary); margin-right: 28px;
+      display: flex; align-items: center; gap: 4px; text-decoration: none;
+    }
+    .logo-accent { color: var(--accent); }
+    .header-nav { display: flex; }
+    .header-nav a {
+      color: var(--text-secondary); text-decoration: none; font-size: 12px;
+      padding: 0 12px; height: 36px; display: flex; align-items: center;
+      transition: color 0.15s, background 0.15s;
+      border-right: 1px solid transparent; border-left: 1px solid transparent;
+      letter-spacing: 0.3px;
+    }
+    .header-nav a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.06); }
+    .header-nav a.active { color: var(--accent); background: rgba(79,163,232,0.08); border-color: rgba(79,163,232,0.12); }
+    .header-clock {
+      margin-left: auto; font-family: var(--font-mono); font-size: 12px;
+      color: var(--text-dim); display: flex; flex-direction: column;
+      align-items: flex-end; line-height: 1.2;
+    }
+
+    /* MAIN */
+    main {
+      position: relative; z-index: 1; padding-top: 52px;
+      max-width: 900px; margin: 0 auto;
+      padding-left: 24px; padding-right: 24px; padding-bottom: 64px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-dim); letter-spacing: 1px; padding-top: 8px;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
+    .breadcrumb a:hover { opacity: 0.7; }
+
+    .page-header {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 8px; padding: 24px 28px; backdrop-filter: blur(16px);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(79,163,232,0.4), transparent);
+    }
+    .page-header h1 { font-size: 22px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
+    .page-header p { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; }
+
+    .search-wrap { position: relative; }
+    .search-input {
+      width: 100%; height: 38px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px; color: var(--text-primary);
+      font-family: var(--font-mono); font-size: 13px;
+      padding: 0 44px 0 14px; outline: none;
+      transition: border-color 0.2s, background 0.2s; letter-spacing: 0.5px;
+    }
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus { border-color: var(--accent); background: rgba(79,163,232,0.05); box-shadow: 0 0 0 3px rgba(79,163,232,0.08); }
+    .search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 15px; pointer-events: none; }
+
+    /* ALPHA INDEX */
+    .alpha-index {
+      display: flex; flex-wrap: wrap; gap: 4px;
+    }
+    .alpha-btn {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+      width: 32px; height: 28px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 3px; color: var(--text-dim); cursor: pointer;
+      transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+    }
+    .alpha-btn:hover { color: var(--text-secondary); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
+    .alpha-btn.active { color: var(--accent); border-color: rgba(79,163,232,0.4); background: rgba(79,163,232,0.08); }
+    .alpha-btn.empty { opacity: 0.25; cursor: default; pointer-events: none; }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, rgba(79,163,232,0.2), transparent);
+    }
+
+    /* GLOSSARY ENTRIES */
+    .glossary-section { display: flex; flex-direction: column; gap: 2px; }
+    .glossary-section.hidden { display: none; }
+
+    .glossary-entry {
+      display: flex; align-items: baseline; gap: 16px;
+      padding: 12px 16px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 5px; transition: background 0.15s, border-color 0.15s;
+    }
+    .glossary-entry:hover { background: var(--glass-bg-hover); border-color: rgba(79,163,232,0.15); }
+    .glossary-entry.hidden { display: none; }
+
+    .glossary-term {
+      font-family: var(--font-mono); font-size: 13px; color: var(--accent);
+      letter-spacing: 1px; flex-shrink: 0; min-width: 140px;
+    }
+    .glossary-def {
+      font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 24px; max-width: 900px; margin: 0 auto; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-text { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+    .footer-egg { font-family: var(--font-mono); font-size: 9px; color: var(--text-dim); opacity: 0.4; letter-spacing: 1px; text-align: center; }
+
+    /* TASKBAR */
+    .taskbar {
+      position: fixed; bottom: 0; left: 0; right: 0; height: var(--taskbar-h);
+      z-index: 300; background: rgba(8,12,22,0.82);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px) saturate(1.3);
+      display: flex; align-items: center; padding: 0 10px; gap: 6px;
+    }
+    .start-orb {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #6fc8ff 0%, #2277cc 45%, #0a4498 100%);
+      border: 1px solid rgba(100,180,255,0.4);
+      box-shadow: 0 0 10px rgba(79,163,232,0.4), 0 0 20px rgba(79,163,232,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; transition: box-shadow 0.2s;
+    }
+    .start-orb:hover { box-shadow: 0 0 16px rgba(79,163,232,0.6), 0 0 32px rgba(79,163,232,0.25), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .start-orb svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.9); }
+    .taskbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 4px; }
+    .quicklaunch { display: flex; gap: 2px; }
+    .ql-btn {
+      width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+      font-size: 15px; border-radius: 4px; cursor: pointer; transition: background 0.15s;
+      color: var(--text-secondary); border: none; background: none; text-decoration: none;
+    }
+    .ql-btn:hover { background: rgba(255,255,255,0.07); }
+    .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
+    .tw-item {
+      height: 30px; padding: 0 12px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px; display: flex; align-items: center; gap: 6px;
+      font-size: 11px; color: var(--text-secondary); white-space: nowrap;
+      max-width: 180px; font-family: var(--font-mono);
+    }
+    .tw-item.active { background: rgba(79,163,232,0.12); border-color: rgba(79,163,232,0.25); color: var(--text-primary); }
+    .tray {
+      display: flex; align-items: center; gap: 8px;
+      padding: 0 10px 0 8px; height: 30px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .tray-icon { font-size: 13px; color: var(--text-dim); }
+    .tray-clock { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; font-family: var(--font-mono); }
+    .tray-time { font-size: 12px; color: var(--text-primary); }
+    .tray-date { font-size: 9px; color: var(--text-dim); }
+  </style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="crt-vignette"></div>
+  <div class="desktop-bg"></div>
 
   <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <span class="logo-bracket">[</span>
-        <span class="logo-text">GAME<span class="logo-accent">WIKI</span></span>
-        <span class="logo-bracket">]</span>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="games.html" class="nav-link">JUEGOS</a>
-        <a href="commands.html" class="nav-link">COMANDOS</a>
-        <a href="mechanics.html" class="nav-link">MECÁNICAS</a>
-        <a href="guides.html" class="nav-link">GUÍAS</a>
-        <a href="glossary.html" class="nav-link active">GLOSARIO</a>
-      </nav>
-      <div class="header-status"><span class="blink">■</span> ONLINE</div>
+    <a href="index.html" class="logo">
+      <span style="color:var(--text-dim);">[</span>GAME<span class="logo-accent">WIKI</span><span style="color:var(--text-dim);">]</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="games.html">Juegos</a>
+      <a href="commands.html">Comandos</a>
+      <a href="mechanics.html">Mecánicas</a>
+      <a href="guides.html">Guías</a>
+      <a href="glossary.html" class="active">Glosario</a>
+    </nav>
+    <div class="header-clock">
+      <span id="headerTime">00:00</span>
+      <span style="font-size:9px;" id="headerDate">--/--/----</span>
     </div>
   </header>
 
-  <main class="main-content">
+  <main>
     <div class="breadcrumb">
       <a href="index.html">HOME</a><span>»</span>GLOSARIO
     </div>
@@ -42,38 +251,145 @@
     </div>
 
     <div class="search-wrap">
-      <input type="text" class="search-input" placeholder="Buscar término..." id="glossSearch" />
+      <input type="text" class="search-input" placeholder="BUSCAR TÉRMINO..." id="glossSearch" autocomplete="off" />
       <span class="search-icon">🔍</span>
     </div>
 
-    <div class="alpha-index" id="alphaIndex">
-      <!-- Generado por JS -->
-    </div>
+    <div class="alpha-index" id="alphaIndex"></div>
 
-    <div id="glossaryList">
-      <div class="glossary-entry" data-letter="a">
-        <p class="glossary-term">WIP</p>
-        <p class="glossary-def">wip</p>
-      </div>
-      <div class="glossary-entry" data-letter="b">
-        <p class="glossary-term">WIP</p>
-        <p class="glossary-def">wip</p>
-      </div>
-    </div>
+    <div id="glossaryList"></div>
 
-    <p style="font-family: var(--font-px); font-size: 0.4rem; color: var(--text-dim); margin-top: 32px; letter-spacing: 1px;">
-      vanpiros esiten
-    </p>
+    <p class="footer-egg">vanpiros esiten</p>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
-      <span class="footer-sep">|</span>
-      <span>NOGATRUS</span>
-    </div>
+    <span class="footer-text">© GAMEWIKI — HOSTEADO EN LA PUERTA DE TU CASA</span>
+    <span class="footer-text">NOGATRUS</span>
   </footer>
 
-  <script src="assets/main.js"></script>
+  <div class="taskbar">
+    <div class="start-orb" title="Inicio"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg></div>
+    <div class="taskbar-sep"></div>
+    <div class="quicklaunch">
+      <a class="ql-btn" href="index.html" title="Inicio">🏠</a>
+      <a class="ql-btn" href="games.html" title="Juegos">🎮</a>
+      <a class="ql-btn" href="commands.html" title="Comandos">⌨</a>
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="taskbar-windows">
+      <div class="tw-item active">📖 GameWiki — Glosario</div>
+    </div>
+    <div class="tray">
+      <span class="tray-icon">🔊</span>
+      <span class="tray-icon">📶</span>
+      <div class="tray-clock">
+        <span class="tray-time" id="trayTime">00:00</span>
+        <span class="tray-date" id="trayDate">--/--/----</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── DATOS DEL GLOSARIO ──
+    // Cuando tengas términos reales, añádelos aquí en este formato.
+    const TERMS = [
+      { letter: 'a', term: 'WIP', def: 'wip' },
+      { letter: 'b', term: 'WIP', def: 'wip' },
+    ];
+
+    // ── RELOJ ──
+    function updateClock() {
+      const now = new Date(), pad = n => String(n).padStart(2,'0');
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const date = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
+      ['trayTime','headerTime'].forEach(id => document.getElementById(id).textContent = time);
+      ['trayDate','headerDate'].forEach(id => document.getElementById(id).textContent = date);
+    }
+    updateClock(); setInterval(updateClock, 10000);
+
+    // ── BUILD GLOSSARY ──
+    const listEl = document.getElementById('glossaryList');
+    const alphaEl = document.getElementById('alphaIndex');
+
+    // Agrupar por letra
+    const byLetter = {};
+    TERMS.forEach(t => {
+      const l = t.letter.toLowerCase();
+      if (!byLetter[l]) byLetter[l] = [];
+      byLetter[l].push(t);
+    });
+
+    // Renderizar secciones
+    Object.keys(byLetter).sort().forEach(letter => {
+      const section = document.createElement('div');
+      section.className = 'glossary-section';
+      section.dataset.letter = letter;
+
+      const title = document.createElement('div');
+      title.className = 'section-title';
+      title.textContent = letter.toUpperCase();
+      section.appendChild(title);
+
+      byLetter[letter].forEach(t => {
+        const entry = document.createElement('div');
+        entry.className = 'glossary-entry';
+        entry.dataset.letter = letter;
+        entry.innerHTML = `<span class="glossary-term">${t.term}</span><span class="glossary-def">${t.def}</span>`;
+        section.appendChild(entry);
+      });
+
+      listEl.appendChild(section);
+    });
+
+    // Renderizar índice alfabético
+    const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    ALPHABET.forEach(l => {
+      const btn = document.createElement('button');
+      btn.className = 'alpha-btn' + (byLetter[l] ? '' : ' empty');
+      btn.textContent = l.toUpperCase();
+      btn.dataset.letter = l;
+      if (byLetter[l]) {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.querySelectorAll('.glossary-section').forEach(s => {
+            s.classList.toggle('hidden', s.dataset.letter !== l);
+          });
+        });
+      }
+      alphaEl.appendChild(btn);
+    });
+
+    // Botón "TODOS"
+    const allBtn = document.createElement('button');
+    allBtn.className = 'alpha-btn active';
+    allBtn.textContent = 'ALL';
+    allBtn.style.width = '44px';
+    allBtn.addEventListener('click', () => {
+      document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+      allBtn.classList.add('active');
+      document.querySelectorAll('.glossary-section').forEach(s => s.classList.remove('hidden'));
+    });
+    alphaEl.prepend(allBtn);
+
+    // ── BÚSQUEDA ──
+    document.getElementById('glossSearch').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      if (!q) {
+        document.querySelectorAll('.glossary-entry').forEach(e => e.classList.remove('hidden'));
+        document.querySelectorAll('.glossary-section').forEach(s => s.classList.remove('hidden'));
+        return;
+      }
+      document.querySelectorAll('.glossary-section').forEach(section => {
+        let anyVisible = false;
+        section.querySelectorAll('.glossary-entry').forEach(entry => {
+          const match = entry.textContent.toLowerCase().includes(q);
+          entry.classList.toggle('hidden', !match);
+          if (match) anyVisible = true;
+        });
+        section.classList.toggle('hidden', !anyVisible);
+      });
+    });
+  </script>
 </body>
 </html>
