@@ -46,14 +46,10 @@
         linear-gradient(90deg, rgba(79,163,232,0.03) 1px, transparent 1px);
       background-size: 48px 48px;
     }
-
-    /* HEADER */
     .site-header {
       position: fixed; top: 0; left: 0; right: 0; height: 36px; z-index: 200;
-      background: rgba(8,14,26,0.75);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      backdrop-filter: blur(20px);
-      display: flex; align-items: center; padding: 0 18px;
+      background: rgba(8,14,26,0.75); border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px); display: flex; align-items: center; padding: 0 18px;
     }
     .logo {
       font-family: var(--font-ui); font-size: 15px; font-weight: 700;
@@ -76,16 +72,12 @@
       color: var(--text-dim); display: flex; flex-direction: column;
       align-items: flex-end; line-height: 1.2;
     }
-
-    /* MAIN */
     main {
       position: relative; z-index: 1; padding-top: 52px;
       max-width: 900px; margin: 0 auto;
       padding-left: 24px; padding-right: 24px; padding-bottom: 64px;
       display: flex; flex-direction: column; gap: 28px;
     }
-
-    /* BREADCRUMB */
     .breadcrumb {
       display: flex; align-items: center; gap: 8px;
       font-family: var(--font-mono); font-size: 11px;
@@ -93,8 +85,6 @@
     }
     .breadcrumb a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
     .breadcrumb a:hover { opacity: 0.7; }
-
-    /* PAGE HEADER */
     .page-header {
       background: var(--glass-bg); border: 1px solid var(--glass-border);
       border-radius: 8px; padding: 24px 28px; backdrop-filter: blur(16px);
@@ -106,8 +96,6 @@
     }
     .page-header h1 { font-family: var(--font-ui); font-size: 22px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
     .page-header p { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; }
-
-    /* SEARCH */
     .search-wrap { position: relative; }
     .search-input {
       width: 100%; height: 38px;
@@ -120,8 +108,6 @@
     .search-input::placeholder { color: var(--text-dim); }
     .search-input:focus { border-color: var(--accent); background: rgba(79,163,232,0.05); box-shadow: 0 0 0 3px rgba(79,163,232,0.08); }
     .search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 15px; pointer-events: none; }
-
-    /* FILTER BAR */
     .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-btn {
       font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
@@ -131,10 +117,7 @@
     }
     .filter-btn:hover { color: var(--text-secondary); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
     .filter-btn.active { color: var(--accent); border-color: rgba(79,163,232,0.4); background: rgba(79,163,232,0.08); }
-
-    /* GAMES LIST */
     .games-list { display: flex; flex-direction: column; gap: 3px; }
-
     .game-entry {
       display: flex; align-items: center; gap: 16px;
       padding: 14px 18px;
@@ -145,23 +128,15 @@
     }
     .game-entry::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 2px; background: var(--accent); opacity: 0;
-      transition: opacity 0.15s;
+      width: 2px; background: var(--accent); opacity: 0; transition: opacity 0.15s;
     }
     .game-entry:hover { background: var(--glass-bg-hover); border-color: rgba(79,163,232,0.2); padding-left: 24px; }
     .game-entry:hover::before { opacity: 1; }
     .game-entry.hidden { display: none; }
-
-    .game-id {
-      font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);
-      width: 36px; flex-shrink: 0; letter-spacing: 1px;
-    }
+    .game-id { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); width: 36px; flex-shrink: 0; letter-spacing: 1px; }
     .game-icon { font-size: 20px; flex-shrink: 0; }
     .game-info { flex: 1; display: flex; flex-direction: column; gap: 3px; }
-    .game-name {
-      font-family: var(--font-ui); font-size: 16px; font-weight: 700;
-      color: var(--text-primary); letter-spacing: 0.5px;
-    }
+    .game-name { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.5px; }
     .game-desc { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.3px; }
     .game-tags { display: flex; gap: 6px; flex-shrink: 0; }
     .tag {
@@ -171,8 +146,6 @@
     }
     .game-arrow { color: var(--text-dim); font-size: 16px; transition: color 0.15s, transform 0.15s; }
     .game-entry:hover .game-arrow { color: var(--accent); transform: translateX(4px); }
-
-    /* FOOTER */
     .site-footer {
       position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.05);
       padding: 16px 24px; max-width: 900px; margin: 0 auto; width: 100%;
@@ -180,8 +153,6 @@
     }
     .footer-text { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
     .footer-egg { font-family: var(--font-mono); font-size: 9px; color: var(--text-dim); opacity: 0.4; letter-spacing: 1px; text-align: center; }
-
-    /* TASKBAR */
     .taskbar {
       position: fixed; bottom: 0; left: 0; right: 0; height: var(--taskbar-h);
       z-index: 300; background: rgba(8,12,22,0.82);
@@ -201,26 +172,12 @@
     .start-orb svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.9); }
     .taskbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 4px; }
     .quicklaunch { display: flex; gap: 2px; }
-    .ql-btn {
-      width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
-      font-size: 15px; border-radius: 4px; cursor: pointer; transition: background 0.15s;
-      color: var(--text-secondary); border: none; background: none; text-decoration: none;
-    }
+    .ql-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 15px; border-radius: 4px; cursor: pointer; transition: background 0.15s; color: var(--text-secondary); border: none; background: none; text-decoration: none; }
     .ql-btn:hover { background: rgba(255,255,255,0.07); }
     .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
-    .tw-item {
-      height: 30px; padding: 0 12px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 4px; display: flex; align-items: center; gap: 6px;
-      font-size: 11px; color: var(--text-secondary); cursor: pointer;
-      white-space: nowrap; max-width: 180px; font-family: var(--font-mono);
-    }
+    .tw-item { height: 30px; padding: 0 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 4px; display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-secondary); cursor: pointer; white-space: nowrap; max-width: 180px; font-family: var(--font-mono); }
     .tw-item.active { background: rgba(79,163,232,0.12); border-color: rgba(79,163,232,0.25); color: var(--text-primary); }
-    .tray {
-      display: flex; align-items: center; gap: 8px;
-      padding: 0 10px 0 8px; height: 30px;
-      border-left: 1px solid rgba(255,255,255,0.07);
-    }
+    .tray { display: flex; align-items: center; gap: 8px; padding: 0 10px 0 8px; height: 30px; border-left: 1px solid rgba(255,255,255,0.07); }
     .tray-icon { font-size: 13px; color: var(--text-dim); }
     .tray-clock { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; font-family: var(--font-mono); }
     .tray-time { font-size: 12px; color: var(--text-primary); }
@@ -267,6 +224,7 @@
       <button class="filter-btn active" data-filter="all">TODOS</button>
       <button class="filter-btn" data-filter="roguelike">ROGUELIKE</button>
       <button class="filter-btn" data-filter="rpg">RPG</button>
+      <button class="filter-btn" data-filter="gestion">GESTIÓN</button>
       <button class="filter-btn" data-filter="estrategia">ESTRATEGIA</button>
       <button class="filter-btn" data-filter="simulacion">SIMULACIÓN</button>
       <button class="filter-btn" data-filter="puzzle">PUZZLE</button>
@@ -274,6 +232,7 @@
     </div>
 
     <div class="games-list" id="gamesList">
+
       <a href="guides.html" class="game-entry" data-tags="puzzle">
         <span class="game-id">#001</span>
         <span class="game-icon">🔡</span>
@@ -285,7 +244,7 @@
         <span class="game-arrow">→</span>
       </a>
 
-      <a href="guides.html" class="game-entry" data-tags="rpg simulacion estrategia">
+      <a href="guides.html" class="game-entry" data-tags="gestion simulacion estrategia">
         <span class="game-id">#002</span>
         <span class="game-icon">🌾</span>
         <div class="game-info">
@@ -307,8 +266,19 @@
         <span class="game-arrow">→</span>
       </a>
 
-      <a href="guides.html" class="game-entry" data-tags="rpg simulacion estrategia">
+      <a href="guides.html" class="game-entry" data-tags="gestion simulacion estrategia">
         <span class="game-id">#004</span>
+        <span class="game-icon">📊</span>
+        <div class="game-info">
+          <span class="game-name">Mercado</span>
+          <span class="game-desc">Vende los artículos que tienes al precio del mercado.</span>
+        </div>
+        <div class="game-tags"><span class="tag">GESTIÓN</span><span class="tag">SIMULACIÓN</span><span class="tag">ESTRATEGIA</span></div>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <a href="guides.html" class="game-entry" data-tags="gestion simulacion estrategia">
+        <span class="game-id">#005</span>
         <span class="game-icon">🐄</span>
         <div class="game-info">
           <span class="game-name">Ganadería</span>
@@ -317,10 +287,9 @@
         <div class="game-tags"><span class="tag">GESTIÓN</span><span class="tag">SIMULACIÓN</span><span class="tag">ESTRATEGIA</span></div>
         <span class="game-arrow">→</span>
       </a>
-    </div>
 
-    <a href="guides.html" class="game-entry" data-tags="entretenimiento">
-        <span class="game-id">#005</span>
+      <a href="guides.html" class="game-entry" data-tags="entretenimiento">
+        <span class="game-id">#006</span>
         <span class="game-icon">🧙</span>
         <div class="game-info">
           <span class="game-name">Curiosidad</span>
@@ -330,8 +299,8 @@
         <span class="game-arrow">→</span>
       </a>
 
-    <a href="guides.html" class="game-entry" data-tags="puzzle">
-        <span class="game-id">#006</span>
+      <a href="guides.html" class="game-entry" data-tags="puzzle">
+        <span class="game-id">#007</span>
         <span class="game-icon">❓</span>
         <div class="game-info">
           <span class="game-name">Adivinanza</span>
@@ -340,6 +309,8 @@
         <div class="game-tags"><span class="tag">PUZZLE</span></div>
         <span class="game-arrow">→</span>
       </a>
+
+    </div>
 
     <p class="footer-egg">RAHHHHH</p>
   </main>
