@@ -72,7 +72,6 @@
       align-items: center;
       padding: 0 18px;
     }
-
     .logo {
       font-family: var(--font-ui);
       font-size: 15px;
@@ -86,7 +85,6 @@
       text-decoration: none;
     }
     .logo-accent { color: var(--accent); }
-
     .header-nav { display: flex; gap: 0; }
     .header-nav a {
       color: var(--text-secondary);
@@ -112,7 +110,6 @@
       background: rgba(79,163,232,0.08);
       border-color: rgba(79,163,232,0.12);
     }
-
     .header-clock {
       margin-left: auto;
       font-family: var(--font-mono);
@@ -136,7 +133,7 @@
       padding-bottom: 64px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 28px;
     }
 
     /* ── BREADCRUMB ── */
@@ -150,11 +147,7 @@
       letter-spacing: 1px;
       padding-top: 8px;
     }
-    .breadcrumb a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
     .breadcrumb a:hover { opacity: 0.7; }
 
     /* ── PAGE HEADER ── */
@@ -190,9 +183,7 @@
     }
 
     /* ── SEARCH ── */
-    .search-wrap {
-      position: relative;
-    }
+    .search-wrap { position: relative; }
     .search-input {
       width: 100%;
       height: 38px;
@@ -251,34 +242,132 @@
       background: rgba(79,163,232,0.08);
     }
 
-    /* ── SECTION TITLE ── */
-    .section-title {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 12px;
+    /* ── CMD SECTION ── */
+    .cmd-section { display: flex; flex-direction: column; }
+    .cmd-section.hidden { display: none; }
+
+    /* ── COLLAPSIBLE HEADER ── */
+    .section-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
-    }
-    .title-arrow { color: var(--accent); }
-
-    /* ── CMD SECTION ── */
-    .cmd-section {
-      display: flex;
-      flex-direction: column;
       gap: 0;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 6px 6px 0 0;
+      padding: 0 14px;
+      height: 40px;
+      transition: background 0.15s;
+      position: relative;
+      overflow: hidden;
     }
-    .cmd-section.hidden { display: none; }
+    .section-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(79,163,232,0.25), transparent);
+    }
+    .section-header:hover {
+      background: rgba(255,255,255,0.055);
+    }
+    .cmd-section.collapsed .section-header {
+      border-radius: 6px;
+      border-bottom-color: rgba(255,255,255,0.09);
+    }
+
+    .section-toggle-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+      margin-right: 10px;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .cmd-section.collapsed .section-toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+    .section-header:hover .section-label { color: var(--text-primary); }
+
+    .section-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      padding: 2px 8px;
+      margin-right: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SORT CONTROLS ── */
+    .sort-controls {
+      display: flex;
+      gap: 4px;
+    }
+    .sort-btn {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+      padding: 3px 9px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sort-btn:hover {
+      color: var(--text-secondary);
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+    }
+    .sort-btn.active {
+      color: var(--accent);
+      border-color: rgba(79,163,232,0.35);
+      background: rgba(79,163,232,0.07);
+    }
+
+    /* ── TABLE WRAPPER ── */
+    .table-body {
+      overflow: hidden;
+      transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.2s ease;
+      max-height: 4000px;
+      opacity: 1;
+    }
+    .cmd-section.collapsed .table-body {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .table-wrap {
+      background: var(--glass-bg);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+      overflow-x: auto;
+      backdrop-filter: blur(16px);
+    }
 
     /* ── TABLE ── */
     .cmd-table {
@@ -288,55 +377,64 @@
       font-size: 12px;
     }
     .cmd-table thead tr {
-      background: rgba(79,163,232,0.06);
-      border-bottom: 1px solid rgba(79,163,232,0.2);
+      background: rgba(79,163,232,0.05);
+      border-bottom: 1px solid rgba(79,163,232,0.15);
     }
     .cmd-table thead th {
-      padding: 10px 14px;
+      padding: 9px 14px;
       text-align: left;
       font-size: 10px;
       letter-spacing: 2px;
       color: var(--accent);
       font-weight: 600;
     }
+    .cmd-table thead th:first-child { width: 28%; }
+    .cmd-table thead th:nth-child(2) { width: 45%; }
+    .cmd-table thead th:nth-child(3) { width: 27%; }
+
     .cmd-table tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: background 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.12s;
+    }
+    .cmd-table tbody tr:last-child { border-bottom: none; }
+    .cmd-table tbody tr:nth-child(even) {
+      background: rgba(255,255,255,0.015);
     }
     .cmd-table tbody tr:hover {
-      background: rgba(255,255,255,0.03);
+      background: rgba(79,163,232,0.04);
     }
     .cmd-table tbody td {
-      padding: 12px 14px;
+      padding: 11px 14px;
       vertical-align: top;
-      color: var(--text-secondary);
       line-height: 1.6;
     }
     .cmd-table tbody td.key {
       color: var(--accent);
-      white-space: nowrap;
       font-size: 12px;
-      min-width: 200px;
     }
     .cmd-table tbody td.desc {
       color: var(--text-secondary);
       font-size: 12px;
+    }
+    .cmd-table tbody td.ex {
+      color: var(--text-dim);
+      font-size: 11px;
     }
     .cmd-table em { color: #cc8844; font-style: normal; }
     .cmd-table strong { color: var(--accent2); font-weight: 600; }
     .cmd-table hr {
       border: none;
       border-top: 1px solid rgba(255,255,255,0.06);
-      margin: 6px 0;
+      margin: 5px 0;
     }
 
-    .table-wrap {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 6px;
-      overflow: hidden;
-      overflow-x: auto;
-      backdrop-filter: blur(16px);
+    /* zebra stripe subtle left accent on key cell */
+    .cmd-table tbody tr td.key {
+      border-left: 2px solid transparent;
+      transition: border-color 0.12s;
+    }
+    .cmd-table tbody tr:hover td.key {
+      border-left-color: rgba(79,163,232,0.4);
     }
 
     /* ── FOOTER ── */
@@ -388,11 +486,8 @@
       background: radial-gradient(circle at 38% 35%, #6fc8ff 0%, #2277cc 45%, #0a4498 100%);
       border: 1px solid rgba(100,180,255,0.4);
       box-shadow: 0 0 10px rgba(79,163,232,0.4), 0 0 20px rgba(79,163,232,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
       transition: box-shadow 0.2s;
     }
     .start-orb:hover {
@@ -404,30 +499,21 @@
     .ql-btn {
       width: 30px; height: 30px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.15s;
-      color: var(--text-secondary);
-      border: none;
-      background: none;
-      text-decoration: none;
+      font-size: 15px; border-radius: 4px; cursor: pointer;
+      transition: background 0.15s; color: var(--text-secondary);
+      border: none; background: none; text-decoration: none;
     }
     .ql-btn:hover { background: rgba(255,255,255,0.07); }
     .taskbar-windows { flex: 1; display: flex; gap: 3px; overflow: hidden; }
     .tw-item {
-      height: 30px;
-      padding: 0 12px;
+      height: 30px; padding: 0 12px;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.09);
       border-radius: 4px;
       display: flex; align-items: center; gap: 6px;
-      font-size: 11px;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: background 0.15s;
-      white-space: nowrap;
-      max-width: 180px;
+      font-size: 11px; color: var(--text-secondary);
+      cursor: pointer; transition: background 0.15s;
+      white-space: nowrap; max-width: 180px;
       font-family: var(--font-mono);
     }
     .tw-item.active {
@@ -437,8 +523,7 @@
     }
     .tray {
       display: flex; align-items: center; gap: 8px;
-      padding: 0 10px 0 8px;
-      height: 30px;
+      padding: 0 10px 0 8px; height: 30px;
       border-left: 1px solid rgba(255,255,255,0.07);
     }
     .tray-icon { font-size: 13px; color: var(--text-dim); cursor: default; }
@@ -446,9 +531,62 @@
     .tray-time { font-size: 12px; color: var(--text-primary); }
     .tray-date { font-size: 9px; color: var(--text-dim); }
 
+    /* ── GLOBAL SORT BAR ── */
+    .global-sort-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+    .global-sort-bar span { margin-right: 2px; }
+    .gsort-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .gsort-btn:hover {
+      color: var(--text-secondary);
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+    }
+    .gsort-btn.active {
+      color: var(--accent);
+      border-color: rgba(79,163,232,0.35);
+      background: rgba(79,163,232,0.07);
+    }
+    .collapse-all-btn {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .collapse-all-btn:hover {
+      color: var(--text-secondary);
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+    }
+
     @media (max-width: 600px) {
-      .cmd-table tbody td.key { min-width: 140px; font-size: 11px; }
+      .cmd-table tbody td.key { font-size: 11px; }
       .header-nav a { padding: 0 8px; font-size: 11px; }
+      .sort-btn { display: none; }
     }
   </style>
 </head>
@@ -500,184 +638,257 @@
       <button class="filter-btn" data-filter="minijuegos">MINIJUEGOS</button>
       <button class="filter-btn" data-filter="economía">ECONOMÍA</button>
       <button class="filter-btn" data-filter="granja">GRANJA</button>
-      <button class="filter-btn" data-filter="inventario">INVENTARIO</button>
-      <button class="filter-btn" data-filter="pesca">PESCA</button>
       <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
+      <button class="filter-btn" data-filter="emotes">EMOTES</button>
+      <button class="filter-btn" data-filter="utilidad">UTILIDAD</button>
+      <button class="filter-btn" data-filter="bot">BOT</button>
     </div>
 
-    <!-- ── Social ── -->
+    <!-- Global sort + collapse bar -->
+    <div class="global-sort-bar">
+      <span>ORDEN:</span>
+      <button class="gsort-btn active" id="gSortDefault">DEFAULT</button>
+      <button class="gsort-btn" id="gSortAlpha">A → Z</button>
+      <button class="collapse-all-btn" id="collapseAllBtn">CONTRAER TODO</button>
+    </div>
+
+    <!-- ── SOCIAL ── -->
     <section class="cmd-section" data-game="social">
-      <div class="section-title"><span class="title-arrow">►</span> SOCIAL</div>
-      <div class="table-wrap">
-        <table class="cmd-table">
-          <thead>
-            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="key">?cookie</td>
-              <td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes.</td>
-              <td>?cookie</td>
-            </tr>
-            <tr>
-              <td class="key">?cookie stats [user]</td>
-              <td class="desc">Puedes ver tus estadísticas de galletas de fortuna.</td>
-              <td>?cookie stats<hr>?cookie stats Nogatrus</td>
-            </tr>
-            <tr>
-              <td class="key">?cookie gift [user]</td>
-              <td class="desc">Puedes regalar una galleta al otro usuario, y puedes acumular hasta 3 galletas regaladas sin contar la que tienes a diario.</td>
-              <td>?cookie gift Nogatrus</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">SOCIAL</span>
+        <span class="section-count">10 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?cookie</td><td class="desc">Obtén una galleta de fortuna, hay en total 1.2k frases diferentes.</td><td class="ex">?cookie</td></tr>
+              <tr><td class="key">?cookie stats [user]</td><td class="desc">Puedes ver tus estadísticas de galletas de fortuna.</td><td class="ex">?cookie stats<hr>?cookie stats Nogatrus</td></tr>
+              <tr><td class="key">?cookie gift [user]</td><td class="desc">Puedes regalar una galleta al otro usuario, y puedes acumular hasta 3 galletas regaladas sin contar la que tienes a diario.</td><td class="ex">?cookie gift Nogatrus</td></tr>
+              <tr><td class="key">?top</td><td class="desc">Por ahora puedes ver el top de jugadores según la cantidad de puntos que tengan.</td><td class="ex">?top</td></tr>
+              <tr><td class="key">?perfil [user]</td><td class="desc">Puedes ver tus stats de los juegos, tus niveles y el dinero que tienes.</td><td class="ex">?perfil<hr>?perfil Nogatrus</td></tr>
+              <tr><td class="key">?level [user]</td><td class="desc">Puedes ver tus niveles de juego. Por ahora puedes buscar tanto por nivel "general" como por nivel de "farm".</td><td class="ex">?level<hr>?level general<hr>?level farm Nogatrus</td></tr>
+              <tr><td class="key">?bug [mensaje]</td><td class="desc">Notifica un problema o bug que encuentres con el bot. Solo puedes mandar máximo 3 reportes activos.</td><td class="ex">?bug<hr>?report</td></tr>
+              <tr><td class="key">?bug list</td><td class="desc">Muestra una lista de todos los bugs que has enviado y su estado de resolución.</td><td class="ex">?bug list</td></tr>
+              <tr><td class="key">?suggest [mensaje]</td><td class="desc">Escribe una sugerencia que consideres interesante para el bot. Solo puedes mandar máximo 3 sugerencias activas.</td><td class="ex">?suggest<hr>?sugerencia</td></tr>
+              <tr><td class="key">?suggest list</td><td class="desc">Muestra una lista de todas las sugerencias que has enviado y su estado de resolución.</td><td class="ex">?suggest list</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- ── Minijuegos ── -->
+    <!-- ── MINIJUEGOS ── -->
     <section class="cmd-section" data-game="minijuegos">
-      <div class="section-title"><span class="title-arrow">►</span> MINIJUEGOS</div>
-      <div class="table-wrap">
-        <table class="cmd-table">
-          <thead>
-            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="key">?hangman [categoría]</td>
-              <td class="desc">Usa el comando para empezar, luego solo teclea una letra sin comandos. Tienes que adivinar una letra antes de poder adivinar la palabra.<hr>Si quieres saber las categorías disponibles, escribe "?hm asd".</td>
-              <td>?hangman rios<hr>?hm</td>
-            </tr>
-            <tr>
-              <td class="key">?hangman stats [user]</td>
-              <td class="desc">Puedes ver tus estadísticas del juego hangman.</td>
-              <td>?hm stats<hr>?hm stats Nogatrus</td>
-            </tr>
-            <tr>
-              <td class="key">?trivia</td>
-              <td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay ~100 preguntas por cada categoría y modo (normal/difícil).</td>
-              <td>?triv</td>
-            </tr>
-            <tr>
-              <td class="key">?trivia stats [user]</td>
-              <td class="desc">Puedes ver tus estadísticas del juego trivia.</td>
-              <td>?triv stats<hr>?triv stats Nogatrus</td>
-            </tr>
-            <tr>
-              <td class="key">?trivia dif [normal/ambos/dificil] [categorías]</td>
-              <td class="desc">Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes.<hr>"Ambos" incluye tanto normal como difícil. Funciona solo por user.</td>
-              <td>?triv dif dificil<hr>?triv dif ambos pokemon<hr>?triv dif dificil matematicas</td>
-            </tr>
-            <tr>
-              <td class="key">?trivia dif [dificil]</td>
-              <td class="desc">Puedes consultar qué categorías tienes en modo Ambos o Difícil y ver qué categorías están disponibles en modo difícil.</td>
-              <td>?triv dif<hr>?triv dif dificil</td>
-            </tr>
-            <tr>
-              <td class="key">?hint</td>
-              <td class="desc">Durante una partida de trivia, puedes pedir una pista pasados los 30s desde la pregunta. Puedes pedir otra pista adicional cuando faltan 15 segundos.</td>
-              <td>?hint</td>
-            </tr>
-            <tr>
-              <td class="key">?skip</td>
-              <td class="desc">Durante una partida de trivia, puedes skipear pasados los 30s desde la pregunta.</td>
-              <td>?skip</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">MINIJUEGOS</span>
+        <span class="section-count">10 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?hangman [categoría]</td><td class="desc">Usa el comando para empezar, luego solo teclea una letra sin comandos. Tienes que adivinar una letra antes de poder adivinar la palabra.<hr>Si quieres saber las categorías disponibles, escribe "?hm asd".</td><td class="ex">?hangman rios<hr>?hm</td></tr>
+              <tr><td class="key">?hangman stats [user]</td><td class="desc">Puedes ver tus estadísticas del juego hangman.</td><td class="ex">?hm stats<hr>?hm stats Nogatrus</td></tr>
+              <tr><td class="key">?trivia</td><td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay ~30 preguntas por cada categoría y modo (normal/difícil).</td><td class="ex">?triv</td></tr>
+              <tr><td class="key">?trivia stats [user]</td><td class="desc">Puedes ver tus estadísticas del juego trivia.</td><td class="ex">?triv stats<hr>?triv stats Nogatrus</td></tr>
+              <tr><td class="key">?trivia dif [normal/ambos/dificil] [categorías]</td><td class="desc">Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes.<hr>"Ambos" incluye tanto normal como difícil. Funciona solo por user.</td><td class="ex">?triv dif dificil<hr>?triv dif ambos pokemon<hr>?triv dif dificil matematicas</td></tr>
+              <tr><td class="key">?trivia dif [dificil]</td><td class="desc">Puedes consultar qué categorías tienes en modo Ambos o Difícil y ver qué categorías están disponibles en modo difícil.</td><td class="ex">?triv dif<hr>?triv dif dificil</td></tr>
+              <tr><td class="key">?hint</td><td class="desc">Durante una partida de trivia, puedes pedir una pista pasados los 30s desde la pregunta. Puedes pedir otra pista adicional cuando faltan 15 segundos.</td><td class="ex">?hint</td></tr>
+              <tr><td class="key">?skip</td><td class="desc">Durante una partida de trivia, puedes skipear pasados los 30s desde la pregunta.</td><td class="ex">?skip</td></tr>
+              <tr><td class="key">?guess</td><td class="desc">Responde adivinando de qué se trata en un contrarreloj de 90 segundos, con tres pistas que te irán dando según pasa el tiempo. Hay ~200-300 preguntas por cada categoría. Para ver qué categorías, escribe "?guess asd".</td><td class="ex">?guess</td></tr>
+              <tr><td class="key">?curiosidad [categoría]<hr>?curiosidad [palabra existente]</td><td class="desc">Muestra una curiosidad aleatoria tanto por categoría como sin ella. Se puede elegir también una palabra que ya exista en ?hangman. Comparte las mismas categorías y palabras que el juego del ahorcado.</td><td class="ex">?curiosidad</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- ── Economía ── -->
+    <!-- ── ECONOMÍA ── -->
     <section class="cmd-section" data-game="economía">
-      <div class="section-title"><span class="title-arrow">►</span> ECONOMÍA</div>
-      <div class="table-wrap">
-        <table class="cmd-table">
-          <thead>
-            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="key">?tz<hr>?tz convert [cantidad]</td>
-              <td class="desc">Ver tus truces o convertir puntos.</td>
-              <td>?tz<hr>?tz convert 500</td>
-            </tr>
-            <tr>
-              <td class="key">?market</td>
-              <td class="desc">Muestra los precios del mercado de productos que ya tengas en tu inventario.</td>
-              <td>?market</td>
-            </tr>
-            <tr>
-              <td class="key">?market top</td>
-              <td class="desc">Muestra los 10 productos más valorados del mercado en este momento.<hr>El comando funciona en este orden después de "top": <em>[nº tier] [estación] [crop/árbol] [normal/perenne]</em></td>
-              <td>?market top 10<hr>?market top verano<hr>?market top 10 primavera arbol<hr>?market top crop perenne</td>
-            </tr>
-            <tr>
-              <td class="key">?market best</td>
-              <td class="desc">Muestra si tienes productos que valgan la pena vender en este momento y cuánto valen.</td>
-              <td>?market best</td>
-            </tr>
-            <tr>
-              <td class="key">?sell<hr>?sell [categoría] all</td>
-              <td class="desc">Vende productos al precio mercado. Para vender todos los cultivos de una vez se elige la categoría fa (granja).<hr>El comando funciona en este orden después de "?sell": <em>[categoría] [cultivo/pez] [cantidad/all] [calidad]</em></td>
-              <td>?sell mandarina all normal<hr>?sell fa all<hr>?sell salmon all</td>
-            </tr>
-            <tr>
-              <td class="key">?buy [item] [cantidad]</td>
-              <td class="desc">Compra productos.</td>
-              <td>?buy banana 4</td>
-            </tr>
-            <tr>
-              <td class="key">?info [crop/árbol/fert/item]</td>
-              <td class="desc">Comprueba la información de un item, como un cultivo o un fertilizante.</td>
-              <td>?info fast<hr>?info mandarina_valenciana</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">ECONOMÍA</span>
+        <span class="section-count">14 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?points [user]</td><td class="desc">Chequea los puntos que tienes o de otro usuario.</td><td class="ex">?points<hr>?points Nogatrus</td></tr>
+              <tr><td class="key">?tz<hr>?tz convert [cantidad]</td><td class="desc">Puedes ver tus truces o convertir puntos. Si es tu primera vez o ya no tienes puntos, te puede regalar 10 puntos.</td><td class="ex">?tz<hr>?tz convert 500</td></tr>
+              <tr><td class="key">?market</td><td class="desc">Muestra los precios del mercado de productos que ya tengas en tu inventario.</td><td class="ex">?market</td></tr>
+              <tr><td class="key">?market top</td><td class="desc">Muestra los 10 productos más valorados del mercado en este momento.<hr>El comando funciona en este orden después de "top": <em>[nº tier] [estación] [crop/árbol] [normal/perenne]</em></td><td class="ex">?market top 10<hr>?market top verano<hr>?market top 10 primavera arbol<hr>?market top crop perenne</td></tr>
+              <tr><td class="key">?market best</td><td class="desc">Muestra si tienes productos que valgan la pena vender en este momento y cuánto valen.</td><td class="ex">?market best</td></tr>
+              <tr><td class="key">?sell<hr>?sell [categoría] all</td><td class="desc">Vende productos al precio mercado. Para vender todos los cultivos de una vez se elige la categoría fa (granja).<hr>El comando funciona en este orden después de "?sell": <em>[categoría] [cultivo/pez] [cantidad/all] [calidad]</em></td><td class="ex">?sell mandarina all normal<hr>?sell fa all<hr>?sell salmon all</td></tr>
+              <tr><td class="key">?buy list [categoría] [nº tier]</td><td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.<hr>El comando funciona en este orden después de "tier": <em>[estación] [crop/árbol] [normal/perenne]</em></td><td class="ex">?buy list fa verano árbol<hr>?buy list fa 6<hr>?buy list fa 3 otoño crop perenne</td></tr>
+              <tr><td class="key">?buy [item] [cantidad]</td><td class="desc">Compra productos.</td><td class="ex">?buy banana 4</td></tr>
+              <tr><td class="key">?info [crop/árbol/fert/item]</td><td class="desc">Comprueba la información de un item, como un cultivo o un fertilizante.</td><td class="ex">?info fast<hr>?info mandarina_valenciana</td></tr>
+              <tr><td class="key">?pedido list [categoría] [nº tier]</td><td class="desc">Muestra los pedidos disponibles para reclamar. Máximo 2 al día real, 3 activos, hasta tu tier máximo de la categoría correspondiente. La categoría de momento es solo fa (granja).</td><td class="ex">?pedido list fa 7</td></tr>
+              <tr><td class="key">?pedido [categoría] info [nº tier] [nº pedido]</td><td class="desc">Muestra los items a entregar y el tiempo exacto en el que va a expirar el pedido elegido. Los números de pedido pueden ser de 1 a 3.</td><td class="ex">?pedido fa info 7 2</td></tr>
+              <tr><td class="key">?pedido [categoría] get [nº tier] [nº pedido]</td><td class="desc">Reclama el pedido elegido en cuestión.</td><td class="ex">?pedido fa get 7 2</td></tr>
+              <tr><td class="key">?pedido [categoría] mis [nº pedido reclamado]</td><td class="desc">Comprueba los pedidos activos que has reclamado, el número de pedido se reordena según cuándo fue reclamado.</td><td class="ex">?pedido fa mis<hr>?pedido fa mis 2</td></tr>
+              <tr><td class="key">?pedido [categoría] sell [nº pedido reclamado]</td><td class="desc">Entrega los items solicitados en el pedido elegido.</td><td class="ex">?pedido fa sell 2</td></tr>
+              <tr><td class="key">?pedido [categoría] drop [nº pedido reclamado]</td><td class="desc">Descarta el pedido elegido. Con esto evitas pagar una indemnización del 10% del precio total por la no entrega.</td><td class="ex">?pedido fa drop 2</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- ── Granja ── -->
+    <!-- ── GRANJA ── -->
     <section class="cmd-section" data-game="granja">
-      <div class="section-title"><span class="title-arrow">►</span> GRANJA</div>
-      <div class="table-wrap">
-        <table class="cmd-table">
-          <thead>
-            <tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="key">?buy list [categoría] [nº tier]</td>
-              <td class="desc">Comprueba qué productos están disponibles según qué tiers hayas desbloqueado.<hr>El comando funciona en este orden después de "tier": <em>[estación] [crop/árbol] [normal/perenne]</em></td>
-              <td>?buy list fa verano árbol<hr>?buy list fa 6<hr>?buy list fa 3 otoño crop perenne</td>
-            </tr>
-            <tr>
-              <td class="key">?plant [crop/árbol] [cantidad]</td>
-              <td class="desc">Planta tus semillas, si no eliges ningún lugar en particular se relocalizará por sí solo.<hr>El comando funciona en este orden después de "cantidad": <em>[fertilizante] [parcela/huerto/invernadero]</em></td>
-              <td>?pl all<hr>?plant cebolla 7 premium<hr>?pl all invernadero</td>
-            </tr>
-            <tr>
-              <td class="key">?harvest [árbol/crop] [normal/perenne]</td>
-              <td class="desc">Comprueba tus cultivos, cuánto tiempo les queda y, en el caso de los perennes, cuántas cosechas les quedan. Las variables son opcionales, pero sirven de ayuda cuando tienes muchos cosechando.</td>
-              <td>?hv<hr>?hv árbol<hr>?hv crop normal<hr>?hv crop perenne</td>
-            </tr>
-            <tr>
-              <td class="key">?harvest all</td>
-              <td class="desc">Cosecha todos tus cultivos.</td>
-              <td>?hv all<hr>?hr mandarina_dorada all</td>
-            </tr>
-            <tr>
-              <td class="key">?convert [cultivo/all] [cantidad]</td>
-              <td class="desc">Convierte crops cosechados en semillas. Recomendado para cultivos de T1 para iniciar; a mejor calidad, más semillas.</td>
-              <td>?conv lechuga all</td>
-            </tr>
-            <tr>
-              <td class="key">wip</td>
-              <td class="desc">wip</td>
-              <td>wip</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">GRANJA</span>
+        <span class="section-count">5 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?plant [crop/árbol] [cantidad]</td><td class="desc">Planta tus semillas, si no eliges ningún lugar en particular se relocalizará por sí solo.<hr>El comando funciona en este orden después de "cantidad": <em>[fertilizante] [parcela/huerto/invernadero]</em></td><td class="ex">?pl all<hr>?plant cebolla 7 premium<hr>?pl all invernadero</td></tr>
+              <tr><td class="key">?harvest [árbol/crop] [normal/perenne]</td><td class="desc">Comprueba tus cultivos, cuánto tiempo les queda y, en el caso de los perennes, cuántas cosechas les quedan. Las variables son opcionales.</td><td class="ex">?hv<hr>?hv árbol<hr>?hv crop normal<hr>?hv crop perenne</td></tr>
+              <tr><td class="key">?harvest all</td><td class="desc">Cosecha todos tus cultivos.</td><td class="ex">?hv all<hr>?hr mandarina_dorada all</td></tr>
+              <tr><td class="key">?convert [cultivo/all] [cantidad]</td><td class="desc">Convierte crops cosechados en semillas. Recomendado para cultivos de T1 para iniciar; a mejor calidad, más semillas.</td><td class="ex">?conv lechuga all</td></tr>
+              <tr><td class="key" style="color:var(--text-dim)">wip</td><td class="desc" style="color:var(--text-dim)">wip</td><td class="ex" style="color:var(--text-dim)">wip</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GANADERÍA ── -->
+    <section class="cmd-section" data-game="ganadería">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">GANADERÍA</span>
+        <span class="section-count">WIP</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key" style="color:var(--text-dim)">wip</td><td class="desc" style="color:var(--text-dim)">wip</td><td class="ex" style="color:var(--text-dim)">wip</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EMOTES ── -->
+    <section class="cmd-section" data-game="emotes">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">EMOTES</span>
+        <span class="section-count">13 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?add [nombre o link del emote]</td><td class="desc">Agrega un emote a tu set. Puedes agregar varios, y elegir si meterlo en todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?add KEKEW<hr>?add KEKEW sets:all</td></tr>
+              <tr><td class="key">?remove [nombre o link del emote]</td><td class="desc">Elimina un emote de tu set. Puedes eliminar varios, y elegir si quitarlo de todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?remove KEKEW<hr>?remove KEKEW sets:all</td></tr>
+              <tr><td class="key">?rename [nombre original] [nuevo nombre]</td><td class="desc">Renombra un emote. Puedes renombrar el mismo emote para todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?rename NOFUCKINGWAY NOWAYING<hr>?rename KEKEW KAKEW sets:all</td></tr>
+              <tr><td class="key">?permit [usuario]<hr>?permit [mods:on/mods:off]</td><td class="desc">Como broadcaster puedes elegir si permitir a un usuario usar emotes y/o añadir/remover los moderadores como editores. De por defecto los moderadores tienen permisos.</td><td class="ex">?permit Nogatrus<hr>?permit mods:off</td></tr>
+              <tr><td class="key">?events [on/off]</td><td class="desc">Opta por notificar o no los eventos de actividad de los emotes de 7tv. De por defecto están desactivados. Solo moderadores.</td><td class="ex">?ev on<hr>?ev off</td></tr>
+              <tr><td class="key">?ecount [emote]</td><td class="desc">Cuenta cuántas veces se ha usado un emote específico en el chat. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?ecount Kappa</td></tr>
+              <tr><td class="key">?mostused</td><td class="desc">Ve los 10 emotes más usados en el canal. De por defecto muestra solo los emotes de 7tv. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?mostused<hr>?mostused all<hr>?mostused ffz</td></tr>
+              <tr><td class="key">?leastused</td><td class="desc">Ve los emotes menos populares que casi nadie usa. De por defecto muestra solo los emotes de 7tv. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?leastused<hr>?leastused ffz<hr>?leastused all</td></tr>
+              <tr><td class="key">?searchemote [nombre]</td><td class="desc">Busca un emote en 7TV y obtén su información.</td><td class="ex">?se KEKEW<hr>?se 4</td></tr>
+              <tr><td class="key">?recentlyadded [canal]</td><td class="desc">Muestra los emotes de 7tv agregados recientemente a un canal específico en el que esté el bot o esté trackeando. Solo moderadores.</td><td class="ex">?recentlyadded Nogatrus<hr>?ra Nogatrus</td></tr>
+              <tr><td class="key">?recentlydeleted [canal]</td><td class="desc">Muestra los emotes de 7tv eliminados recientemente de un canal específico en el que esté el bot o esté trackeando. Solo moderadores.</td><td class="ex">?recentlydeleted Nogatrus<hr>?rd Nogatrus</td></tr>
+              <tr><td class="key">?recentlyrenamed [canal]</td><td class="desc">Muestra los emotes de 7tv renombrados recientemente en un canal específico en el que esté el bot o esté trackeando. Solo moderadores.</td><td class="ex">?recentlyrenamed Nogatrus<hr>?rre Nogatrus</td></tr>
+              <tr><td class="key">?trackrecents [canal donde no esté el bot]</td><td class="desc">Sigue los emotes de 7tv agregados recientemente en un canal específico donde no esté el bot. Solo moderadores.</td><td class="ex">?trackrecents Nogatrus<hr>?tr Nogatrus</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── UTILIDAD ── -->
+    <section class="cmd-section" data-game="utilidad">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">UTILIDAD</span>
+        <span class="section-count">8 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?userinfo [usuario]</td><td class="desc">Obtén información detallada de ti o de otro usuario de Twitch, su creación de cuenta, si tiene un rol (afiliado, partner, etc.).</td><td class="ex">?userinfo<hr>?ui Nogatrus</td></tr>
+              <tr><td class="key">?followage [usuario] [canal]</td><td class="desc">Comprueba cuánto tiempo llevas siguiendo este canal. Te dice la fecha cuando empezaste a seguirle, de por defecto en tiempo universal.</td><td class="ex">?followage<hr>?followage Nogatrus</td></tr>
+              <tr><td class="key">?subage [usuario] [canal]</td><td class="desc">Comprueba cuánto tiempo llevas suscrito al canal. Te dice la fecha de cuándo se te acaba exactamente la sub si no es indefinida, de por defecto en tiempo universal.</td><td class="ex">?subage<hr>?subage Nogatrus</td></tr>
+              <tr><td class="key">?hora</td><td class="desc">Obtén la hora actual en tu zona horaria o en una zona específica.</td><td class="ex">?hora España<hr>?hora Buenos Aires</td></tr>
+              <tr><td class="key">?set location [país/ciudad/hora local]</td><td class="desc">Cambia tu configuración personal según tu ubicación. Se te pondrá a mostrar solo el país de por defecto si elegiste país y/o ciudad; y en caso de colocar la hora local, no se mostrará la ubicación.</td><td class="ex">?set location 18:54<hr>?set location Málaga España<hr>?set location Chile</td></tr>
+              <tr><td class="key">?set location [public/city/private]</td><td class="desc">Cambia tu configuración personal para mostrar la visibilidad de tu ubicación.</td><td class="ex">?set location private<hr>?set location city</td></tr>
+              <tr><td class="key">?earthquake [valor de magnitud]</td><td class="desc">Obtén información sobre terremotos recientes según magnitud hasta hace 3 años. En caso de no especificar magnitud, se mostrarán los últimos terremotos registrados. Actualizado a tiempo real.</td><td class="ex">?eq<hr>?earthquake 7</td></tr>
+              <tr><td class="key">?juegosgratis<hr>?juegosgratis [on/off]</td><td class="desc">Obtén información de los juegos gratis disponibles esta semana en plataformas. Puedes activar o desactivar las notificaciones por cada vez que se agreguen nuevos juegos.</td><td class="ex">?juegosgratis<hr>?juegosgratis on<hr>?juegosgratis off</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BOT ── -->
+    <section class="cmd-section" data-game="bot">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">BOT</span>
+        <span class="section-count">2 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?help<hr>?ayuda<hr>?comandos</td><td class="desc">Ve la lista de todos los comandos disponibles. Para ver de qué trata un comando específico, el cooldown que tiene, etc., escribe su nombre después del comando.</td><td class="ex">?help<hr>?help trivia<hr>?ayuda plant</td></tr>
+              <tr><td class="key">?ping<hr>?p</td><td class="desc">Comprueba cuánto tiempo lleva el bot funcionando (uptime) y estadísticas del bot.</td><td class="ex">?ping<hr>?p</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -716,6 +927,7 @@
   </div>
 
   <script>
+    /* ── CLOCK ── */
     function updateClock() {
       const now = new Date();
       const pad = n => String(n).padStart(2, '0');
@@ -727,7 +939,85 @@
     updateClock();
     setInterval(updateClock, 10000);
 
-    // Filter
+    /* ── COLLAPSE / EXPAND ── */
+    function toggleSection(header) {
+      const section = header.closest('.cmd-section');
+      section.classList.toggle('collapsed');
+    }
+
+    document.getElementById('collapseAllBtn').addEventListener('click', function() {
+      const sections = document.querySelectorAll('.cmd-section:not(.hidden)');
+      const allCollapsed = [...sections].every(s => s.classList.contains('collapsed'));
+      sections.forEach(s => {
+        if (allCollapsed) s.classList.remove('collapsed');
+        else s.classList.add('collapsed');
+      });
+      this.textContent = allCollapsed ? 'CONTRAER TODO' : 'EXPANDIR TODO';
+    });
+
+    /* ── SORT (per section) ── */
+    function sortTable(table, mode) {
+      const tbody = table.querySelector('tbody');
+      const rows = [...tbody.querySelectorAll('tr')];
+
+      // Store original order on first call
+      if (!tbody.dataset.originalOrder) {
+        tbody.dataset.originalOrder = rows.map((_, i) => i).join(',');
+        rows.forEach((row, i) => row.dataset.origIndex = i);
+      }
+
+      if (mode === 'default') {
+        const origRows = rows.sort((a, b) => +a.dataset.origIndex - +b.dataset.origIndex);
+        origRows.forEach(r => tbody.appendChild(r));
+      } else if (mode === 'alpha') {
+        const sorted = rows.sort((a, b) => {
+          const ka = a.querySelector('td.key')?.textContent.trim().toLowerCase() || '';
+          const kb = b.querySelector('td.key')?.textContent.trim().toLowerCase() || '';
+          return ka.localeCompare(kb, 'es');
+        });
+        sorted.forEach(r => tbody.appendChild(r));
+      }
+    }
+
+    document.querySelectorAll('.sort-controls').forEach(controls => {
+      const section = controls.closest('.cmd-section');
+      const table = section.querySelector('.cmd-table');
+      controls.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          controls.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sortTable(table, btn.dataset.sort);
+        });
+      });
+    });
+
+    /* ── GLOBAL SORT ── */
+    let globalSortMode = 'default';
+    document.getElementById('gSortDefault').addEventListener('click', function() {
+      globalSortMode = 'default';
+      document.getElementById('gSortAlpha').classList.remove('active');
+      this.classList.add('active');
+      document.querySelectorAll('.cmd-section:not(.hidden)').forEach(section => {
+        const table = section.querySelector('.cmd-table');
+        const controls = section.querySelector('.sort-controls');
+        sortTable(table, 'default');
+        controls.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === 'default'));
+      });
+    });
+
+    document.getElementById('gSortAlpha').addEventListener('click', function() {
+      globalSortMode = 'alpha';
+      document.getElementById('gSortDefault').classList.remove('active');
+      this.classList.add('active');
+      document.querySelectorAll('.cmd-section:not(.hidden)').forEach(section => {
+        const table = section.querySelector('.cmd-table');
+        const controls = section.querySelector('.sort-controls');
+        sortTable(table, 'alpha');
+        controls.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === 'alpha'));
+      });
+    });
+
+    /* ── FILTER ── */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const sections = document.querySelectorAll('.cmd-section');
     filterBtns.forEach(btn => {
@@ -738,6 +1028,10 @@
         sections.forEach(s => {
           if (f === 'all' || s.dataset.game === f) {
             s.classList.remove('hidden');
+            // Reapply current global sort if active
+            if (globalSortMode !== 'default') {
+              sortTable(s.querySelector('.cmd-table'), globalSortMode);
+            }
           } else {
             s.classList.add('hidden');
           }
@@ -745,11 +1039,29 @@
       });
     });
 
-    // Search
+    /* ── SEARCH ── */
     document.getElementById('cmdSearch').addEventListener('input', function() {
-      const q = this.value.toLowerCase();
-      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      const q = this.value.toLowerCase().trim();
+      if (!q) {
+        document.querySelectorAll('.cmd-table tbody tr').forEach(row => row.style.display = '');
+        // Re-show sections that may have been filtered by search
+        document.querySelectorAll('.cmd-section:not(.hidden)').forEach(s => {
+          const hasVisible = [...s.querySelectorAll('tbody tr')].some(r => r.style.display !== 'none');
+          s.style.display = '';
+        });
+        return;
+      }
+      document.querySelectorAll('.cmd-section:not(.hidden)').forEach(section => {
+        const rows = section.querySelectorAll('.cmd-table tbody tr');
+        let anyVisible = false;
+        rows.forEach(row => {
+          const match = row.textContent.toLowerCase().includes(q);
+          row.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        // Auto-expand section if there are results
+        if (anyVisible) section.classList.remove('collapsed');
+        section.style.display = anyVisible ? '' : 'none';
       });
     });
   </script>
