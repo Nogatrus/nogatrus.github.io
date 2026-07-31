@@ -638,9 +638,11 @@
       <button class="filter-btn" data-filter="minijuegos">MINIJUEGOS</button>
       <button class="filter-btn" data-filter="economía">ECONOMÍA</button>
       <button class="filter-btn" data-filter="granja">GRANJA</button>
-      <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
+      <button class="filter-btn" data-filter="pesca">PESCA</button>
+      <button class="filter-btn" data-filter="minería">MINERÍA</button>
       <button class="filter-btn" data-filter="emotes">EMOTES</button>
       <button class="filter-btn" data-filter="utilidad">UTILIDAD</button>
+      <button class="filter-btn" data-filter="moderación">MODERACIÓN</button>
       <button class="filter-btn" data-filter="bot">BOT</button>
     </div>
 
@@ -657,7 +659,7 @@
       <div class="section-header" onclick="toggleSection(this)">
         <span class="section-toggle-icon">▼</span>
         <span class="section-label">SOCIAL</span>
-        <span class="section-count">10 CMD</span>
+        <span class="section-count">12 CMD</span>
         <div class="sort-controls" onclick="event.stopPropagation()">
           <button class="sort-btn active" data-sort="default">DEFAULT</button>
           <button class="sort-btn" data-sort="alpha">A→Z</button>
@@ -675,9 +677,11 @@
               <tr><td class="key">?perfil [user]</td><td class="desc">Puedes ver tus stats de los juegos, tus niveles y el dinero que tienes.</td><td class="ex">?perfil<hr>?perfil Nogatrus</td></tr>
               <tr><td class="key">?level [user]</td><td class="desc">Puedes ver tus niveles de juego. Por ahora puedes buscar tanto por nivel "general" como por nivel de "farm".</td><td class="ex">?level<hr>?level general<hr>?level farm Nogatrus</td></tr>
               <tr><td class="key">?bug [mensaje]</td><td class="desc">Notifica un problema o bug que encuentres con el bot. Solo puedes mandar máximo 3 reportes activos.</td><td class="ex">?bug<hr>?report</td></tr>
-              <tr><td class="key">?bug list</td><td class="desc">Muestra una lista de todos los bugs que has enviado y su estado de resolución.</td><td class="ex">?bug list</td></tr>
+              <tr><td class="key">?bug lists</td><td class="desc">Muestra una lista de todos los bugs que has enviado y su estado de resolución.</td><td class="ex">?bug list</td></tr>
               <tr><td class="key">?suggest [mensaje]</td><td class="desc">Escribe una sugerencia que consideres interesante para el bot. Solo puedes mandar máximo 3 sugerencias activas.</td><td class="ex">?suggest<hr>?sugerencia</td></tr>
-              <tr><td class="key">?suggest list</td><td class="desc">Muestra una lista de todas las sugerencias que has enviado y su estado de resolución.</td><td class="ex">?suggest list</td></tr>
+              <tr><td class="key">?suggest lists</td><td class="desc">Muestra una lista de todas las sugerencias que has enviado y su estado de resolución.</td><td class="ex">?suggest list</td></tr>
+              <tr><td class="key">?afk</td><td class="desc">Avisa de que vas a estar AFK, no es personalizable con mensajes.</td><td class="ex">?gn, ?brb, ?food, ?gaming, ?shower...</td></tr>
+              <tr><td class="key">?rafk</td><td class="desc">Retoma el AFK. Tienes un límite de 2min antes de perderlo.</td><td class="ex">?rafk</td></tr>
             </tbody>
           </table>
         </div>
@@ -702,7 +706,7 @@
             <tbody>
               <tr><td class="key">?hangman [categoría]</td><td class="desc">Usa el comando para empezar, luego solo teclea una letra sin comandos. Tienes que adivinar una letra antes de poder adivinar la palabra.<hr>Si quieres saber las categorías disponibles, escribe "?hm asd".</td><td class="ex">?hangman rios<hr>?hm</td></tr>
               <tr><td class="key">?hangman stats [user]</td><td class="desc">Puedes ver tus estadísticas del juego hangman.</td><td class="ex">?hm stats<hr>?hm stats Nogatrus</td></tr>
-              <tr><td class="key">?trivia</td><td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay ~30 preguntas por cada categoría y modo (normal/difícil).</td><td class="ex">?triv</td></tr>
+              <tr><td class="key">?trivia</td><td class="desc">Responde preguntas de trivia en un contrarreloj de 60 segundos. Hay aprox 100 preguntas por cada categoría y modo (normal/difícil), pero en algunas categorías hay más de 120-150 preguntas.</td><td class="ex">?triv pokemon</td></tr>
               <tr><td class="key">?trivia stats [user]</td><td class="desc">Puedes ver tus estadísticas del juego trivia.</td><td class="ex">?triv stats<hr>?triv stats Nogatrus</td></tr>
               <tr><td class="key">?trivia dif [normal/ambos/dificil] [categorías]</td><td class="desc">Por defecto está en dificultad normal, pero puedes cambiar el nivel de dificultad eligiendo por las categorías existentes.<hr>"Ambos" incluye tanto normal como difícil. Funciona solo por user.</td><td class="ex">?triv dif dificil<hr>?triv dif ambos pokemon<hr>?triv dif dificil matematicas</td></tr>
               <tr><td class="key">?trivia dif [dificil]</td><td class="desc">Puedes consultar qué categorías tienes en modo Ambos o Difícil y ver qué categorías están disponibles en modo difícil.</td><td class="ex">?triv dif<hr>?triv dif dificil</td></tr>
@@ -780,12 +784,12 @@
       </div>
     </section>
 
-    <!-- ── GANADERÍA ── -->
-    <section class="cmd-section" data-game="ganadería">
+    <!-- ── PESCA ── -->
+    <section class="cmd-section" data-game="pesca">
       <div class="section-header" onclick="toggleSection(this)">
         <span class="section-toggle-icon">▼</span>
-        <span class="section-label">GANADERÍA</span>
-        <span class="section-count">WIP</span>
+        <span class="section-label">PESCA</span>
+        <span class="section-count">7 CMD</span>
         <div class="sort-controls" onclick="event.stopPropagation()">
           <button class="sort-btn active" data-sort="default">DEFAULT</button>
           <button class="sort-btn" data-sort="alpha">A→Z</button>
@@ -796,7 +800,40 @@
           <table class="cmd-table">
             <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
             <tbody>
-              <tr><td class="key" style="color:var(--text-dim)">wip</td><td class="desc" style="color:var(--text-dim)">wip</td><td class="ex" style="color:var(--text-dim)">wip</td></tr>
+              <tr><td class="key">?caña</td><td class="desc">Comprueba cuál es tu mejor caña hasta ahora, o si no tienes caña consigues una gratuita para empezar a pescar.</td><td class="ex">?caña</td></tr>
+              <tr><td class="key">?mejora caña</td><td class="desc">Mejora tu caña al conseguir suficiente dinero y/o material para mejorar a un tier superior.</td><td class="ex">?mejora caña</td></tr>
+              <tr><td class="key">?fish [zona] [cantidad de intentos/max]</td><td class="desc">Pesca en una zona, si no tienes zonas desbloqueadas desbloquea ?zona unlock rio para empezar.</td><td class="ex">?fish rio<hr>?fish remanso max</td></tr>
+              <tr><td class="key">?zona</td><td class="desc">Gestiona tus zonas ya desbloqueadas, donde puedes comprobar cuántos intentos te quedan.</td><td class="ex">?zona</td></tr>
+              <tr><td class="key">?zona info [zona]</td><td class="desc">Te proporciona información sobre qué puedes pescar en determinada zona.</td><td class="ex">?zona info rio</td></tr>
+              <tr><td class="key">?zona unlock [zona no desbloqueada]</td><td class="desc">Desbloquea una zona ya disponible para comprarla.</td><td class="ex">?zona unlock rio</td></tr>
+              <tr><td class="key">?zona list</td><td class="desc">Comprueba qué zonas puedes desbloquear. Se van desbloqueando zonas conforme se sube el nivel de pesca.</td><td class="ex">?zona list</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PESCA ── -->
+    <section class="cmd-section" data-game="minería">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">MINERÍA</span>
+        <span class="section-count">5 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?pico</td><td class="desc">Comprueba cuál es tu mejor pico hasta ahora, o si no tienes pico consigues uno gratuito para empezar a minar.</td><td class="ex">?pico</td></tr>
+              <tr><td class="key">?mejora pico</td><td class="desc">Mejora tu pico al conseguir suficiente dinero y/o material para mejorar a un tier superior.</td><td class="ex">?mejora pico</td></tr>
+              <tr><td class="key">?mine [bioma] [cantidad de intentos/max]</td><td class="desc">Vete de expedición a un bioma durante un tiempo. Se autoreclama al acabar. Para desbloquear más biomas, mejora tu pico.</td><td class="ex">?mine bosque<hr>?mine colina</td></tr>
+              <tr><td class="key">?fundir [material para fundir]</td><td class="desc">Funde minerales en el horno. Al acabar, se recoge con ?fundir recoger.</td><td class="ex">?fundir mena_cobre<hr>?fundir recoger</td></tr>
+              <tr><td class="key">?fundir rush</td><td class="desc">Paga una cantidad determinada para reclamar inmediatamente en vez de esperar. Se recoge solo al ponerlo.</td><td class="ex">?fundir rush</td></tr>
             </tbody>
           </table>
         </div>
@@ -819,10 +856,11 @@
           <table class="cmd-table">
             <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
             <tbody>
-              <tr><td class="key">?add [nombre o link del emote]</td><td class="desc">Agrega un emote a tu set. Puedes agregar varios, y elegir si meterlo en todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?add KEKEW<hr>?add KEKEW sets:all</td></tr>
-              <tr><td class="key">?remove [nombre o link del emote]</td><td class="desc">Elimina un emote de tu set. Puedes eliminar varios, y elegir si quitarlo de todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?remove KEKEW<hr>?remove KEKEW sets:all</td></tr>
+              <tr><td class="key">?add [nombre o link del emote]</td><td class="desc">Agrega un emote a tu set. Puedes agregar varios, y elegir si meterlo en todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?add KEKEW<hr>?add KEKEW sets:all <hr> ?add KEKEW lol #mrgatrol</td></tr>
+              <tr><td class="key">?yoink [nombre o link del emote]</td><td class="desc">Agrega un emote a tu set. Puedes agregar varios, y elegir si meterlo en todos los sets. Solo el broadcaster puede usarlo.</td><td class="ex">?y KEKEW<hr>?yoink KEKEW lol RUN #mrgatrol sets:all</td></tr>
+              <tr><td class="key">?remove [nombre o link del emote]</td><td class="desc">Elimina un emote de tu set. Puedes eliminar varios, y elegir si quitarlo de todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?remove KEKEW<hr>?remove KEKEW lol RUN sets:all</td></tr>
               <tr><td class="key">?rename [nombre original] [nuevo nombre]</td><td class="desc">Renombra un emote. Puedes renombrar el mismo emote para todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?rename NOFUCKINGWAY NOWAYING<hr>?rename KEKEW KAKEW sets:all</td></tr>
-              <tr><td class="key">?permit [usuario]<hr>?permit [mods:on/mods:off]</td><td class="desc">Como broadcaster puedes elegir si permitir a un usuario usar emotes y/o añadir/remover los moderadores como editores. De por defecto los moderadores tienen permisos.</td><td class="ex">?permit Nogatrus<hr>?permit mods:off</td></tr>
+              <tr><td class="key">?permit emotes [usuario]<hr>?permit emotes [mods:on/mods:off]</td><td class="desc">Como broadcaster puedes elegir si permitir a un usuario usar emotes y/o añadir/remover los moderadores como editores. De por defecto los moderadores tienen permisos.</td><td class="ex">?permit emotes MrGatrol<hr>?permit emotes mods:off</td></tr>
               <tr><td class="key">?events [on/off]</td><td class="desc">Opta por notificar o no los eventos de actividad de los emotes de 7tv. De por defecto están desactivados. Solo moderadores.</td><td class="ex">?ev on<hr>?ev off</td></tr>
               <tr><td class="key">?ecount [emote]</td><td class="desc">Cuenta cuántas veces se ha usado un emote específico en el chat. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?ecount Kappa</td></tr>
               <tr><td class="key">?mostused</td><td class="desc">Ve los 10 emotes más usados en el canal. De por defecto muestra solo los emotes de 7tv. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?mostused<hr>?mostused all<hr>?mostused ffz</td></tr>
@@ -838,12 +876,38 @@
       </div>
     </section>
 
+    <!-- ── MODERACIÓN ── -->
+    <section class="cmd-section" data-game="moderación">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-toggle-icon">▼</span>
+        <span class="section-label">MODERACIÓN</span>
+        <span class="section-count">13 CMD</span>
+        <div class="sort-controls" onclick="event.stopPropagation()">
+          <button class="sort-btn active" data-sort="default">DEFAULT</button>
+          <button class="sort-btn" data-sort="alpha">A→Z</button>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-wrap">
+          <table class="cmd-table">
+            <thead><tr><th>COMANDO</th><th>ACCIÓN</th><th>EJEMPLOS</th></tr></thead>
+            <tbody>
+              <tr><td class="key">?add [nombre o link del emote]</td><td class="desc">Agrega un emote a tu set. Puedes agregar varios, y elegir si meterlo en todos los sets. Solo los moderadores y/o usuarios con permisos designados pueden usarlo.</td><td class="ex">?add KEKEW<hr>?add KEKEW sets:all</td></tr>
+              <tr><td class="key">?permit canal [usuario]<hr>?permit canal [mods:on/mods:off]</td><td class="desc">Como broadcaster puedes elegir si permitir a un usuario cambiar tanto el título como la categoría y/o añadir/remover los moderadores como editores. De por defecto los moderadores tienen permisos.</td><td class="ex">?permit canal MrGatrol<hr>?permit canal mods:off</td></tr>
+              <tr><td class="key">?events [on/off]</td><td class="desc">Opta por notificar o no los eventos de actividad de los emotes de 7tv. De por defecto están desactivados. Solo moderadores.</td><td class="ex">?ev on<hr>?ev off</td></tr>
+              <tr><td class="key">?ecount [emote]</td><td class="desc">Cuenta cuántas veces se ha usado un emote específico en el chat. Solo emotes de FFZ, BTTV y 7TV.</td><td class="ex">?ecount Kappa</td></tr>
+               </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <!-- ── UTILIDAD ── -->
     <section class="cmd-section" data-game="utilidad">
       <div class="section-header" onclick="toggleSection(this)">
         <span class="section-toggle-icon">▼</span>
         <span class="section-label">UTILIDAD</span>
-        <span class="section-count">8 CMD</span>
+        <span class="section-count">14 CMD</span>
         <div class="sort-controls" onclick="event.stopPropagation()">
           <button class="sort-btn active" data-sort="default">DEFAULT</button>
           <button class="sort-btn" data-sort="alpha">A→Z</button>
@@ -858,10 +922,16 @@
               <tr><td class="key">?followage [usuario] [canal]</td><td class="desc">Comprueba cuánto tiempo llevas siguiendo este canal. Te dice la fecha cuando empezaste a seguirle, de por defecto en tiempo universal.</td><td class="ex">?followage<hr>?followage Nogatrus</td></tr>
               <tr><td class="key">?subage [usuario] [canal]</td><td class="desc">Comprueba cuánto tiempo llevas suscrito al canal. Te dice la fecha de cuándo se te acaba exactamente la sub si no es indefinida, de por defecto en tiempo universal.</td><td class="ex">?subage<hr>?subage Nogatrus</td></tr>
               <tr><td class="key">?hora</td><td class="desc">Obtén la hora actual en tu zona horaria o en una zona específica.</td><td class="ex">?hora España<hr>?hora Buenos Aires</td></tr>
+              <tr><td class="key">?weather @[usuario]</td><td class="desc">Mira sobre el tiempo actual en tu ubicación o en otro lugar.</td><td class="ex">?weather valencia españa<hr>?weather @nogatrus<hr>?weather</td></tr>
               <tr><td class="key">?set location [país/ciudad/hora local]</td><td class="desc">Cambia tu configuración personal según tu ubicación. Se te pondrá a mostrar solo el país de por defecto si elegiste país y/o ciudad; y en caso de colocar la hora local, no se mostrará la ubicación.</td><td class="ex">?set location 18:54<hr>?set location Málaga España<hr>?set location Chile</td></tr>
               <tr><td class="key">?set location [public/city/private]</td><td class="desc">Cambia tu configuración personal para mostrar la visibilidad de tu ubicación.</td><td class="ex">?set location private<hr>?set location city</td></tr>
               <tr><td class="key">?earthquake [valor de magnitud]</td><td class="desc">Obtén información sobre terremotos recientes según magnitud hasta hace 3 años. En caso de no especificar magnitud, se mostrarán los últimos terremotos registrados. Actualizado a tiempo real.</td><td class="ex">?eq<hr>?earthquake 7</td></tr>
+              <tr><td class="key">?diccionario [palabra] [categoría] [país] [número]</td><td class="desc">Explica el significado de una determinada palabra. Solo soporta español (de España y Latinoamérica).</td><td class="ex">?diccionario perro sustantivo mexico 2<hr>?diccionario perro sustantivo mexico 1</td></tr>
+              <tr><td class="key">?search</td><td class="desc">Busca en la web. Dependiendo de lo que busques, puedes tener hasta tres links diferentes, una entrada de Wikipedia, otro de Marginalia (perfecto para buscar cosas concretas) y el último de Google.</td><td class="ex">?s historia de españa<hr>?buscar paella valenciana</td></tr>
               <tr><td class="key">?juegosgratis<hr>?juegosgratis [on/off]</td><td class="desc">Obtén información de los juegos gratis disponibles esta semana en plataformas. Puedes activar o desactivar las notificaciones por cada vez que se agreguen nuevos juegos.</td><td class="ex">?juegosgratis<hr>?juegosgratis on<hr>?juegosgratis off</td></tr>
+              <tr><td class="key">?title</td><td class="desc">Mira el título del canal en el que estás.</td><td class="ex">?título</td></tr>
+              <tr><td class="key">?category</td><td class="desc">Mira la categoría del canal en el que estás.</td><td class="ex">?categoría</td></tr>
+              <tr><td class="key">?streaminfo</td><td class="desc">Muestra información del stream de un canal.</td><td class="ex">?si @agentemaxo<hr>?si</td></tr>
             </tbody>
           </table>
         </div>
