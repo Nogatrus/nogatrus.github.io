@@ -178,14 +178,17 @@
 
     /* ── TIER TABLE ── */
     .tier-table-wrap {
-      display: inline-block;
+      display: block;
+      max-width: 100%;
       align-self: flex-start;
-      border-radius: 4px; overflow: hidden;
+      border-radius: 4px;
       border: 1px solid rgba(79,163,232,0.18);
       background: rgba(0,0,0,0.2);
       margin: 4px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .tier-table { width: auto; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+    .tier-table { width: 100%; min-width: 460px; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
     .tier-table thead tr { background: rgba(79,163,232,0.08); border-bottom: 1px solid rgba(79,163,232,0.2); }
     .tier-table thead th { padding: 8px 14px; text-align: left; font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 600; }
     .tier-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.12s; }
@@ -195,6 +198,10 @@
     .tier-table td.t-num { color: var(--accent); letter-spacing: 1px; white-space: nowrap; width: 54px; }
     .tier-table td.t-items { color: var(--text-primary); width: 110px; }
     .tier-table td.t-xp { color: var(--yellow); white-space: nowrap; }
+    .tier-table-wrap.compact .tier-table { min-width: 620px; font-size: 11px; }
+    .tier-table-wrap.compact .tier-table thead th { padding: 7px 10px; font-size: 9px; letter-spacing: 1px; }
+    .tier-table-wrap.compact .tier-table td { padding: 6px 10px; }
+    .tier-table-wrap.compact .tier-table td.t-items { width: auto; }
 
     .site-footer {
       position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.05);
@@ -278,7 +285,7 @@
       <button class="filter-btn" data-filter="mercado">MERCADO</button>
       <button class="filter-btn" data-filter="granja">GRANJA</button>
       <button class="filter-btn" data-filter="pesca">PESCA</button>
-      <button class="filter-btn" data-filter="ganadería">GANADERÍA</button>
+      <button class="filter-btn" data-filter="pokémon">POKÉMON</button>
     </div>
 
     <!-- ── Granja ── -->
@@ -399,15 +406,38 @@
       </div>
     </div>
 
-    <!-- ── Ganadería ── -->
-    <div class="section-title"><span class="title-arrow">►</span> GANADERÍA</div>
+    <!-- ── Pokémon ── -->
+    <div class="section-title"><span class="title-arrow">►</span> POKÉMON</div>
 
-    <div class="guide-card" data-game="ganadería" data-level="principiante">
-      <p class="guide-meta">GANADERÍA · <span class="level-badge principiante">PRINCIPIANTE</span> · ~5 min</p>
-      <h3 class="guide-title">WIP</h3>
+    <div class="guide-card" data-game="pokémon" data-level="principiante">
+      <p class="guide-meta">POKÉMON · <span class="level-badge principiante">PRINCIPIANTE</span> · ~5 min</p>
+      <h3 class="guide-title">SOBRE CAPTURAR POKÉMON</h3>
       <div class="guide-toggle">VER GUÍA</div>
       <div class="guide-body">
-        <div class="guide-desc"><p>WIP</p></div>
+        <div class="guide-desc">
+          <p>En inicio, necesitarás tu pokéball con la que podrás reclamar con el comando "?pokeball", tendrás una chance de 55% para atrapar un pokémon normal. Y luego comienza a atrapar con <em>?pokemon</em> (o también <em>?pkmn</em>).</p>
+          <p>Aquí abajo en la tabla podrás comprobar los tiers, las chances de captura con cada tipo de pokéball para diferentes pokémon y el material que necesitarás para desbloquearla para seguir mejorando con <em>?mejora pokeball</em>. Los materiales que te pedirán para mejorar se conseguirán como drops a la hora de lanzar la pokéball.</p>
+
+           <div class="tier-table-wrap compact">
+            <table class="tier-table">
+              <thead>
+                <tr><th>TIER (nivel)</th><th>POKÉBALL</th><th>MATERIAL PARA MEJORAR</th><th>NORMAL</th><th>ULTRAENTE</th><th>LEGENDARIO</th><th>SINGULAR</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="t-num">T1 (nv. 1)</td><td class="t-items">Poké Ball</td><td class="t-xp">Gratuito</td><td>55%</td><td>6%</td><td>0,55%</td><td>0,055%</td></tr>
+                <tr><td class="t-num">T2 (nv. 3)</td><td class="t-items">Super Ball</td><td class="t-xp">5x tesoro_comun</td><td>60%</td><td>7,8%</td><td>0,72%</td><td>0,072%</td></tr>
+                <tr><td class="t-num">T3 (nv. 6)</td><td class="t-items">Ultra Ball</td><td class="t-xp">5x tesoro_raro</td><td>65%</td><td>9,6%</td><td>0,88%</td><td>0,088%</td></tr>
+                <tr><td class="t-num">T4 (nv. 10)</td><td class="t-items">Safari Ball</td><td class="t-xp">3x bonguri_verde</td><td>70%</td><td>12%</td><td>1,1%</td><td>0,11%</td></tr>
+                <tr><td class="t-num">T5 (nv. 15)</td><td class="t-items">Veloz Ball</td><td class="t-xp">5x bonguri_azul</td><td>75%</td><td>15%</td><td>1,4%</td><td>0,14%</td></tr>
+                <tr><td class="t-num">T6 (nv. 20)</td><td class="t-items">Honor Ball</td><td class="t-xp">8x bonguri_blanco</td><td>80%</td><td>18%</td><td>7,2%</td><td>0,72%</td></tr>
+                <tr><td class="t-num">T7 (nv. 27)</td><td class="t-items">Gloria Ball</td><td class="t-xp">10x bonguri_rojo</td><td>85%</td><td>21,6%</td><td>15%</td><td>1,5%</td></tr>
+                <tr><td class="t-num">T8 (nv. 35)</td><td class="t-items">Origen Ball</td><td class="t-xp">12x bonguri_negro</td><td>90%</td><td>25,8%</td><td>27%</td><td>2,7%</td></tr>
+                <tr><td class="t-num">T9 (nv. 45)</td><td class="t-items">Master Ball</td><td class="t-xp">15x bonguri_rosa</td><td>100%</td><td>100%</td><td>50%</td><td>5%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
       </div>
     </div>
 
