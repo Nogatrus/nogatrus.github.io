@@ -581,8 +581,8 @@
       const pad = n => String(n).padStart(2, '0');
       const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
       const date = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
-      ['trayTime','headerTime'].forEach(id => document.getElementById(id).textContent = time);
-      ['trayDate','headerDate'].forEach(id => document.getElementById(id).textContent = date);
+      ['trayTime','headerTime'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = time; });
+      ['trayDate','headerDate'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = date; });
     }
     updateClock();
     setInterval(updateClock, 10000);
